@@ -443,29 +443,21 @@
       position: absolute;
       inset: 0;
       overflow: hidden;
-      opacity: .58;
-      filter: saturate(.72) contrast(.91);
-      transition: opacity .28s ease, filter .28s ease, transform .5s ease;
-      transform: scale(1.015);
+      transition: transform .5s ease;
     }
 
     .card:hover .preview-browser {
-      opacity: .76;
-      filter: saturate(.9) contrast(.96);
       transform: scale(1.035);
     }
 
-    .preview-browser iframe {
+    .preview-browser img {
       position: absolute;
-      top: 0;
-      left: 50%;
-      width: 1280px;
-      height: 820px;
-      border: 0;
-      pointer-events: none;
-      transform: translateX(-50%) scale(.34);
-      transform-origin: top center;
-      background: #fff;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
     }
 
     .preview::after {
@@ -474,8 +466,8 @@
       inset: 0;
       z-index: 2;
       background:
-        linear-gradient(180deg, rgba(18,43,36,.02) 6%, rgba(18,43,36,.15) 52%, rgba(18,43,36,.78) 100%),
-        linear-gradient(120deg, color-mix(in srgb, var(--accent) 25%, transparent), transparent 60%);
+        linear-gradient(180deg, rgba(18,43,36,.55) 0%, rgba(18,43,36,0) 26%),
+        linear-gradient(120deg, color-mix(in srgb, var(--accent) 18%, transparent), transparent 55%);
       pointer-events: none;
     }
 
@@ -506,19 +498,6 @@
 
     .preview-hint {
       opacity: .82;
-    }
-
-    .preview-title {
-      position: absolute;
-      left: 20px;
-      right: 20px;
-      bottom: 18px;
-      z-index: 3;
-      color: #fff;
-      font-size: 11px;
-      font-weight: 800;
-      line-height: 1.5;
-      text-shadow: 0 2px 16px rgba(0,0,0,.35);
     }
 
     .card-body {
@@ -765,10 +744,6 @@
         height: 205px;
       }
 
-      .preview-browser iframe {
-        transform: translateX(-50%) scale(.30);
-      }
-
       .card h3 {
         font-size: 22px;
       }
@@ -878,7 +853,7 @@
       カード・カテゴリー・件数は自動で更新されます。
       ───────────────────────────────────────────────
     */
-    const bonuses = [{"number": "01", "category": "ChatGPT活用", "title": "ChatGPTを最強の相棒に<br>3分で完了する究極の最適化", "plainTitle": "ChatGPTを最強の相棒に 3分で完了する究極の最適化", "description": "データ設定・メモリ・カスタム指示を整え、ChatGPTを自分専用の相棒へ変える初期設定ガイド。", "tags": ["初期設定", "3ステップ", "初心者向け"], "url": "https://smitch-ai-works.github.io/no2-chatgpt-first-setting-info/", "accent": "#2E5D50"}, {"number": "02", "category": "ChatGPT活用", "title": "スマホ1枚＋5分で<br>プロ級の手相鑑定書が完成", "plainTitle": "スマホ1枚＋5分でプロ級の手相鑑定書が完成", "description": "手のひら写真をChatGPTで分析し、自己理解レポートとしてまとめる方法とコピペ用プロンプト。", "tags": ["画像解析", "手相", "プロンプト"], "url": "https://smitch-ai-works.github.io/no3-chatgpt-palm-reading/", "accent": "#785C7D"}, {"number": "03", "category": "ChatGPT活用", "title": "AIプロンプト記号<br>完全ガイド30選", "plainTitle": "AIプロンプト記号 完全ガイド30選", "description": "AIへの指示を整理し、意図を正確に伝えるために使える30種類の記号をまとめた保存版。", "tags": ["30種類", "指示改善", "保存版"], "url": "https://smitch-ai-works.github.io/no4-ai-keywords/", "accent": "#45698E"}, {"number": "04", "category": "画像・動画制作", "title": "残業後でもできる<br>30分のAI絶景動画ルーティン", "plainTitle": "残業後でもできる 30分のAI絶景動画ルーティン", "description": "ChatGPT・ImageFX・Pikaを順番に使い、日本の絶景画像と動画を作る4ステップ。", "tags": ["ChatGPT", "ImageFX", "Pika"], "url": "https://smitch-ai-works.github.io/no5-ai-movie-creater/", "accent": "#347B86"}, {"number": "05", "category": "画像・動画制作", "title": "このステッカー、<br>海外でめっちゃ売れてます。", "plainTitle": "このステッカー、海外でめっちゃ売れてます。", "description": "ぷっくり立体的なデジタルステッカーをAIで作るための、コピペ対応プロンプト。", "tags": ["画像生成", "ステッカー", "海外販売"], "url": "https://smitch-ai-works.github.io/no6-ai-sticker/", "accent": "#B66D82"}, {"number": "06", "category": "AI副業", "title": "ChatGPTで作る<br>Pinterest副業ルーティン", "plainTitle": "ChatGPTで作る Pinterest副業ルーティン", "description": "記事案・画像・投稿をChatGPTと組み合わせ、Pinterestのピンを継続して作る手順まとめ。", "tags": ["Pinterest", "コンテンツ制作", "集客"], "url": "https://smitch-ai-works.github.io/no8-chatgpt-pintarest/", "accent": "#A55460"}, {"number": "07", "category": "AI副業", "title": "クラウドワークス × ChatGPT<br>アイコン制作", "plainTitle": "クラウドワークス × ChatGPT アイコン制作", "description": "SNSアイコン案件を探し、要望をプロンプトへ落とし込んで制作・納品する一連の流れ。", "tags": ["案件獲得", "SNSアイコン", "テンプレート"], "url": "https://smitch-ai-works.github.io/no9-chatgpt-icon-works/", "accent": "#4F7479"}, {"number": "08", "category": "AI副業", "title": "AI × 日本語で作り出す<br>最強錬金術", "plainTitle": "AI × 日本語で作り出す最強錬金術", "description": "Claudeを使って英文を自然な日本語へ整え、翻訳案件へ応用するシンプルな手順。", "tags": ["Claude", "翻訳", "Fiverr"], "url": "https://smitch-ai-works.github.io/no10-claude-translation/", "accent": "#A2735D"}, {"number": "09", "category": "画像・動画制作", "title": "あなたのスマホ、<br>5万円を眠らせてます。", "plainTitle": "あなたのスマホ、5万円を眠らせてます。", "description": "日本の風景写真をChatGPTで整え、ストックフォトへ出品するまでの3ステップ。", "tags": ["写真編集", "日本の風景", "ストックフォト"], "url": "https://smitch-ai-works.github.io/no14-chatgpt-picture-japan/", "accent": "#71814F"}];
+    const bonuses = [{"number": "01", "category": "ChatGPT活用", "title": "ChatGPTを最強の相棒に<br>3分で完了する究極の最適化", "plainTitle": "ChatGPTを最強の相棒に 3分で完了する究極の最適化", "description": "データ設定・メモリ・カスタム指示を整え、ChatGPTを自分専用の相棒へ変える初期設定ガイド。", "tags": ["初期設定", "3ステップ", "初心者向け"], "url": "https://smitch-ai-works.github.io/no2-chatgpt-first-setting-info/", "image": "assets/previews/no2.jpg", "accent": "#2E5D50"}, {"number": "02", "category": "ChatGPT活用", "title": "スマホ1枚＋5分で<br>プロ級の手相鑑定書が完成", "plainTitle": "スマホ1枚＋5分でプロ級の手相鑑定書が完成", "description": "手のひら写真をChatGPTで分析し、自己理解レポートとしてまとめる方法とコピペ用プロンプト。", "tags": ["画像解析", "手相", "プロンプト"], "url": "https://smitch-ai-works.github.io/no3-chatgpt-palm-reading/", "image": "assets/previews/no3.jpg", "accent": "#785C7D"}, {"number": "03", "category": "ChatGPT活用", "title": "AIプロンプト記号<br>完全ガイド30選", "plainTitle": "AIプロンプト記号 完全ガイド30選", "description": "AIへの指示を整理し、意図を正確に伝えるために使える30種類の記号をまとめた保存版。", "tags": ["30種類", "指示改善", "保存版"], "url": "https://smitch-ai-works.github.io/no4-ai-keywords/", "image": "assets/previews/no4.jpg", "accent": "#45698E"}, {"number": "04", "category": "画像・動画制作", "title": "残業後でもできる<br>30分のAI絶景動画ルーティン", "plainTitle": "残業後でもできる 30分のAI絶景動画ルーティン", "description": "ChatGPT・ImageFX・Pikaを順番に使い、日本の絶景画像と動画を作る4ステップ。", "tags": ["ChatGPT", "ImageFX", "Pika"], "url": "https://smitch-ai-works.github.io/no5-ai-movie-creater/", "image": "assets/previews/no5.jpg", "accent": "#347B86"}, {"number": "05", "category": "画像・動画制作", "title": "このステッカー、<br>海外でめっちゃ売れてます。", "plainTitle": "このステッカー、海外でめっちゃ売れてます。", "description": "ぷっくり立体的なデジタルステッカーをAIで作るための、コピペ対応プロンプト。", "tags": ["画像生成", "ステッカー", "海外販売"], "url": "https://smitch-ai-works.github.io/no6-ai-sticker/", "image": "assets/previews/no6.jpg", "accent": "#B66D82"}, {"number": "06", "category": "AI副業", "title": "ChatGPTで作る<br>Pinterest副業ルーティン", "plainTitle": "ChatGPTで作る Pinterest副業ルーティン", "description": "記事案・画像・投稿をChatGPTと組み合わせ、Pinterestのピンを継続して作る手順まとめ。", "tags": ["Pinterest", "コンテンツ制作", "集客"], "url": "https://smitch-ai-works.github.io/no8-chatgpt-pintarest/", "image": "assets/previews/no8.jpg", "accent": "#A55460"}, {"number": "07", "category": "AI副業", "title": "クラウドワークス × ChatGPT<br>アイコン制作", "plainTitle": "クラウドワークス × ChatGPT アイコン制作", "description": "SNSアイコン案件を探し、要望をプロンプトへ落とし込んで制作・納品する一連の流れ。", "tags": ["案件獲得", "SNSアイコン", "テンプレート"], "url": "https://smitch-ai-works.github.io/no9-chatgpt-icon-works/", "image": "assets/previews/no9.jpg", "accent": "#4F7479"}, {"number": "08", "category": "AI副業", "title": "AI × 日本語で作り出す<br>最強錬金術", "plainTitle": "AI × 日本語で作り出す最強錬金術", "description": "Claudeを使って英文を自然な日本語へ整え、翻訳案件へ応用するシンプルな手順。", "tags": ["Claude", "翻訳", "Fiverr"], "url": "https://smitch-ai-works.github.io/no10-claude-translation/", "image": "assets/previews/no10.jpg", "accent": "#A2735D"}, {"number": "09", "category": "画像・動画制作", "title": "あなたのスマホ、<br>5万円を眠らせてます。", "plainTitle": "あなたのスマホ、5万円を眠らせてます。", "description": "日本の風景写真をChatGPTで整え、ストックフォトへ出品するまでの3ステップ。", "tags": ["写真編集", "日本の風景", "ストックフォト"], "url": "https://smitch-ai-works.github.io/no14-chatgpt-picture-japan/", "image": "assets/previews/no14.jpg", "accent": "#71814F"}];
 
     const cardsElement = document.getElementById("cards");
     const filtersElement = document.getElementById("filters");
@@ -949,21 +924,18 @@
             aria-label="${escapeAttribute(item.plainTitle)}を開く"
           >
             <div class="preview">
+              ${item.image ? `
               <div class="preview-browser">
-                <iframe
-                  data-src="${escapeAttribute(item.url)}"
-                  title="${escapeAttribute(item.plainTitle)}のプレビュー"
+                <img
+                  src="${escapeAttribute(item.image)}"
+                  alt="${escapeAttribute(item.plainTitle)}のプレビュー"
                   loading="lazy"
-                  tabindex="-1"
-                  aria-hidden="true"
-                  sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
-                ></iframe>
-              </div>
+                >
+              </div>` : ""}
               <div class="preview-top">
                 <span class="preview-number">特典 ${escapeAttribute(item.number)}</span>
                 <span class="preview-hint">特典を受け取る</span>
               </div>
-              <div class="preview-title">${item.plainTitle}</div>
             </div>
 
             <div class="card-body">
@@ -984,28 +956,6 @@
 
       resultCountElement.textContent = visibleBonuses.length;
       emptyState.classList.toggle("show", visibleBonuses.length === 0);
-      observePreviewFrames();
-    }
-
-    function observePreviewFrames() {
-      const iframes = cardsElement.querySelectorAll("iframe[data-src]");
-
-      if (!("IntersectionObserver" in window)) {
-        iframes.forEach(frame => frame.src = frame.dataset.src);
-        return;
-      }
-
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (!entry.isIntersecting) return;
-          const frame = entry.target;
-          frame.src = frame.dataset.src;
-          frame.removeAttribute("data-src");
-          observer.unobserve(frame);
-        });
-      }, { rootMargin: "450px 0px" });
-
-      iframes.forEach(frame => observer.observe(frame));
     }
 
     searchInput.addEventListener("input", event => {
