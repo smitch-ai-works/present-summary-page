@@ -770,6 +770,179 @@
       }
     }
   </style>
+<style>
+/* ===== すみっち共通ブロック（sk kit / 2026-08） =====
+   配色・幅・角丸・フォントは全て --sk-* 変数。
+   ページごとの THEME で上書きして、元のデザインに馴染ませる。 */
+:root{
+ --sk-ink:#242130; --sk-muted:#6E6878;
+ --sk-accent:#4A3F68; --sk-accent2:#6F5F96;
+ --sk-line:#E5E0EB; --sk-page:#FCFBFE; --sk-card:#FFFFFF;
+ --sk-surface:#F7F5FB; --sk-soft:#EEEAF8;
+ --sk-warm:#FFF3EF; --sk-warm-bd:#F0CBC0; --sk-warm-ink:#68433A; --sk-warm-b:#B24826;
+ --sk-dark1:#242130; --sk-dark2:#33475D; --sk-hl:#FFD9CB;
+ --sk-green:#06C755;
+ --sk-radius:22px; --sk-radius-sm:16px;
+ --sk-wrap:660px;
+ --sk-shadow:0 12px 34px rgba(0,0,0,.07);
+ --sk-font:-apple-system,BlinkMacSystemFont,"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+ --sk-serif:var(--sk-font);
+}
+/* 親が display:flex / grid のページでも潰れないようにする。
+   また、ページ側が *{box-sizing:border-box} を持たない場合に
+   padding分だけ横へはみ出すため、ここで明示的に指定する。 */
+.sk-author-strip,.sk-sec,.sk-gap,.sk-cta,.sk-footer{width:100%;max-width:100%;flex:0 0 100%;
+ grid-column:1/-1;align-self:stretch;display:block;box-sizing:border-box}
+.sk-author-strip *,.sk-sec *,.sk-gap *,.sk-cta *,.sk-footer *,
+.sk-author-strip *:before,.sk-sec *:before,.sk-gap *:before,.sk-cta *:before,.sk-footer *:before,
+.sk-author-strip *:after,.sk-sec *:after,.sk-gap *:after,.sk-cta *:after,.sk-footer *:after{box-sizing:border-box}
+.sk-sec{font-family:var(--sk-font);line-height:1.85;color:var(--sk-ink);background:var(--sk-page);
+ padding:56px 16px;margin:0;text-align:left;font-size:16px;font-weight:400}
+.sk-wrap{width:min(var(--sk-wrap),100%);margin:0 auto}
+.sk-head{text-align:center;margin-bottom:26px}
+.sk-kicker{display:block;font-size:12px;font-weight:900;letter-spacing:.18em;color:var(--sk-accent2)}
+.sk-sec h2.sk-h,.sk-gap h2.sk-h,.sk-cta h2.sk-h{font-family:var(--sk-serif);
+ font-size:clamp(24px,4.2vw,34px);line-height:1.4;margin:8px 0 0;color:inherit;font-weight:700;letter-spacing:-.01em}
+.sk-br{display:none}
+/* -- 著者カード -- */
+.sk-author-strip{padding:18px 16px;background:var(--sk-surface);border-bottom:1px solid var(--sk-line);
+ font-family:var(--sk-font)}
+.sk-author{display:flex;align-items:center;gap:14px;width:min(420px,100%);margin:0 auto;padding:10px 14px;
+ border-radius:var(--sk-radius-sm);background:var(--sk-card);border:1px solid var(--sk-line);
+ text-decoration:none;color:var(--sk-ink);box-shadow:var(--sk-shadow);
+ transition:transform .2s ease,box-shadow .2s ease}
+.sk-author:hover{transform:translateY(-2px)}
+.sk-author img{width:52px;height:52px;flex:none;border-radius:50%;background:#fff;display:block}
+.sk-author-txt{min-width:0}
+.sk-author-role,.sk-author-name,.sk-author-id{display:block}
+.sk-author-role{font-size:11px;color:var(--sk-muted);line-height:1.5}
+.sk-author-name{font-weight:900;font-size:16px;line-height:1.45;color:var(--sk-ink)}
+.sk-author-id{font-size:11px;color:var(--sk-muted);font-weight:400;line-height:1.5}
+.sk-author-arrow{margin-left:auto;color:var(--sk-muted);opacity:.6;font-weight:900;font-size:18px}
+/* -- 疑問3連 -- */
+.sk-doubt-lead{margin:0 auto 22px;text-align:center;color:var(--sk-muted);font-size:15px;line-height:1.9}
+.sk-doubts{display:grid;gap:11px}
+.sk-doubt{display:flex;gap:13px;align-items:flex-start;background:var(--sk-card);border:1px solid var(--sk-line);
+ border-radius:var(--sk-radius-sm);padding:15px 18px;box-shadow:var(--sk-shadow)}
+.sk-doubt .sk-no{flex:none;width:26px;height:26px;border-radius:8px;display:grid;place-items:center;
+ background:var(--sk-soft);color:var(--sk-accent);font-weight:900;font-size:12px}
+.sk-doubt p{margin:0;font-size:15px;line-height:1.8}
+.sk-answer{margin:18px 0 0;padding:19px 22px;border-left:5px solid var(--sk-accent2);background:var(--sk-soft);
+ border-radius:0 var(--sk-radius-sm) var(--sk-radius-sm) 0;font-size:14.5px;line-height:1.95}
+.sk-answer strong{color:var(--sk-accent)}
+.sk-answer .sk-n{font-weight:900;color:var(--sk-accent2)}
+/* -- 断絶 -- */
+.sk-gap{background:linear-gradient(160deg,var(--sk-dark1) 0%,var(--sk-dark2) 100%);color:#fff;
+ padding:64px 16px;font-family:var(--sk-font);line-height:1.85;font-size:16px}
+.sk-gap h2.sk-h{color:#fff}
+.sk-gap .sk-kicker{color:var(--sk-hl);opacity:.9}
+.sk-gap-lead{margin:0 auto;font-size:clamp(15.5px,2.2vw,17.5px);line-height:2;
+ color:rgba(255,255,255,.87);text-align:center}
+.sk-gap-lead strong{color:var(--sk-hl)}
+.sk-gap-list{width:min(560px,100%);margin:26px auto 0;list-style:none;padding:20px 22px;
+ background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);
+ border-radius:var(--sk-radius);display:grid;gap:12px}
+.sk-gap-list li{display:flex;gap:12px;font-size:14.5px;color:rgba(255,255,255,.9);line-height:1.7}
+.sk-gap-list li:before{content:"\25B8";color:var(--sk-hl);font-weight:900;flex:none}
+.sk-gap-close{margin:22px auto 0;color:rgba(255,255,255,.72);font-size:14.5px;text-align:center}
+/* -- ストーリー -- */
+.sk-story{width:min(620px,100%);margin:46px auto 0;background:var(--sk-card);color:var(--sk-ink);
+ border-radius:var(--sk-radius);padding:34px 28px 26px;box-shadow:0 24px 60px rgba(0,0,0,.28);position:relative}
+.sk-story-tag{position:absolute;top:-16px;left:50%;transform:translateX(-50%);white-space:nowrap;
+ background:var(--sk-dark1);color:#fff;border:4px solid var(--sk-card);border-radius:999px;
+ padding:6px 18px;font-weight:900;font-size:13px}
+.sk-story p{margin:0 0 14px;font-size:15px;line-height:1.9}
+.sk-story p:last-child{margin-bottom:0}
+.sk-punch{font-size:clamp(17px,2.8vw,20px);font-weight:900;line-height:1.7;color:var(--sk-accent);
+ border-bottom:3px solid var(--sk-soft);display:inline;padding-bottom:2px}
+.sk-habit{background:var(--sk-warm);border-left:5px solid var(--sk-warm-b);
+ border-radius:0 var(--sk-radius-sm) var(--sk-radius-sm) 0;
+ padding:15px 18px;color:var(--sk-warm-ink);font-size:14.5px;line-height:1.85}
+.sk-habit b{color:var(--sk-warm-b)}
+/* -- オファー＋CTA -- */
+.sk-cta{background:var(--sk-surface);padding:60px 16px 56px;font-family:var(--sk-font);
+ line-height:1.85;font-size:16px;color:var(--sk-ink)}
+.sk-bridge{margin:0 auto 22px;text-align:center;color:var(--sk-ink);opacity:.86;
+ font-size:clamp(15px,2.2vw,17px);font-weight:700;line-height:1.95}
+.sk-offer{width:min(560px,100%);margin:0 auto 24px;background:var(--sk-card);border:1px solid var(--sk-line);
+ border-radius:var(--sk-radius);padding:30px 24px;box-shadow:var(--sk-shadow);position:relative}
+.sk-offer-badge{position:absolute;top:-13px;right:18px;background:var(--sk-warm-b);color:#fff;font-weight:900;
+ font-size:12px;padding:6px 14px;border-radius:999px}
+.sk-offer h3{margin:0 0 18px;text-align:center;font-family:var(--sk-serif);
+ font-size:clamp(21px,3.6vw,27px);font-weight:700;line-height:1.4;color:var(--sk-ink)}
+.sk-cover{width:min(320px,100%);margin:0 auto 20px}
+.sk-cover img{width:100%;border-radius:12px;display:block}
+.sk-toc{background:var(--sk-surface);border:1px solid var(--sk-line);border-radius:var(--sk-radius-sm);padding:20px 22px}
+.sk-toc-head{text-align:center;font-weight:900;font-size:14px;padding-bottom:11px;margin:0 0 6px;
+ border-bottom:1px solid var(--sk-line);color:var(--sk-ink)}
+.sk-toc ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.sk-toc li{display:flex;gap:10px;font-size:14px;line-height:1.7;color:var(--sk-ink)}
+.sk-toc li:before{content:"\25C6";color:var(--sk-accent2);flex:none}
+.sk-toc li b{flex:none;white-space:nowrap;min-width:3.6em}
+.sk-offer-close{margin:20px 0 0;font-size:14px;color:var(--sk-muted);line-height:1.9}
+.sk-offer-close strong{color:var(--sk-accent)}
+.sk-line-btn{display:flex;flex-direction:column;align-items:center;gap:5px;width:min(560px,100%);margin:0 auto;
+ padding:19px 20px;border-radius:var(--sk-radius);background:var(--sk-green);color:#fff;font-weight:900;
+ text-decoration:none;box-shadow:0 16px 40px rgba(6,199,85,.30);position:relative;transition:transform .2s ease}
+.sk-line-btn:hover{transform:translateY(-3px)}
+.sk-line-btn:active{transform:translateY(0) scale(.99)}
+.sk-line-btn:after{content:"";position:absolute;inset:0;border-radius:inherit;
+ animation:skPulse 2.4s ease-out infinite;pointer-events:none}
+@keyframes skPulse{0%{box-shadow:0 0 0 0 rgba(9,126,42,.35)}70%{box-shadow:0 0 0 14px rgba(9,126,42,0)}
+ 100%{box-shadow:0 0 0 0 rgba(9,126,42,0)}}
+.sk-tap{font-size:12px;font-weight:800;background:rgba(255,255,255,.22);padding:3px 13px;border-radius:999px}
+.sk-btn-main{display:flex;align-items:center;gap:10px;font-size:clamp(17px,3vw,21px)}
+.sk-btn-main svg{width:24px;height:24px;flex:none}
+.sk-scarcity{width:min(560px,100%);margin:14px auto 0;padding:13px 16px;background:var(--sk-warm);
+ border:1px solid var(--sk-warm-bd);border-radius:var(--sk-radius-sm);color:var(--sk-warm-ink);
+ font-size:12.5px;line-height:1.85}
+.sk-note{text-align:center;color:var(--sk-muted);font-size:12px;margin:12px 0 0}
+/* -- コピー直後のひとこと（離脱ポイント対策）--
+   プロンプトをコピーした瞬間＝読者の目的達成。そこからCTAまで距離があるため、
+   その瞬間だけ画面下に小さく出す。押し売りにならないよう、
+   ページ側の配色を使い、8秒で自動的に消え、×で閉じられる。 */
+.sk-cue{position:fixed;left:50%;bottom:16px;z-index:99999;display:flex;align-items:center;gap:10px;
+ width:min(420px,calc(100% - 24px));padding:12px 14px;border-radius:14px;
+ background:var(--sk-dark1);color:#fff;font-family:var(--sk-font);font-size:13.5px;line-height:1.6;
+ box-shadow:0 14px 40px rgba(0,0,0,.34);text-decoration:none;
+ transform:translate(-50%,18px);opacity:0;pointer-events:none;
+ transition:opacity .28s ease,transform .28s ease}
+.sk-cue.is-on{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+.sk-cue b{color:var(--sk-hl)}
+.sk-cue .sk-cue-arrow{margin-left:auto;flex:none;font-weight:900;color:var(--sk-hl)}
+.sk-cue-x{position:absolute;top:-9px;right:-9px;width:24px;height:24px;border-radius:50%;border:0;
+ background:var(--sk-dark1);color:rgba(255,255,255,.8);font-size:14px;line-height:1;cursor:pointer;
+ box-shadow:0 4px 12px rgba(0,0,0,.3)}
+@media(prefers-reduced-motion:reduce){.sk-cue{transition:none}}
+/* -- フッター -- */
+.sk-footer{padding:40px 16px 56px;text-align:center;border-top:1px solid var(--sk-line);
+ background:var(--sk-surface);font-family:var(--sk-font);line-height:1.8}
+.sk-footer-ig{display:inline-flex;align-items:center;gap:9px;color:var(--sk-accent2);font-weight:850;
+ font-size:14px;text-decoration:none;margin-bottom:14px}
+.sk-footer-ig:hover{text-decoration:underline}
+.sk-footer-ig svg{width:19px;height:19px}
+.sk-footer p{margin:0 0 4px;font-size:13px;color:var(--sk-muted)}
+.sk-footer .sk-copy{margin:6px 0 0;font-size:11.5px;color:var(--sk-muted);opacity:.75}
+.sk-footer .sk-tagline{margin:0 0 12px;font-size:12px;color:var(--sk-muted);opacity:.85;letter-spacing:.03em}
+@media(prefers-reduced-motion:reduce){.sk-line-btn:after{animation:none}}
+@media(max-width:600px){
+ .sk-br{display:inline}
+ .sk-sec{padding:44px 14px}
+ .sk-gap{padding:48px 14px}
+ .sk-cta{padding:48px 14px 44px}
+ .sk-story{padding:28px 17px 22px;margin-top:38px}
+ .sk-story-tag{font-size:11.5px;padding:6px 14px}
+ .sk-offer{padding:24px 16px}
+ .sk-toc{padding:16px 14px}
+ .sk-gap-list{padding:17px 16px}
+ .sk-author{padding:9px 11px;gap:11px}
+ .sk-author img{width:46px;height:46px}
+ .sk-footer{padding:34px 14px 48px}
+}
+
+/* --- このページ用のテーマ上書き --- */
+:root{ --sk-ink:#323836; --sk-muted:#6B7471; --sk-accent:#2E5D50; --sk-accent2:#2E5D50; --sk-line:rgba(46,93,80,.16); --sk-page:#F7F5F0; --sk-card:#FFFFFF; --sk-surface:#F1EEE7; --sk-soft:#E9F0EC; --sk-warm:#F6EFE2; --sk-warm-bd:#DDC9A8; --sk-warm-ink:#55483A; --sk-warm-b:#8A6B32; --sk-dark1:#173B32; --sk-dark2:#2E5D50; --sk-hl:#DDC9A8; --sk-radius:24px; --sk-radius-sm:18px; --sk-shadow:0 12px 38px rgba(28,61,52,.10); --sk-wrap:720px; --sk-font:"Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic",sans-serif; --sk-serif:"Noto Serif JP","Yu Mincho",serif; }
+</style>
 </head>
 <body>
   <header class="hero">
@@ -805,6 +978,17 @@
       </div>
     </div>
   </header>
+<div class="sk-author-strip">
+ <a class="sk-author" href="https://www.instagram.com/smitch_ai_works/" target="_blank" rel="noopener">
+  <img src="data:image/webp;base64,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" alt="すみっち" width="52" height="52">
+  <span class="sk-author-txt">
+   <span class="sk-author-role">AI × 副業を発信中</span>
+   <span class="sk-author-name">すみっち</span>
+   <span class="sk-author-id">30歳・現役エンジニア ／ @smitch_ai_works</span>
+  </span>
+  <span class="sk-author-arrow">&rsaquo;</span>
+ </a>
+</div>
 
   <main id="bonus-list">
     <div class="container">
@@ -842,9 +1026,13 @@
     </div>
   </main>
 
-  <footer>
-    すみっちがこれまで配布してきた特典を、ここにまとめています。
-  </footer>
+<footer class="sk-footer">
+ <a class="sk-footer-ig" href="https://www.instagram.com/smitch_ai_works/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>Instagram：@smitch_ai_works</a>
+ <p>すみっち ｜ 30歳・現役エンジニア／AI×副業を発信中</p>
+ <p class="sk-copy">&copy; 2026 @smitch_ai_works. All Rights Reserved.</p>
+</footer>
+
+  
 
   <script>
     /*
@@ -853,7 +1041,7 @@
       カード・カテゴリー・件数は自動で更新されます。
       ───────────────────────────────────────────────
     */
-    const bonuses = [{"number": "01", "category": "ChatGPT活用", "title": "ChatGPTを最強の相棒に<br>3分で完了する究極の最適化", "plainTitle": "ChatGPTを最強の相棒に 3分で完了する究極の最適化", "description": "データ設定・メモリ・カスタム指示を整え、ChatGPTを自分専用の相棒へ変える初期設定ガイド。", "tags": ["初期設定", "3ステップ", "初心者向け"], "url": "https://smitch-ai-works.github.io/no2-chatgpt-first-setting-info/", "image": "assets/preview-v2/no2.jpg", "accent": "#2E5D50"}, {"number": "02", "category": "ChatGPT活用", "title": "スマホ1枚＋5分で<br>プロ級の手相鑑定書が完成", "plainTitle": "スマホ1枚＋5分でプロ級の手相鑑定書が完成", "description": "手のひら写真をChatGPTで分析し、自己理解レポートとしてまとめる方法とコピペ用プロンプト。", "tags": ["画像解析", "手相", "プロンプト"], "url": "https://smitch-ai-works.github.io/no3-chatgpt-palm-reading/", "image": "assets/preview-v2/no3.jpg", "accent": "#785C7D"}, {"number": "03", "category": "ChatGPT活用", "title": "AIプロンプト記号<br>完全ガイド30選", "plainTitle": "AIプロンプト記号 完全ガイド30選", "description": "AIへの指示を整理し、意図を正確に伝えるために使える30種類の記号をまとめた保存版。", "tags": ["30種類", "指示改善", "保存版"], "url": "https://smitch-ai-works.github.io/no4-ai-keywords/", "image": "assets/preview-v2/no4.jpg", "accent": "#45698E"}, {"number": "04", "category": "画像・動画制作", "title": "残業後でもできる<br>30分のAI絶景動画ルーティン", "plainTitle": "残業後でもできる 30分のAI絶景動画ルーティン", "description": "ChatGPT・ImageFX・Pikaを順番に使い、日本の絶景画像と動画を作る4ステップ。", "tags": ["ChatGPT", "ImageFX", "Pika"], "url": "https://smitch-ai-works.github.io/no5-ai-movie-creater/", "image": "assets/preview-v2/no5.jpg", "accent": "#347B86"}, {"number": "05", "category": "画像・動画制作", "title": "このステッカー、<br>海外でめっちゃ売れてます。", "plainTitle": "このステッカー、海外でめっちゃ売れてます。", "description": "ぷっくり立体的なデジタルステッカーをAIで作るための、コピペ対応プロンプト。", "tags": ["画像生成", "ステッカー", "海外販売"], "url": "https://smitch-ai-works.github.io/no6-ai-sticker/", "image": "assets/preview-v2/no6.jpg", "accent": "#B66D82"}, {"number": "06", "category": "AI副業", "title": "ChatGPTで作る<br>Pinterest副業ルーティン", "plainTitle": "ChatGPTで作る Pinterest副業ルーティン", "description": "記事案・画像・投稿をChatGPTと組み合わせ、Pinterestのピンを継続して作る手順まとめ。", "tags": ["Pinterest", "コンテンツ制作", "集客"], "url": "https://smitch-ai-works.github.io/no8-chatgpt-pintarest/", "image": "assets/preview-v2/no8.jpg", "accent": "#A55460"}, {"number": "07", "category": "AI副業", "title": "クラウドワークス × ChatGPT<br>アイコン制作", "plainTitle": "クラウドワークス × ChatGPT アイコン制作", "description": "SNSアイコン案件を探し、要望をプロンプトへ落とし込んで制作・納品する一連の流れ。", "tags": ["案件獲得", "SNSアイコン", "テンプレート"], "url": "https://smitch-ai-works.github.io/no9-chatgpt-icon-works/", "image": "assets/preview-v2/no9.jpg", "accent": "#4F7479"}, {"number": "08", "category": "AI副業", "title": "AI × 日本語で作り出す<br>最強錬金術", "plainTitle": "AI × 日本語で作り出す最強錬金術", "description": "Claudeを使って英文を自然な日本語へ整え、翻訳案件へ応用するシンプルな手順。", "tags": ["Claude", "翻訳", "Fiverr"], "url": "https://smitch-ai-works.github.io/no10-claude-translation/", "image": "assets/preview-v2/no10.jpg", "accent": "#A2735D"}, {"number": "09", "category": "画像・動画制作", "title": "あなたのスマホ、<br>5万円を眠らせてます。", "plainTitle": "あなたのスマホ、5万円を眠らせてます。", "description": "日本の風景写真をChatGPTで整え、ストックフォトへ出品するまでの3ステップ。", "tags": ["写真編集", "日本の風景", "ストックフォト"], "url": "https://smitch-ai-works.github.io/no14-chatgpt-picture-japan/", "image": "assets/preview-v2/no14.jpg", "accent": "#71814F"}];
+    const bonuses = [{"number": "01", "category": "ChatGPT活用", "title": "ChatGPTを最強の相棒に<br>3分で完了する究極の最適化", "plainTitle": "ChatGPTを最強の相棒に 3分で完了する究極の最適化", "description": "データ設定・メモリ・カスタム指示を整え、ChatGPTを自分専用の相棒へ変える初期設定ガイド。", "tags": ["初期設定", "3ステップ", "初心者向け"], "url": "https://smitch-ai-works.github.io/no2-chatgpt-first-setting-info/", "accent": "#2E5D50"}, {"number": "02", "category": "ChatGPT活用", "title": "スマホ1枚＋5分で<br>プロ級の手相鑑定書が完成", "plainTitle": "スマホ1枚＋5分で プロ級の手相鑑定書が完成", "description": "手のひら写真をChatGPTで分析し、自己理解レポートとしてまとめる方法とコピペ用プロンプト。", "tags": ["画像解析", "手相", "プロンプト"], "url": "https://smitch-ai-works.github.io/no3-chatgpt-palm-reading/", "accent": "#785C7D"}, {"number": "03", "category": "ChatGPT活用", "title": "AIプロンプト記号<br>完全ガイド30選", "plainTitle": "AIプロンプト記号 完全ガイド30選", "description": "AIへの指示を整理し、意図を正確に伝えるために使える30種類の記号をまとめた保存版。", "tags": ["30種類", "指示改善", "保存版"], "url": "https://smitch-ai-works.github.io/no4-ai-keywords/", "accent": "#45698E"}, {"number": "04", "category": "画像・動画制作", "title": "残業後でもできる<br>30分のAI絶景動画ルーティン", "plainTitle": "残業後でもできる 30分のAI絶景動画ルーティン", "description": "ChatGPT・ImageFX・Pikaを順番に使い、日本の絶景画像と動画を作る4ステップ。", "tags": ["ChatGPT", "ImageFX", "Pika"], "url": "https://smitch-ai-works.github.io/no5-ai-movie-creater/", "accent": "#347B86"}, {"number": "05", "category": "画像・動画制作", "title": "このステッカー、<br>海外でめっちゃ売れてます。", "plainTitle": "このステッカー、 海外でめっちゃ売れてます。", "description": "ぷっくり立体的なデジタルステッカーをAIで作るための、コピペ対応プロンプト。", "tags": ["画像生成", "ステッカー", "海外販売"], "url": "https://smitch-ai-works.github.io/no6-ai-sticker/", "accent": "#B66D82"}, {"number": "06", "category": "ChatGPT活用", "title": "Claudeの第一声を信じるな。<br>自分自身に議論させろ。", "plainTitle": "Claudeの第一声を信じるな。 自分自身に議論させろ。", "description": "考え方の違う5人のAIに議論させ、筋の通った結論だけを受け取るClaude Councilの使い方。", "tags": ["Claude", "意思決定", "上級者向け"], "url": "https://smitch-ai-works.github.io/no7-claude-council/", "accent": "#5C6B8A"}, {"number": "07", "category": "AI副業", "title": "ChatGPTで作る<br>Pinterest副業ルーティン", "plainTitle": "ChatGPTで作る Pinterest副業ルーティン", "description": "記事案・画像・投稿をChatGPTと組み合わせ、Pinterestのピンを継続して作る手順まとめ。", "tags": ["Pinterest", "コンテンツ制作", "集客"], "url": "https://smitch-ai-works.github.io/no8-chatgpt-pintarest/", "accent": "#A55460"}, {"number": "08", "category": "AI副業", "title": "クラウドワークス × ChatGPT<br>アイコン制作", "plainTitle": "クラウドワークス × ChatGPT アイコン制作", "description": "SNSアイコン案件を探し、要望をプロンプトへ落とし込んで制作・納品する一連の流れ。", "tags": ["案件獲得", "SNSアイコン", "テンプレート"], "url": "https://smitch-ai-works.github.io/no9-chatgpt-icon-works/", "accent": "#4F7479"}, {"number": "09", "category": "AI副業", "title": "AI × 日本語で作り出す<br>最強錬金術", "plainTitle": "AI × 日本語で作り出す 最強錬金術", "description": "Claudeを使って英文を自然な日本語へ整え、Fiverrの翻訳案件へ応用するシンプルな手順。", "tags": ["Claude", "翻訳", "Fiverr"], "url": "https://smitch-ai-works.github.io/no10-claude-translation/", "accent": "#A2735D"}, {"number": "10", "category": "AI副業", "title": "ChatGPTで書いた記事が<br>noteで売れるらしいので検証してみた", "plainTitle": "ChatGPTで書いた記事が noteで売れるらしいので検証してみた", "description": "note記事の作成からAI学習の対価還元プログラムの設定まで、3ステップでまとめた検証メモ。", "tags": ["note", "ライティング", "対価還元"], "url": "https://smitch-ai-works.github.io/no11-chatgpt-note/", "accent": "#6E7B5A"}, {"number": "11", "category": "ChatGPT活用", "title": "ChatGPTに“稼ぎ方”を<br>本気で聞き出す。", "plainTitle": "ChatGPTに“稼ぎ方”を 本気で聞き出す。", "description": "一般論しか返ってこない聞き方をやめ、具体的な手順を引き出すための3つの質問。", "tags": ["質問設計", "プロンプト", "初心者向け"], "url": "https://smitch-ai-works.github.io/no12-chatgpt-questions-earn/", "accent": "#7B6796"}, {"number": "12", "category": "画像・動画制作", "title": "会社員のまま、<br>AIとYouTubeで副収入をつくる", "plainTitle": "会社員のまま、 AIとYouTubeで副収入をつくる", "description": "リサーチ・生成・投稿の3ステップで、編集ソフトを開かずにAI動画を作る流れ。", "tags": ["YouTube", "動画生成", "会社員向け"], "url": "https://smitch-ai-works.github.io/no13-flow-youtube/", "accent": "#8A5B4F"}, {"number": "13", "category": "画像・動画制作", "title": "あなたのスマホ、<br>5万円を眠らせてます。", "plainTitle": "あなたのスマホ、 5万円を眠らせてます。", "description": "日本の風景写真をChatGPTで整え、ストックフォトへ出品するまでの3ステップ。", "tags": ["写真編集", "日本の風景", "ストックフォト"], "url": "https://smitch-ai-works.github.io/no14-chatgpt-picture-japan/", "accent": "#71814F"}, {"number": "14", "category": "AI副業", "title": "スマホ×ChatGPTで<br>手相診断サービスを作る", "plainTitle": "スマホ×ChatGPTで 手相診断サービスを作る", "description": "ココナラでの出品準備から鑑定レポートの納品まで、プロンプトとテンプレートをまとめて公開。", "tags": ["ココナラ", "手相", "テンプレート"], "url": "https://smitch-ai-works.github.io/no15-chatgpt--palm-reading-coconala/", "accent": "#4E7A63"}, {"number": "15", "category": "AI副業", "title": "英語力ゼロでも<br>翻訳者になれる裏技", "plainTitle": "英語力ゼロでも 翻訳者になれる裏技", "description": "Upworkで英日翻訳案件を受け、ChatGPTで下訳・Claudeで仕上げるまでの3ステップ。", "tags": ["Upwork", "翻訳", "Claude"], "url": "https://smitch-ai-works.github.io/no16-chatgpt-claude-translation-upwork/", "accent": "#4A3F68"}];
 
     const cardsElement = document.getElementById("cards");
     const filtersElement = document.getElementById("filters");
