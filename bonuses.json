@@ -1,0 +1,381 @@
+{
+  "version": 1,
+  "base_url": "https://smitch-ai-works.github.io/",
+  "bonuses": [
+    {
+      "slug": "no2-chatgpt-first-setting-info",
+      "status": "live",
+      "publish_at": null,
+      "category": "ChatGPT活用",
+      "title": "ChatGPTを最強の相棒に<br>3分で完了する究極の最適化",
+      "description": "データ設定・メモリ・カスタム指示を整え、ChatGPTを自分専用の相棒へ変える初期設定ガイド。",
+      "tags": [
+        "初期設定",
+        "3ステップ",
+        "初心者向け"
+      ],
+      "image": "assets/preview-v2/no2.jpg",
+      "accent": "#2E5D50"
+    },
+    {
+      "slug": "no3-chatgpt-palm-reading",
+      "status": "live",
+      "publish_at": null,
+      "category": "ChatGPT活用",
+      "title": "スマホ1枚＋5分で<br>プロ級の手相鑑定書が完成",
+      "description": "手のひら写真をChatGPTで分析し、自己理解レポートとしてまとめる方法とコピペ用プロンプト。",
+      "tags": [
+        "画像解析",
+        "手相",
+        "プロンプト"
+      ],
+      "image": "assets/preview-v2/no3.jpg",
+      "accent": "#785C7D"
+    },
+    {
+      "slug": "no4-ai-keywords",
+      "status": "live",
+      "publish_at": null,
+      "category": "ChatGPT活用",
+      "title": "AIプロンプト記号<br>完全ガイド30選",
+      "description": "AIへの指示を整理し、意図を正確に伝えるために使える30種類の記号をまとめた保存版。",
+      "tags": [
+        "30種類",
+        "指示改善",
+        "保存版"
+      ],
+      "image": "assets/preview-v2/no4.jpg",
+      "accent": "#45698E"
+    },
+    {
+      "slug": "no5-ai-movie-creater",
+      "status": "live",
+      "publish_at": null,
+      "category": "画像・動画制作",
+      "title": "残業後でもできる<br>30分のAI絶景動画ルーティン",
+      "description": "ChatGPT・ImageFX・Pikaを順番に使い、日本の絶景画像と動画を作る4ステップ。",
+      "tags": [
+        "ChatGPT",
+        "ImageFX",
+        "Pika"
+      ],
+      "image": "assets/preview-v2/no5.jpg",
+      "accent": "#347B86"
+    },
+    {
+      "slug": "no6-ai-sticker",
+      "status": "live",
+      "publish_at": null,
+      "category": "画像・動画制作",
+      "title": "このステッカー、<br>海外でめっちゃ売れてます。",
+      "description": "ぷっくり立体的なデジタルステッカーをAIで作るための、コピペ対応プロンプト。",
+      "tags": [
+        "画像生成",
+        "ステッカー",
+        "海外販売"
+      ],
+      "image": "assets/preview-v2/no6.jpg",
+      "accent": "#B66D82"
+    },
+    {
+      "slug": "no8-chatgpt-pintarest",
+      "status": "live",
+      "publish_at": null,
+      "category": "AI副業",
+      "title": "ChatGPTで作る<br>Pinterest副業ルーティン",
+      "description": "記事案・画像・投稿をChatGPTと組み合わせ、Pinterestのピンを継続して作る手順まとめ。",
+      "tags": [
+        "Pinterest",
+        "コンテンツ制作",
+        "集客"
+      ],
+      "image": "assets/preview-v2/no8.jpg",
+      "accent": "#A55460"
+    },
+    {
+      "slug": "no9-chatgpt-icon-works",
+      "status": "live",
+      "publish_at": null,
+      "category": "AI副業",
+      "title": "クラウドワークス × ChatGPT<br>アイコン制作",
+      "description": "SNSアイコン案件を探し、要望をプロンプトへ落とし込んで制作・納品する一連の流れ。",
+      "tags": [
+        "案件獲得",
+        "SNSアイコン",
+        "テンプレート"
+      ],
+      "image": "assets/preview-v2/no9.jpg",
+      "accent": "#4F7479"
+    },
+    {
+      "slug": "no10-claude-translation",
+      "status": "live",
+      "publish_at": null,
+      "category": "AI副業",
+      "title": "AI × 日本語で作り出す<br>最強錬金術",
+      "description": "Claudeを使って英文を自然な日本語へ整え、翻訳案件へ応用するシンプルな手順。",
+      "tags": [
+        "Claude",
+        "翻訳",
+        "Fiverr"
+      ],
+      "image": "assets/preview-v2/no10.jpg",
+      "accent": "#A2735D"
+    },
+    {
+      "slug": "no14-chatgpt-picture-japan",
+      "status": "live",
+      "publish_at": null,
+      "category": "画像・動画制作",
+      "title": "あなたのスマホ、<br>5万円を眠らせてます。",
+      "description": "日本の風景写真をChatGPTで整え、ストックフォトへ出品するまでの3ステップ。",
+      "tags": [
+        "写真編集",
+        "日本の風景",
+        "ストックフォト"
+      ],
+      "image": "assets/preview-v2/no14.jpg",
+      "accent": "#71814F"
+    },
+    {
+      "slug": "no17-ai-script-crowdworks",
+      "status": "live",
+      "publish_at": null,
+      "category": "AI副業",
+      "title": "文章が書けなくても、<br>1本3,000円のライターになれる",
+      "description": "クラウドワークスで案件を探し、ChatGPTで台本を作りClaudeで自然な文章に仕上げて納品するまでの3ステップ。",
+      "tags": [
+        "クラウドワークス",
+        "ChatGPT",
+        "Claude"
+      ],
+      "image": "assets/preview-v2/no17.jpg",
+      "accent": "#4A3F68"
+    },
+    {
+      "slug": "no20-claude-code-ai-note-organization",
+      "status": "live",
+      "publish_at": null,
+      "category": "AI副業",
+      "title": "あなたのPCの中に、<br>休まず働く5人のAIチームを作る。",
+      "description": "Claude Codeに指示を1回出すだけで、リサーチ・記事作成・タイトル・校正・集客の5役が自動で動き出すnote自動化の仕組み。",
+      "tags": [
+        "Claude Code",
+        "自動化",
+        "サブエージェント"
+      ],
+      "image": "assets/preview-v2/no20.jpg",
+      "accent": "#3F5347"
+    },
+    {
+      "slug": "no18-ai-ehon-kdp",
+      "status": "live",
+      "publish_at": null,
+      "category": "AI副業",
+      "title": "寝る前の30分が、<br>Amazonに並ぶ絵本に変わる。",
+      "description": "ChatGPTで絵本のテキストと挿絵を作り、Canvaでまとめて仕上げ、Amazon KDPで販売するまでの手順。",
+      "tags": [
+        "ChatGPT",
+        "Canva",
+        "Amazon KDP"
+      ],
+      "image": "assets/preview-v2/no18.jpg",
+      "accent": "#4A3F68"
+    },
+    {
+      "slug": "no21-chatgpt-canva-slide",
+      "status": "live",
+      "publish_at": null,
+      "category": "AI副業",
+      "title": "提案資料も、<br>ポートフォリオも。指示ひとつでCanvaに届く。",
+      "description": "ChatGPTとCanvaを連携させ、内容を伝えるだけでプレゼン資料の下書きを作る手順。本業の提案資料にも副業のポートフォリオにも使える。",
+      "tags": [
+        "ChatGPT",
+        "Canva",
+        "スライド作成"
+      ],
+      "image": "assets/preview-v2/no21.jpg",
+      "accent": "#5B4B9E"
+    },
+    {
+      "slug": "no26-chatgpt-tshirt-suzuri",
+      "status": "live",
+      "publish_at": "2026-08-30T08:00:00+09:00",
+      "category": "AI副業",
+      "title": "在庫も発送もなしで、<br>あなたのデザインがTシャツになる。",
+      "description": "ChatGPTでデザインを作り、Canvaで整えて、SUZURIに登録するまでの手順。在庫を持たず、注文が入ってから作られるので初期費用がかからない。",
+      "tags": [
+        "ChatGPT",
+        "Canva",
+        "SUZURI"
+      ],
+      "image": "assets/preview-v2/no26.jpg",
+      "accent": "#E0592A"
+    },
+    {
+      "slug": "no24-claude-code-luxury-site",
+      "status": "scheduled",
+      "publish_at": "2026-08-30T18:00:00+09:00",
+      "category": "AI副業",
+      "title": "スクロールで動く高級サイトを、<br>Claude Codeで作る。",
+      "description": "プロンプト1つでサイト全体を生成し、ChatGPTで作った商品ビジュアルを反映して仕上げる4ステップ。",
+      "tags": [
+        "Claude Code",
+        "Three.js",
+        "サイト制作"
+      ],
+      "image": "assets/preview-v2/no24.jpg",
+      "accent": "#2C3A4F"
+    },
+    {
+      "slug": "no7-claude-council",
+      "status": "draft",
+      "publish_at": null,
+      "category": "AI活用",
+      "title": "Claudeの第一声を信じるな。<br>自分自身に議論させろ。",
+      "description": "「council this」と打つだけで、Claudeが5つの角度から自分自身に議論し、結論を残すまでの使い方。",
+      "tags": [
+        "Claude",
+        "壁打ち",
+        "コマンド"
+      ],
+      "image": "assets/preview-v2/no7.jpg",
+      "accent": "#3E4C6D"
+    },
+    {
+      "slug": "no11-chatgpt-note",
+      "status": "draft",
+      "publish_at": null,
+      "category": "AI副業",
+      "title": "ChatGPTで書いた記事が<br>noteで売れるらしいので検証してみた",
+      "description": "noteに登録してAI学習の設定を切り替え、ChatGPTで記事を作って販売するまでの3ステップ。",
+      "tags": [
+        "note",
+        "記事販売",
+        "ChatGPT"
+      ],
+      "image": "assets/preview-v2/no11.jpg",
+      "accent": "#2F6E5A"
+    },
+    {
+      "slug": "no12-chatgpt-questions-earn",
+      "status": "draft",
+      "publish_at": null,
+      "category": "ChatGPT活用",
+      "title": "ChatGPTに“稼ぎ方”を<br>本気で聞き出す。",
+      "description": "3つの質問を順番に貼るだけで、ChatGPTから具体的な稼ぎ方を引き出す聞き方のテンプレート。",
+      "tags": [
+        "プロンプト",
+        "3つの質問",
+        "壁打ち"
+      ],
+      "image": "assets/preview-v2/no12.jpg",
+      "accent": "#7A5C46"
+    },
+    {
+      "slug": "no13-flow-youtube",
+      "status": "draft",
+      "publish_at": null,
+      "category": "AI副業",
+      "title": "会社員のまま、<br>AIとYouTubeで副収入をつくる",
+      "description": "本業を続けながらAIでYouTubeの副収入をつくる流れと、向き不向きの判断材料。",
+      "tags": [
+        "YouTube",
+        "副収入",
+        "会社員"
+      ],
+      "image": "assets/preview-v2/no13.jpg",
+      "accent": "#9E4A4A"
+    },
+    {
+      "slug": "no15-chatgpt--palm-reading-coconala",
+      "status": "draft",
+      "publish_at": null,
+      "category": "AI副業",
+      "title": "ChatGPTで<br>手相診断サービスを作る",
+      "description": "手のひら写真とプロンプトをChatGPTへ送り、鑑定文をココナラのサービスとして出品する手順。",
+      "tags": [
+        "ココナラ",
+        "手相",
+        "出品"
+      ],
+      "image": "assets/preview-v2/no15.jpg",
+      "accent": "#6E5384"
+    },
+    {
+      "slug": "no16-chatgpt-claude-translation-upwork",
+      "status": "draft",
+      "publish_at": null,
+      "category": "AI副業",
+      "title": "AI使って<br>英語力ゼロでも翻訳者になれる裏技",
+      "description": "Upworkでプロフィールを整えて英日翻訳案件へ提案し、ChatGPTで訳してClaudeで仕上げる流れ。",
+      "tags": [
+        "Upwork",
+        "翻訳",
+        "Claude"
+      ],
+      "image": "assets/preview-v2/no16.jpg",
+      "accent": "#35707F"
+    },
+    {
+      "slug": "no19-ai-research-summary-upwork",
+      "status": "draft",
+      "publish_at": null,
+      "category": "AI副業",
+      "title": "カフェでコーヒー1杯の間に、<br>28,760円を稼ぐ",
+      "description": "Upworkで「RESEARCH SUMMARY」の案件を受注し、資料をAIに要約させ、事実確認して納品する3ステップ。",
+      "tags": [
+        "Upwork",
+        "リサーチ要約",
+        "海外案件"
+      ],
+      "image": "assets/preview-v2/no19.jpg",
+      "accent": "#4C6B4F"
+    },
+    {
+      "slug": "no22-claude-code-5-plugins",
+      "status": "draft",
+      "publish_at": null,
+      "category": "AI活用",
+      "title": "Claude Codeを使い始める前に、<br>これだけ入れておいてください。",
+      "description": "playwright・frontend-design・Superpowersなど5つの拡張を入れて、Claude Codeの開発フローを変える手順。",
+      "tags": [
+        "Claude Code",
+        "拡張",
+        "5点セット"
+      ],
+      "image": "assets/preview-v2/no22.jpg",
+      "accent": "#4A3F68"
+    },
+    {
+      "slug": "no23-claude-code-chrome-extension",
+      "status": "draft",
+      "publish_at": null,
+      "category": "AI活用",
+      "title": "そのアイデア、<br>Claude Codeが5分で形にします。",
+      "description": "プランモードで作りたい機能を伝え、実装してもらい、Chromeに読み込ませて自作拡張機能を完成させる4ステップ。",
+      "tags": [
+        "Claude Code",
+        "Chrome拡張",
+        "プランモード"
+      ],
+      "image": "assets/preview-v2/no23.jpg",
+      "accent": "#37605C"
+    },
+    {
+      "slug": "no25-chatgpt-sites-templates",
+      "status": "draft",
+      "publish_at": null,
+      "category": "AI活用",
+      "title": "ChatGPTだけで、<br>自分のWebサイトが持てる時代。",
+      "description": "ChatGPTのWorkに切り替えて@Sitesを呼び出し、用途別プロンプトを貼るだけでサイトを作る3ステップ。",
+      "tags": [
+        "ChatGPT Sites",
+        "テンプレ",
+        "LP制作"
+      ],
+      "image": "assets/preview-v2/no25.jpg",
+      "accent": "#4F5BA6"
+    }
+  ]
+}

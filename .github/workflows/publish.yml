@@ -1,0 +1,53 @@
+name: Publish scheduled bonuses
+
+# 常設。特典ごとにワークフローを作ったり消したりしない。
+# bonuses.json の status=scheduled かつ publish_at を過ぎたものを live にして
+# index.html を再生成し、差分があれば main に push する。
+# 該当がなければ何もしない（冪等）。
+#
+# GitHub Actions の schedule はもともと数分〜十数分遅れて起動する。
+# 「18:00ちょうど」は保証できず、「18:00台に出る」までが仕様上の限界。
+on:
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-hub
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 公開時刻に達した特典を live にする
+        id: due
+        run: python tools/publish_due.py
+
+      - name: index.html を再生成
+        run: python tools/build_hub.py
+
+      - name: コミットして公開
+        env:
+          MSG: ${{ steps.due.outputs.message }}
+        run: |
+          if git diff --quiet; then
+            echo "差分なし。何もしない。"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add bonuses.json index.html
+          git commit -m "${MSG:-ハブページを bonuses.json から再生成}"
+          git push origin HEAD:main
