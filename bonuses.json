@@ -376,6 +376,21 @@
       ],
       "image": "assets/preview-v2/no25.jpg",
       "accent": "#4F5BA6"
+    },
+    {
+      "slug": "no27-chatgpt-line-sticker",
+      "status": "live",
+      "publish_at": null,
+      "category": "AI副業",
+      "title": "スマホの中の写真1枚が、<br>売り物のLINEスタンプになる。",
+      "description": "ChatGPTで10個入りのスタンプ画像を1枚作り、LINE公式アプリで切り抜いて販売申請まで出す手順。",
+      "tags": [
+        "ChatGPT",
+        "LINEスタンプ",
+        "スマホ完結"
+      ],
+      "image": "assets/preview-v2/no27.jpg",
+      "accent": "#00B900"
     }
   ]
 }
