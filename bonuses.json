@@ -364,8 +364,8 @@
     },
     {
       "slug": "no25-chatgpt-sites-templates",
-      "status": "draft",
-      "publish_at": null,
+      "status": "scheduled",
+      "publish_at": "2026-09-02T18:06:00+09:00",
       "category": "AI活用",
       "title": "ChatGPTだけで、<br>自分のWebサイトが持てる時代。",
       "description": "ChatGPTのWorkに切り替えて@Sitesを呼び出し、用途別プロンプトを貼るだけでサイトを作る3ステップ。",
