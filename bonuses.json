@@ -363,21 +363,6 @@
       "accent": "#37605C"
     },
     {
-      "slug": "no25-chatgpt-sites-templates",
-      "status": "live",
-      "publish_at": "2026-09-02T18:06:00+09:00",
-      "category": "AI活用",
-      "title": "ChatGPTだけで、<br>自分のWebサイトが持てる時代。",
-      "description": "ChatGPTのWorkに切り替えて@Sitesを呼び出し、用途別プロンプトを貼るだけでサイトを作る3ステップ。",
-      "tags": [
-        "ChatGPT Sites",
-        "テンプレ",
-        "LP制作"
-      ],
-      "image": "assets/preview-ai-v1/no25.jpg",
-      "accent": "#4F5BA6"
-    },
-    {
       "slug": "no27-chatgpt-line-sticker",
       "status": "live",
       "publish_at": null,
@@ -391,6 +376,21 @@
       ],
       "image": "assets/preview-ai-v1/no27.jpg",
       "accent": "#00B900"
+    },
+    {
+      "slug": "no25-chatgpt-sites-templates",
+      "status": "live",
+      "publish_at": "2026-09-02T18:06:00+09:00",
+      "category": "AI活用",
+      "title": "ChatGPTだけで、<br>自分のWebサイトが持てる時代。",
+      "description": "ChatGPTのWorkに切り替えて@Sitesを呼び出し、用途別プロンプトを貼るだけでサイトを作る3ステップ。",
+      "tags": [
+        "ChatGPT Sites",
+        "テンプレ",
+        "LP制作"
+      ],
+      "image": "assets/preview-ai-v1/no25.jpg",
+      "accent": "#4F5BA6"
     }
   ]
 }
