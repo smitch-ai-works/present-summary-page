@@ -406,6 +406,21 @@
       ],
       "image": "assets/preview-ai-v1/no29.jpg",
       "accent": "#4A3F68"
+    },
+    {
+      "slug": "no28-chatgpt-codex-line-emoji",
+      "status": "live",
+      "publish_at": null,
+      "category": "AI副業",
+      "title": "プロンプトを2回貼るだけで、<br>LINE絵文字40個が完成する。",
+      "description": "Codexにプロンプトを2回貼るだけで、絵の生成から40枚への分割・背景透過・180px化・連番・検査・提出用ZIPまで終わらせる手順。",
+      "tags": [
+        "Codex",
+        "LINE絵文字",
+        "スマホ完結"
+      ],
+      "image": "assets/preview-ai-v1/no28.jpg",
+      "accent": "#C08A3E"
     }
   ]
 }
