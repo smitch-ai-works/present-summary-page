@@ -421,6 +421,21 @@
       ],
       "image": "assets/preview-ai-v1/no28.jpg",
       "accent": "#C08A3E"
+    },
+    {
+      "slug": "no31-japanese-posters",
+      "status": "scheduled",
+      "publish_at": "2026-09-15T17:30:00+09:00",
+      "category": "AI副業",
+      "title": "日本の日常を、<br>世界に飾る一枚へ。",
+      "description": "ChatGPTで和風ポスター10枚と英語の紹介文を作り、Etsyで海外に販売するまでの手順。",
+      "tags": [
+        "ChatGPT",
+        "和風ポスター",
+        "Etsy"
+      ],
+      "image": "assets/preview-ai-v1/no31.jpg",
+      "accent": "#86672F"
     }
   ]
 }
