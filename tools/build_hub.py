@@ -23,6 +23,8 @@ def render(doc):
 
 def apply(html, doc):
     import re
+    if re.search(r"^(<{7}|={7}|>{7})", html, re.M):
+        raise SystemExit("index.html に未解決のgitコンフリクトマーカーが残っている。先に手動で解消すること")
     m = re.search(ARRAY_RE, html, re.S)
     if not m:
         raise SystemExit("index.html に const bonuses 配列が見つからない")
