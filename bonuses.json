@@ -436,6 +436,21 @@
       ],
       "image": "assets/preview-ai-v1/no31.jpg",
       "accent": "#86672F"
+    },
+    {
+      "slug": "no30-claude-rakuten-threads",
+      "status": "live",
+      "publish_at": null,
+      "category": "AI副業",
+      "title": "商品探しから投稿まで、<br>Claudeに任せる。",
+      "description": "楽天のID設定からClaude Code・Typefullyの連携、Threadsの下書きと予約まで。画面付きの手順と、そのまま貼れる指示文をまとめました。",
+      "tags": [
+        "Claude",
+        "楽天",
+        "Threads"
+      ],
+      "image": "assets/preview-ai-v1/no30.jpg",
+      "accent": "#1F5FBF"
     }
   ]
 }
