@@ -451,6 +451,21 @@
       ],
       "image": "assets/preview-ai-v1/no30.jpg",
       "accent": "#1F5FBF"
+    },
+    {
+      "slug": "no37-line-work-stickers",
+      "status": "scheduled",
+      "publish_at": "2026-09-24T18:00:00+09:00",
+      "category": "AI副業",
+      "title": "仕事の口ぐせが、<br>売れるスタンプに。",
+      "description": "仕事の言葉で作るLINEスタンプ。検索件数で穴場を探し、ChatGPTで作って申請するまで図解で。",
+      "tags": [
+        "LINEスタンプ",
+        "ChatGPT",
+        "AI副業"
+      ],
+      "image": "assets/preview-ai-v1/no37.jpg",
+      "accent": "#06A94D"
     }
   ]
 }
