@@ -469,8 +469,8 @@
     },
     {
       "slug": "no33-cat-tshirt",
-      "status": "scheduled",
-      "publish_at": "2026-09-29T18:00:00+09:00",
+      "status": "draft",
+      "publish_at": null,
       "category": "AI副業",
       "title": "ChatGPT × Canva<br>オリジナルデザインキット",
       "description": "好きなテーマでTシャツのデザインを作り、Amazon Merch on Demandへ出品するまで。プロンプトと制作手順、つまずき対策つき。",
@@ -480,6 +480,21 @@
         "Canva"
       ],
       "image": "assets/preview-ai-v1/no33.jpg",
+      "accent": "#4A3F68"
+    },
+    {
+      "slug": "no35-codex-video-editing",
+      "status": "scheduled",
+      "publish_at": "2026-09-28T18:00:00+09:00",
+      "category": "画像・動画制作",
+      "title": "素材を渡して、<br>編集を任せる。",
+      "description": "貼るだけの指示文4本で、準備からカット・字幕・修正まで。素材の置き方と確認ポイントもまとめました。",
+      "tags": [
+        "Codex",
+        "動画編集",
+        "SNS"
+      ],
+      "image": "assets/preview-ai-v1/no35.jpg",
       "accent": "#4A3F68"
     }
   ]
