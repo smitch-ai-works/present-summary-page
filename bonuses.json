@@ -466,6 +466,21 @@
       ],
       "image": "assets/preview-ai-v1/no37.jpg",
       "accent": "#06A94D"
+    },
+    {
+      "slug": "no33-cat-tshirt",
+      "status": "scheduled",
+      "publish_at": "2026-09-29T18:00:00+09:00",
+      "category": "AI副業",
+      "title": "ChatGPT × Canva<br>オリジナルデザインキット",
+      "description": "好きなテーマでTシャツのデザインを作り、Amazon Merch on Demandへ出品するまで。プロンプトと制作手順、つまずき対策つき。",
+      "tags": [
+        "Tシャツ",
+        "ChatGPT",
+        "Canva"
+      ],
+      "image": "assets/preview-ai-v1/no33.jpg",
+      "accent": "#4A3F68"
     }
   ]
 }
