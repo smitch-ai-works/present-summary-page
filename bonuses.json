@@ -15,7 +15,9 @@
         "初心者向け"
       ],
       "image": "assets/preview-ai-v1/no2.jpg",
-      "accent": "#2E5D50"
+      "accent": "#2E5D50",
+      "source_video": "ChatGPT、初期設定のまま使っていませんか？",
+      "source_thumbnail": ""
     },
     {
       "slug": "no3-chatgpt-palm-reading",
@@ -30,7 +32,9 @@
         "プロンプト"
       ],
       "image": "assets/preview-ai-v1/no3.jpg",
-      "accent": "#785C7D"
+      "accent": "#785C7D",
+      "source_video": "ChatGPTで手相鑑定ができるって知ってましたか？",
+      "source_thumbnail": ""
     },
     {
       "slug": "no4-ai-keywords",
@@ -45,7 +49,10 @@
         "保存版"
       ],
       "image": "assets/preview-ai-v1/no4.jpg",
-      "accent": "#45698E"
+      "accent": "#45698E",
+      "source_video": "ChatGPT\n効率を爆上げする\n特殊な記号知ってる？",
+      "source_thumbnail": "assets/video-thumbs/no4.jpg",
+      "source_canva_page": 8
     },
     {
       "slug": "no5-ai-movie-creater",
@@ -60,7 +67,10 @@
         "Pika"
       ],
       "image": "assets/preview-ai-v1/no5.jpg",
-      "accent": "#347B86"
+      "accent": "#347B86",
+      "source_video": "忙しくてもOK!？\n旅行気分でできる\n絶景動画の作り方",
+      "source_thumbnail": "assets/video-thumbs/no5.jpg",
+      "source_canva_page": 15
     },
     {
       "slug": "no6-ai-sticker",
@@ -75,7 +85,10 @@
         "海外販売"
       ],
       "image": "assets/preview-ai-v1/no6.jpg",
-      "accent": "#B66D82"
+      "accent": "#B66D82",
+      "source_video": "AI1つで完結！\n海外でバズってる\nステッカーの作り方",
+      "source_thumbnail": "assets/video-thumbs/no6.jpg",
+      "source_canva_page": 19
     },
     {
       "slug": "no8-chatgpt-pintarest",
@@ -90,7 +103,10 @@
         "集客"
       ],
       "image": "assets/preview-ai-v1/no8.jpg",
-      "accent": "#A55460"
+      "accent": "#A55460",
+      "source_video": "残業後でもできる！\nChatGPTで仕込む\n30歳の限界夜活",
+      "source_thumbnail": "assets/video-thumbs/no8.jpg",
+      "source_canva_page": 17
     },
     {
       "slug": "no9-chatgpt-icon-works",
@@ -105,7 +121,10 @@
         "テンプレート"
       ],
       "image": "assets/preview-ai-v1/no9.jpg",
-      "accent": "#4F7479"
+      "accent": "#4F7479",
+      "source_video": "30分で出来ちゃう！？\n寝起き後でやる\n出勤前AIﾌｸ業",
+      "source_thumbnail": "assets/video-thumbs/no9.jpg",
+      "source_canva_page": 16
     },
     {
       "slug": "no10-claude-translation",
@@ -120,7 +139,10 @@
         "Fiverr"
       ],
       "image": "assets/preview-ai-v1/no10.jpg",
-      "accent": "#A2735D"
+      "accent": "#A2735D",
+      "source_video": "案件急増中の\n日本語翻訳を\nAI使ってﾌｸ収入化",
+      "source_thumbnail": "assets/video-thumbs/no10.jpg",
+      "source_canva_page": 14
     },
     {
       "slug": "no14-chatgpt-picture-japan",
@@ -135,7 +157,10 @@
         "ストックフォト"
       ],
       "image": "assets/preview-ai-v1/no14.jpg",
-      "accent": "#71814F"
+      "accent": "#71814F",
+      "source_video": "そろそろ気づいて\nあなたのChatGPTで\n月5ﾏｿ作れる！？",
+      "source_thumbnail": "assets/video-thumbs/no14.jpg",
+      "source_canva_page": 27
     },
     {
       "slug": "no17-ai-script-crowdworks",
@@ -150,7 +175,10 @@
         "Claude"
       ],
       "image": "assets/preview-ai-v1/no17.jpg",
-      "accent": "#4A3F68"
+      "accent": "#4A3F68",
+      "source_video": "スキマ時間でOK\nChatGPT×Claude\nAI台本作成ﾌｸ業",
+      "source_thumbnail": "assets/video-thumbs/no17.jpg",
+      "source_canva_page": 31
     },
     {
       "slug": "no20-claude-code-ai-note-organization",
@@ -165,7 +193,10 @@
         "サブエージェント"
       ],
       "image": "assets/preview-ai-v1/no20.jpg",
-      "accent": "#3F5347"
+      "accent": "#3F5347",
+      "source_video": "AIで社長になれる!?\nClaudeCodeで\n専門組織を作る裏技",
+      "source_thumbnail": "assets/video-thumbs/no20.jpg",
+      "source_canva_page": 33
     },
     {
       "slug": "no18-ai-ehon-kdp",
@@ -180,7 +211,10 @@
         "Amazon KDP"
       ],
       "image": "assets/preview-ai-v1/no18.jpg",
-      "accent": "#4A3F68"
+      "accent": "#4A3F68",
+      "source_video": "資産性抜群！？\n絵心なしでもイケる\nAI絵本作りがヤバイ",
+      "source_thumbnail": "assets/video-thumbs/no18.jpg",
+      "source_canva_page": 29
     },
     {
       "slug": "no21-chatgpt-canva-slide",
@@ -195,7 +229,10 @@
         "スライド作成"
       ],
       "image": "assets/preview-ai-v1/no21.jpg",
-      "accent": "#5B4B9E"
+      "accent": "#5B4B9E",
+      "source_video": "ChatGPTと\nCanvaを連携で\nスライドが作れるかも!?",
+      "source_thumbnail": "assets/video-thumbs/no21.jpg",
+      "source_canva_page": 34
     },
     {
       "slug": "no26-chatgpt-tshirt-suzuri",
@@ -210,7 +247,10 @@
         "SUZURI"
       ],
       "image": "assets/preview-ai-v1/no26.jpg",
-      "accent": "#E0592A"
+      "accent": "#E0592A",
+      "source_video": "ChatGPTで\nTシャツ作って\nｶｾぐ日のVlog",
+      "source_thumbnail": "assets/video-thumbs/no26.jpg",
+      "source_canva_page": 39
     },
     {
       "slug": "no24-claude-code-luxury-site",
@@ -225,7 +265,10 @@
         "サイト制作"
       ],
       "image": "assets/preview-ai-v1/no24.jpg",
-      "accent": "#2C3A4F"
+      "accent": "#2C3A4F",
+      "source_video": "ClaudeCode\n簡単指示出しで\nプロ級サイト作れます",
+      "source_thumbnail": "assets/video-thumbs/no24.jpg",
+      "source_canva_page": 37
     },
     {
       "slug": "no7-claude-council",
@@ -375,7 +418,10 @@
         "スマホ完結"
       ],
       "image": "assets/preview-ai-v1/no27.jpg",
-      "accent": "#00B900"
+      "accent": "#00B900",
+      "source_video": "再ブーム到来\nLINEスタンプを\nChatGPTで作る方法",
+      "source_thumbnail": "assets/video-thumbs/no27.jpg",
+      "source_canva_page": 40
     },
     {
       "slug": "no25-chatgpt-sites-templates",
@@ -390,7 +436,10 @@
         "LP制作"
       ],
       "image": "assets/preview-ai-v1/no25.jpg",
-      "accent": "#4F5BA6"
+      "accent": "#4F5BA6",
+      "source_video": "ChatGPTだけで\nWebページ\n作れます",
+      "source_thumbnail": "assets/video-thumbs/no25.jpg",
+      "source_canva_page": 38
     },
     {
       "slug": "no29-chatgpt-codex-chatcut",
@@ -405,7 +454,10 @@
         "ChatCut"
       ],
       "image": "assets/preview-ai-v1/no29.jpg",
-      "accent": "#4A3F68"
+      "accent": "#4A3F68",
+      "source_video": "これで完結!?\n動画編集できる\n話題のAIがヤバイ",
+      "source_thumbnail": "assets/video-thumbs/no29.jpg",
+      "source_canva_page": 42
     },
     {
       "slug": "no28-chatgpt-codex-line-emoji",
@@ -420,7 +472,10 @@
         "スマホ完結"
       ],
       "image": "assets/preview-ai-v1/no28.jpg",
-      "accent": "#C08A3E"
+      "accent": "#C08A3E",
+      "source_video": "センス不要\nLINE絵文字を\nAIでゼロから作る",
+      "source_thumbnail": "assets/video-thumbs/no28.jpg",
+      "source_canva_page": 41
     },
     {
       "slug": "no31-japanese-posters",
@@ -435,7 +490,10 @@
         "Etsy"
       ],
       "image": "assets/preview-ai-v1/no31.jpg",
-      "accent": "#86672F"
+      "accent": "#86672F",
+      "source_video": "日本人ならやるべき\nChatGPTで\n和風ポスター作る方法",
+      "source_thumbnail": "assets/video-thumbs/no31.jpg",
+      "source_canva_page": 45
     },
     {
       "slug": "no30-claude-rakuten-threads",
@@ -450,7 +508,10 @@
         "Threads"
       ],
       "image": "assets/preview-ai-v1/no30.jpg",
-      "accent": "#1F5FBF"
+      "accent": "#1F5FBF",
+      "source_video": "勝手に積み上がる!?\n楽天アフィを\nClaudeにやらせると...",
+      "source_thumbnail": "assets/video-thumbs/no30.jpg",
+      "source_canva_page": 43
     },
     {
       "slug": "no37-line-work-stickers",
@@ -465,7 +526,10 @@
         "AI副業"
       ],
       "image": "assets/preview-ai-v1/no37.jpg",
-      "accent": "#06A94D"
+      "accent": "#06A94D",
+      "source_video": "LINEスタンプ\n作っても売れない\n意外な理由",
+      "source_thumbnail": "assets/video-thumbs/no37.png",
+      "source_canva_page": 48
     },
     {
       "slug": "no33-cat-tshirt",
@@ -480,7 +544,9 @@
         "Canva"
       ],
       "image": "assets/preview-ai-v1/no33.jpg",
-      "accent": "#4A3F68"
+      "accent": "#4A3F68",
+      "source_video": "ChatGPTでTシャツを作ってAmazonで売る動画",
+      "source_thumbnail": ""
     },
     {
       "slug": "no35-codex-video-editing",
@@ -495,7 +561,10 @@
         "SNS"
       ],
       "image": "assets/preview-ai-v1/no35.jpg",
-      "accent": "#4A3F68"
+      "accent": "#4A3F68",
+      "source_video": "編集者いらず!?\nChatGPTで\n動画編集できます",
+      "source_thumbnail": "assets/video-thumbs/no35.png",
+      "source_canva_page": 47
     }
   ]
 }

@@ -17,6 +17,10 @@ JSON_PATH = os.path.join(ROOT, "bonuses.json")
 HTML_PATH = os.path.join(ROOT, "index.html")
 
 STATUSES = ("draft", "scheduled", "live", "hidden")
+LEGACY_WITHOUT_VIDEO_COVER = {
+    "no2-chatgpt-first-setting-info",
+    "no3-chatgpt-palm-reading",
+}
 
 
 def load(path=JSON_PATH):
@@ -34,7 +38,8 @@ def save(doc, path=JSON_PATH):
 
 
 LABELS = {"category": "カテゴリ", "title": "タイトル", "description": "説明文",
-          "tags": "タグ", "image": "サムネ", "accent": "アクセント色"}
+          "tags": "タグ", "image": "サムネ", "accent": "アクセント色",
+          "source_video": "この特典動画の文言"}
 
 
 def validate(doc):
@@ -56,12 +61,26 @@ def validate(doc):
 
         keys = ("title", "image")
         if b["status"] in ("live", "scheduled"):
-            keys = ("category", "title", "description", "tags", "image", "accent")
+            keys = ("category", "title", "description", "tags", "image", "accent",
+                    "source_video")
         for key in keys:
-            if not b.get(key):
+            value = b.get(key)
+            if not value or (isinstance(value, str) and not value.strip()):
                 tail = ("（ページに出すには全項目が必要です）"
                         if b["status"] in ("live", "scheduled") else "")
                 raise ValueError(f"{slug}: {LABELS[key]}が空です{tail}")
+        thumbnail = b.get("source_thumbnail")
+        if thumbnail and not os.path.isfile(os.path.join(ROOT, thumbnail)):
+            raise ValueError(f"{slug}: 動画サムネが見つかりません: {thumbnail}")
+        if b["status"] in ("live", "scheduled") and slug not in LEGACY_WITHOUT_VIDEO_COVER:
+            if not thumbnail:
+                raise ValueError(f"{slug}: 動画サムネが空です（Canvaの表紙を登録してください）")
+            lines = b["source_video"].splitlines()
+            if len(lines) != 3 or any(not line.strip() for line in lines):
+                raise ValueError(f"{slug}: この特典動画の文言はサムネイルの文字を3行で入力してください")
+        canva_page = b.get("source_canva_page")
+        if canva_page is not None and (not isinstance(canva_page, int) or canva_page < 1):
+            raise ValueError(f"{slug}: Canvaページは正の整数で入力してください")
 
 
 def parse_at(s):
@@ -109,6 +128,8 @@ def live_cards(doc):
             "title": b["title"],
             "plainTitle": plain_title(b["title"]),
             "description": b["description"],
+            "sourceVideo": b["source_video"],
+            "sourceThumbnail": b.get("source_thumbnail", ""),
             "tags": b["tags"],
             "url": doc["base_url"] + b["slug"] + "/",
             "image": b["image"],
