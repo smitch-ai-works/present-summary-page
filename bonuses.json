@@ -532,23 +532,6 @@
       "source_canva_page": 48
     },
     {
-      "slug": "no33-cat-tshirt",
-      "status": "draft",
-      "publish_at": null,
-      "category": "AI副業",
-      "title": "ChatGPT × Canva<br>オリジナルデザインキット",
-      "description": "好きなテーマでTシャツのデザインを作り、Amazon Merch on Demandへ出品するまで。プロンプトと制作手順、つまずき対策つき。",
-      "tags": [
-        "Tシャツ",
-        "ChatGPT",
-        "Canva"
-      ],
-      "image": "assets/preview-ai-v1/no33.jpg",
-      "accent": "#4A3F68",
-      "source_video": "ChatGPTでTシャツを作ってAmazonで売る動画",
-      "source_thumbnail": ""
-    },
-    {
       "slug": "no35-codex-video-editing",
       "status": "live",
       "publish_at": "2026-09-28T18:00:00+09:00",
@@ -565,6 +548,23 @@
       "source_video": "編集者いらず!?\nChatGPTで\n動画編集できます",
       "source_thumbnail": "assets/video-thumbs/no35.png",
       "source_canva_page": 47
+    },
+    {
+      "slug": "no33-cat-tshirt",
+      "status": "live",
+      "publish_at": null,
+      "category": "AI副業",
+      "title": "ChatGPT × Canva<br>オリジナルデザインキット",
+      "description": "好きなテーマでTシャツのデザインを作り、Amazon Merch on Demandへ出品するまで。プロンプトと制作手順、つまずき対策つき。",
+      "tags": [
+        "Tシャツ",
+        "ChatGPT",
+        "Canva"
+      ],
+      "image": "assets/preview-ai-v1/no33.jpg",
+      "accent": "#4A3F68",
+      "source_video": "在庫なしでOK\nChatGPT×Amazon\nTシャツ販売",
+      "source_thumbnail": "assets/video-thumbs/no33-511f61c6.jpg"
     }
   ]
 }
