@@ -594,6 +594,32 @@
       "source_thumbnail": "assets/video-thumbs/no40.png",
       "source_thumbnail_sha256": "fedbac828aab10bc2403b607ff35db04c87a3f36ae476f061fcf4a064acab0b5",
       "published_url": "https://smitch-ai-works.github.io/no40-ai-motion-video/"
+    },
+    {
+      "id": 34,
+      "slug": "no34-codex-starter",
+      "status": "live",
+      "publish_at": null,
+      "category": "AI活用",
+      "title": "Codex<br>導入ガイド",
+      "description": "導入から初めてのツール制作まで。Web・動画・スタンプの指示文も収録。",
+      "tags": [
+        "Codex",
+        "AI活用",
+        "仕事効率化"
+      ],
+      "image": "assets/preview-ai-v1/no34.jpg",
+      "accent": "#1F5FBF",
+      "source_video": "ClaudeCode\n今から始めるなら\nCodex一択です",
+      "source_thumbnail": "assets/video-thumbs/no34.png",
+      "source_thumbnail_sha256": "0387724fcc634a2d1ccc416e85de71bfb54b95e1b58442fd2959a673c29f6218",
+      "source_video_no": 160,
+      "source_canva_design": "DAHKcxPBtxQ",
+      "source_thumbnail_source": "Canva export: 台本No160.png, 2026-09-28",
+      "published": true,
+      "hub_registered": true,
+      "public_display_no": 25,
+      "published_url": "https://smitch-ai-works.github.io/no34-codex-starter/"
     }
   ]
 }
