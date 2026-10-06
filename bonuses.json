@@ -565,6 +565,35 @@
       "accent": "#4A3F68",
       "source_video": "在庫なしでOK\nChatGPT×Amazon\nTシャツ販売",
       "source_thumbnail": "assets/video-thumbs/no33-511f61c6.jpg"
+    },
+    {
+      "id": 40,
+      "slug": "no40-ai-motion-video",
+      "title": "AIモーション動画 制作キット",
+      "description": "日本語の指示から、動く文字・AI音声・効果音まで。PC再生用の作例と7つの制作指示文。",
+      "tags": [
+        "Codex",
+        "動画制作",
+        "AI音声"
+      ],
+      "image": "assets/preview-ai-v1/no40.jpg",
+      "source_video_no": 165,
+      "published": true,
+      "hub_registered": true,
+      "public_display_no": null,
+      "source_thumbnail_format": "editable_canva_elements",
+      "source_thumbnail_status": "awaiting_background_frame",
+      "source_canva_design": "DAHKcxPBtxQ",
+      "source_canva_page": 53,
+      "source_canva_page_id": "PBG8FrlMDdRjK24L",
+      "status": "draft",
+      "publish_at": null,
+      "category": "AI動画制作",
+      "accent": "#8F7743",
+      "source_video": "可能性無限大\nAIと話すだけで\n動画が作れる!?",
+      "source_thumbnail": "assets/video-thumbs/no40.png",
+      "source_thumbnail_sha256": "fedbac828aab10bc2403b607ff35db04c87a3f36ae476f061fcf4a064acab0b5",
+      "published_url": "https://smitch-ai-works.github.io/no40-ai-motion-video/"
     }
   ]
 }
