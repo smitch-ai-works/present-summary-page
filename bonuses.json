@@ -620,6 +620,32 @@
       "hub_registered": true,
       "public_display_no": 25,
       "published_url": "https://smitch-ai-works.github.io/no34-codex-starter/"
+    },
+    {
+      "id": 36,
+      "slug": "no36-substack-starter",
+      "status": "live",
+      "publish_at": null,
+      "category": "AI副業",
+      "title": "Substack<br>スタートガイド",
+      "description": "登録からAIで書く最初の1本、有料化、5つの落とし穴まで図解で。",
+      "tags": [
+        "Substack",
+        "AI活用",
+        "SNS運用"
+      ],
+      "image": "assets/preview-ai-v1/no36.jpg",
+      "accent": "#D9480F",
+      "source_video": "海外で話題!?\nSubstack×AI\nSNS収益化",
+      "source_thumbnail": "assets/video-thumbs/no36.png",
+      "source_thumbnail_sha256": "a5a778b1123dca53d4a2945068eb197fb4108bb7b13e5c270138520fc996e47e",
+      "source_video_no": 161,
+      "source_canva_design": "DAHKcxPBtxQ",
+      "source_thumbnail_source": "Canva export: 台本No161.png, 2026-09-29",
+      "published": true,
+      "hub_registered": true,
+      "public_display_no": 26,
+      "published_url": "https://smitch-ai-works.github.io/no36-substack-starter/"
     }
   ]
 }
