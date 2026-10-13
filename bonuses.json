@@ -646,6 +646,34 @@
       "hub_registered": true,
       "public_display_no": 26,
       "published_url": "https://smitch-ai-works.github.io/no36-substack-starter/"
+    },
+    {
+      "id": 38,
+      "slug": "no38-ai-cm-song",
+      "status": "scheduled",
+      "publish_at": "2026-10-14T18:00:00+09:00",
+      "category": "AI音楽制作",
+      "title": "AI CMソング制作キット",
+      "description": "お店の特徴から歌詞・作曲・試聴まで。実際のCMソング、ChatGPTとGeminiの指示文、提案前の確認をまとめた制作キット。",
+      "tags": [
+        "ChatGPT",
+        "Gemini",
+        "CMソング"
+      ],
+      "image": "assets/preview-ai-v1/no38.jpg",
+      "accent": "#52644B",
+      "source_video": "AIで作った曲\n実は海外では\nバカ売れ!?",
+      "source_thumbnail": "assets/video-thumbs/no38.png",
+      "source_canva_page": 52,
+      "source_canva_page_id": "PB3wp7g3PCMxFJGc",
+      "source_canva_design": "DAHKcxPBtxQ",
+      "source_video_no": 163,
+      "published": true,
+      "hub_registered": true,
+      "public_display_no": 27,
+      "source_thumbnail_sha256": "aa72ff1019b0fb5aba77095b9e86b43b715889d5694a7acfc5fd88b8f211a992",
+      "published_url": "https://smitch-ai-works.github.io/no38-ai-cm-song/",
+      "published_commit": "df7a78f9326adc9973155d22ce09dc548677dd62"
     }
   ]
 }
