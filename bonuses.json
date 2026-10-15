@@ -674,6 +674,29 @@
       "source_thumbnail_sha256": "aa72ff1019b0fb5aba77095b9e86b43b715889d5694a7acfc5fd88b8f211a992",
       "published_url": "https://smitch-ai-works.github.io/no38-ai-cm-song/",
       "published_commit": "df7a78f9326adc9973155d22ce09dc548677dd62"
+    },
+    {
+      "id": 32,
+      "slug": "no32-japanese-bookmarks",
+      "status": "scheduled",
+      "publish_at": "2026-10-16T17:30:00+09:00",
+      "category": "AI副業",
+      "title": "日本の風景を、<br>自分で彩るしおりに。",
+      "description": "ChatGPTで日本風景の塗り絵しおりと英語の紹介文を作り、印刷データを整えてEtsyに出品するまでの手順。コピーして使えるプロンプト2本付き。",
+      "tags": [
+        "ChatGPT",
+        "塗り絵しおり",
+        "Etsy"
+      ],
+      "image": "assets/preview-ai-v1/no32.jpg",
+      "accent": "#927036",
+      "source_video": "海外で流行中!?\nChatGPTで\n塗り絵しおり作る方法",
+      "source_thumbnail": "assets/video-thumbs/no32.png",
+      "source_video_no": 155,
+      "hub_registered": true,
+      "public_display_no": 28,
+      "source_thumbnail_sha256": "54a963107e75140bf0c9b03c19abedacc29119b9c0d91bccc5c20472d21c7779",
+      "published_url": "https://smitch-ai-works.github.io/no32-japanese-bookmarks/"
     }
   ]
 }
