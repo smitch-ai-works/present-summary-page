@@ -734,22 +734,27 @@
       "image": "assets/preview-ai-v1/no41.jpg",
       "accent": "#52644B",
       "source_video": "在庫なしでOK\nChatGPTで作る\nパズル販売",
-      "source_video_no": 168
+      "source_video_no": 168,
+      "source_thumbnail": "assets/video-thumbs/no41.png"
     },
     {
       "id": 42,
       "slug": "no42-claude-code-image",
       "status": "draft",
       "publish_at": null,
-      "title": "Claude Code 画像生成スタートガイド",
-      "description": "Claude Codeから画像を作って保存。プラグインの導入、コピーできるコマンド・指示文と、カフェの実出力をまとめました。",
+      "title": "Claude Code<br>画像生成スタートガイド",
+      "description": "Claude Codeの準備から、画像拡張の導入、日本語での依頼、PNGの保存まで。実画面と作例で追えるスタートガイド。",
       "tags": [
         "Claude Code",
         "Codex",
         "画像生成"
       ],
       "image": "assets/preview-ai-v1/no42.jpg",
-      "source_video_no": 169
+      "source_video_no": 169,
+      "category": "画像・動画制作",
+      "accent": "#4E6B57",
+      "source_video": "待望の進化\nClaude Codeだけで\n画像まで完結",
+      "source_thumbnail": "assets/video-thumbs/no42.png"
     }
   ]
 }
