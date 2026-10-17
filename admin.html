@@ -2,189 +2,257 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="robots" content="noindex, nofollow">
-  <meta name="theme-color" content="#2E5D50">
+  <meta name="theme-color" content="#173B32">
   <title>特典まとめ 管理</title>
   <style>
     :root {
+      --ink: #173B32;
       --teal: #2E5D50;
-      --teal-dark: #173B32;
-      --charcoal: #323836;
-      --beige: #DDC9A8;
+      --teal-soft: rgba(46, 93, 80, .09);
       --paper: #F7F5F0;
       --white: #FFFFFF;
+      --text: #26302D;
       --muted: #6B7471;
-      --line: rgba(46, 93, 80, .15);
-      --warn: #9A5B12;
-      --warn-bg: #FBF1E2;
-      --danger: #A23B32;
-      --radius: 18px;
+      --line: rgba(23, 59, 50, .12);
+      --amber: #A8661A;
+      --amber-soft: #FBF0E0;
+      --red: #A23B32;
+      --green: #2F8A5B;
     }
     * { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+    html { background: var(--paper); }
     body {
       margin: 0;
-      color: var(--charcoal);
+      color: var(--text);
       background: var(--paper);
-      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", system-ui, -apple-system, sans-serif;
+      font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", system-ui, sans-serif;
       -webkit-font-smoothing: antialiased;
       line-height: 1.6;
+      font-feature-settings: "palt";
     }
-    main { max-width: 720px; margin: 0 auto; padding: 20px 16px 80px; }
-    header { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
-    h1 { font-size: 20px; margin: 0; color: var(--teal-dark); }
-    header a { font-size: 13px; color: var(--teal); white-space: nowrap; }
-    .how {
-      background: var(--white); border: 1px solid var(--line); border-radius: var(--radius);
-      padding: 12px 16px; font-size: 13px; color: var(--muted); margin-bottom: 22px;
-    }
-    .how ol { margin: 4px 0 0; padding-left: 20px; }
-    h2 { font-size: 15px; margin: 26px 0 10px; color: var(--teal-dark); display: flex; align-items: baseline; gap: 8px; }
-    h2 small { font-size: 12px; color: var(--muted); font-weight: normal; }
-    .list { display: grid; gap: 10px; }
-    .item {
-      display: grid; grid-template-columns: 54px 1fr auto; gap: 12px; align-items: center;
-      background: var(--white); border: 1px solid var(--line); border-radius: var(--radius);
-      padding: 10px 12px; width: 100%; text-align: left; font: inherit; color: inherit;
-    }
-    button.item { cursor: pointer; }
-    button.item:hover { border-color: var(--teal); }
-    .thumb {
-      width: 54px; height: 72px; border-radius: 8px; object-fit: cover; background: #E9E5DC;
-      display: grid; place-items: center; font-size: 11px; color: var(--muted);
-    }
-    .item .name { font-weight: bold; font-size: 14px; line-height: 1.45; overflow-wrap: anywhere; }
-    .item .meta { font-size: 12px; color: var(--muted); margin-top: 2px; }
-    .badge {
-      font-size: 12px; font-weight: bold; padding: 4px 10px; border-radius: 999px; white-space: nowrap;
-      background: rgba(46, 93, 80, .1); color: var(--teal);
-    }
-    .badge.wait { background: var(--warn-bg); color: var(--warn); }
-    .live-row {
-      display: grid; grid-template-columns: 44px 1fr; gap: 8px; font-size: 13px;
-      padding: 7px 4px; border-bottom: 1px solid var(--line);
-    }
-    .live-row b { color: var(--teal); }
-    details summary { cursor: pointer; font-size: 13px; color: var(--teal); margin: 6px 0; }
-    .empty { font-size: 13px; color: var(--muted); padding: 4px 2px; }
-    .log { font-size: 13px; display: grid; gap: 6px; }
-    .log a { color: inherit; text-decoration: none; display: grid; grid-template-columns: 22px 1fr; gap: 6px; }
-    .log a:hover span:last-child { text-decoration: underline; }
-    .status-line { font-size: 13px; color: var(--muted); }
-    .error { color: var(--danger); }
+    a { color: inherit; }
+    img { display: block; }
+    .wrap { max-width: 760px; margin: 0 auto; padding: 0 16px; }
+    :focus-visible { outline: 3px solid #E9B44C; outline-offset: 2px; }
 
-    dialog {
-      border: none; border-radius: 22px 22px 0 0; padding: 0; width: 100%; max-width: 720px;
-      margin: auto auto 0; max-height: 92vh; color: var(--charcoal); background: var(--white);
+    /* ── 次に出る特典 ── */
+    .top { background: var(--ink); color: var(--white); padding: 18px 0 22px; }
+    .bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 13px; }
+    .bar strong { font-size: 15px; letter-spacing: .02em; }
+    .bar a { color: rgba(255, 255, 255, .78); text-decoration: none; border-bottom: 1px solid rgba(255, 255, 255, .3); }
+    .next { display: grid; grid-template-columns: 104px 1fr; gap: 16px; align-items: center; margin-top: 18px; }
+    .next .cover { width: 104px; aspect-ratio: 9 / 16; border-radius: 10px; object-fit: cover; background: rgba(255, 255, 255, .08); }
+    .next-label { font-size: 12px; color: rgba(255, 255, 255, .7); }
+    .next-when { font-size: 26px; font-weight: 800; line-height: 1.25; margin: 2px 0 4px; font-variant-numeric: tabular-nums; }
+    .next-left { display: inline-block; font-size: 13px; color: #F3D39A; margin-bottom: 8px; }
+    .next-title { font-size: 14px; color: rgba(255, 255, 255, .92); line-height: 1.5; }
+    .next-no { display: inline-block; margin-top: 8px; font-size: 13px; font-weight: 700; background: rgba(255, 255, 255, .12); border-radius: 999px; padding: 3px 12px; }
+    .next-none { margin-top: 18px; padding: 16px; border: 1px dashed rgba(255, 255, 255, .3); border-radius: 14px; font-size: 14px; color: rgba(255, 255, 255, .85); }
+    .next-none small { display: block; color: rgba(255, 255, 255, .6); font-size: 12px; margin-top: 2px; }
+
+    /* ── 切り替え ── */
+    .tabs {
+      position: sticky; top: 0; z-index: 5; background: var(--paper);
+      border-bottom: 1px solid var(--line);
     }
-    dialog::backdrop { background: rgba(23, 59, 50, .45); }
-    @media (min-width: 721px) { dialog { border-radius: 22px; margin: auto; } }
-    .sheet { padding: 20px 16px 22px; }
-    .sheet h3 { margin: 0 0 4px; font-size: 17px; line-height: 1.45; }
-    .sheet .sub { font-size: 12px; color: var(--muted); margin-bottom: 16px; }
-    .field { margin: 16px 0; }
-    .field > label, .field > .label { display: block; font-size: 13px; font-weight: bold; margin-bottom: 6px; }
-    .seg { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-    .seg label {
-      border: 1.5px solid var(--line); border-radius: 12px; padding: 11px 8px; text-align: center;
-      font-size: 14px; cursor: pointer;
+    .tabs .wrap { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .tab {
+      appearance: none; border: 0; background: none; font: inherit; color: var(--muted);
+      padding: 12px 2px 10px; font-size: 13px; cursor: pointer; border-bottom: 3px solid transparent;
+      display: grid; justify-items: center; gap: 0; line-height: 1.3;
     }
-    .seg input { position: absolute; opacity: 0; pointer-events: none; }
-    .seg label:has(input:checked) { border-color: var(--teal); background: rgba(46, 93, 80, .08); color: var(--teal-dark); font-weight: bold; }
-    input[type="datetime-local"], input[type="number"] {
-      width: 100%; font: inherit; font-size: 16px; padding: 11px 12px; border-radius: 12px;
-      border: 1.5px solid var(--line); background: var(--paper); color: inherit;
+    .tab b { font-size: 19px; color: var(--text); font-variant-numeric: tabular-nums; }
+    .tab[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--teal); font-weight: 700; }
+    .tab[aria-selected="true"] b { color: var(--teal); }
+
+    .panel { padding: 18px 0 8px; }
+    .lead { font-size: 13px; color: var(--muted); margin: 0 0 14px; }
+    .stack { display: grid; gap: 14px; }
+
+    /* ── 特典カード ── */
+    .bonus {
+      background: var(--white); border: 1px solid var(--line); border-radius: 20px; padding: 14px;
+      display: grid; grid-template-columns: 96px 1fr; gap: 14px;
     }
-    .hint { font-size: 12px; color: var(--muted); margin-top: 5px; }
-    .summary {
-      background: rgba(46, 93, 80, .07); border-radius: 12px; padding: 12px 14px; font-size: 14px; margin: 18px 0 6px;
+    .bonus .cover {
+      width: 96px; aspect-ratio: 9 / 16; border-radius: 10px; object-fit: cover; background: #ECE8E0;
     }
-    .warn { background: var(--warn-bg); color: var(--warn); border-radius: 12px; padding: 10px 12px; font-size: 13px; margin-top: 8px; }
-    .actions { display: grid; gap: 10px; margin-top: 16px; }
+    .nocover {
+      width: 96px; aspect-ratio: 9 / 16; border-radius: 10px; border: 1.5px dashed rgba(23, 59, 50, .25);
+      display: grid; place-items: center; text-align: center; font-size: 11px; color: var(--muted); padding: 6px;
+    }
+    .ids { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 6px; }
+    .id { font-size: 11px; color: var(--muted); background: var(--paper); border-radius: 6px; padding: 1px 7px; }
+    .bonus h3 { margin: 0; font-size: 15px; line-height: 1.5; overflow-wrap: anywhere; }
+    .lp {
+      display: grid; grid-template-columns: 76px 1fr; gap: 10px; align-items: center; margin-top: 10px;
+      text-decoration: none; padding: 6px; margin-left: -6px; border-radius: 12px;
+    }
+    .lp:hover { background: var(--paper); }
+    .lp img { width: 76px; aspect-ratio: 12 / 7; object-fit: cover; border-radius: 6px; background: #ECE8E0; }
+    .lp span { font-size: 12px; line-height: 1.45; }
+    .lp u { text-decoration: none; color: var(--teal); font-weight: 700; display: block; font-size: 13px; }
+    .dot::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; margin-right: 5px; vertical-align: 1px; background: #B9BFBC; }
+    .dot.up::before { background: var(--green); }
+    .dot.down::before { background: var(--red); }
+    .dot.down { color: var(--red); }
+    .foot { grid-column: 1 / -1; display: grid; gap: 8px; }
+    .when {
+      display: flex; justify-content: space-between; align-items: center; gap: 8px; background: var(--amber-soft);
+      color: var(--amber); border-radius: 12px; padding: 9px 12px; font-size: 14px; font-weight: 700;
+      font-variant-numeric: tabular-nums;
+    }
+    .need { background: var(--paper); border-radius: 12px; padding: 10px 12px; font-size: 13px; }
+    .need b { display: block; font-size: 12px; color: var(--muted); font-weight: normal; margin-bottom: 2px; }
     .btn {
-      display: block; width: 100%; text-align: center; font: inherit; font-size: 15px; font-weight: bold;
-      padding: 14px; border-radius: 14px; border: none; cursor: pointer; text-decoration: none;
+      display: block; width: 100%; text-align: center; font: inherit; font-size: 15px; font-weight: 700;
+      padding: 13px; border-radius: 14px; border: 0; cursor: pointer; text-decoration: none;
     }
-    .btn.primary { background: var(--teal); color: var(--white); }
-    .btn.ghost { background: transparent; color: var(--muted); border: 1.5px solid var(--line); }
-    .btn.danger { background: transparent; color: var(--danger); border: 1.5px solid rgba(162, 59, 50, .35); }
-    .btn[disabled] { opacity: .45; cursor: not-allowed; }
-    .after { font-size: 13px; color: var(--muted); text-align: center; }
+    .btn.go { background: var(--teal); color: var(--white); }
+    .btn.sub { background: var(--white); color: var(--teal); border: 1.5px solid rgba(46, 93, 80, .35); }
+    .btn.stop { background: var(--white); color: var(--red); border: 1.5px solid rgba(162, 59, 50, .3); }
+    .btn.plain { background: none; color: var(--muted); }
+    .btn[aria-disabled="true"] { opacity: .4; pointer-events: none; }
+
+    /* ── 公開中の棚 ── */
+    .shelf { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px 10px; }
+    @media (min-width: 560px) { .shelf { grid-template-columns: repeat(5, 1fr); } }
+    .shelf a { text-decoration: none; display: grid; gap: 6px; }
+    .shelf .frame { position: relative; }
+    .shelf img, .shelf .noimg { width: 100%; aspect-ratio: 9 / 16; object-fit: cover; border-radius: 10px; background: #ECE8E0; }
+    .shelf .noimg { display: grid; place-items: center; font-size: 11px; color: var(--muted); padding: 6px; text-align: center; }
+    .shelf .no {
+      position: absolute; left: 6px; top: 6px; background: var(--white); color: var(--ink);
+      font-size: 12px; font-weight: 800; border-radius: 7px; padding: 1px 7px; font-variant-numeric: tabular-nums;
+    }
+    .shelf .no.soon { background: var(--amber-soft); color: var(--amber); }
+    .shelf p { margin: 0; font-size: 11px; line-height: 1.4; color: var(--muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+    .old { margin-top: 22px; }
+    .old summary { cursor: pointer; font-size: 14px; font-weight: 700; color: var(--ink); padding: 12px 2px; }
+    .old .lead { margin-top: 2px; }
+    .row {
+      display: grid; grid-template-columns: 76px 1fr; gap: 12px; align-items: center; text-decoration: none;
+      padding: 8px 0; border-top: 1px solid var(--line); font-size: 13px; line-height: 1.5;
+    }
+    .row img { width: 76px; aspect-ratio: 12 / 7; object-fit: cover; border-radius: 6px; background: #ECE8E0; }
+    .row small { display: block; color: var(--muted); font-size: 11px; }
+
+    .empty { text-align: center; color: var(--muted); font-size: 14px; padding: 28px 12px; background: var(--white); border-radius: 20px; border: 1px dashed var(--line); }
+
+    /* ── 操作の結果 ── */
+    .history { padding: 10px 0 60px; }
+    .history h2 { font-size: 14px; margin: 18px 0 8px; display: flex; justify-content: space-between; align-items: baseline; }
+    .history h2 button { font: inherit; font-size: 13px; color: var(--teal); background: none; border: 0; cursor: pointer; padding: 4px; }
+    .log { display: grid; gap: 2px; font-size: 13px; }
+    .log a { display: grid; grid-template-columns: 22px 1fr; gap: 6px; text-decoration: none; padding: 6px 4px; border-radius: 8px; }
+    .log a:hover { background: var(--white); }
+    .state { font-size: 12px; color: var(--muted); }
+    .err { color: var(--red); }
+
+    /* ── 予約シート ── */
+    dialog {
+      border: 0; padding: 0; width: 100%; max-width: 560px; max-height: 94vh;
+      margin: auto auto 0; border-radius: 24px 24px 0 0; background: var(--white); color: var(--text);
+    }
+    dialog::backdrop { background: rgba(23, 59, 50, .5); }
+    @media (min-width: 640px) { dialog { margin: auto; border-radius: 24px; } }
+    .sheet { padding: 18px 16px calc(18px + env(safe-area-inset-bottom)); }
+    .sheet-head { display: grid; grid-template-columns: 64px 1fr; gap: 12px; align-items: center; }
+    .sheet-head img, .sheet-head .nocover { width: 64px; aspect-ratio: 9 / 16; border-radius: 8px; object-fit: cover; }
+    .sheet-head h3 { margin: 0; font-size: 16px; line-height: 1.45; }
+    .sheet-head p { margin: 2px 0 0; font-size: 12px; color: var(--muted); }
+    .field { margin-top: 18px; }
+    .field > label, .field > .label { display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+    .seg { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .seg label { border: 1.5px solid var(--line); border-radius: 12px; padding: 11px 6px; text-align: center; font-size: 14px; cursor: pointer; }
+    .seg input { position: absolute; opacity: 0; pointer-events: none; }
+    .seg label:has(input:checked) { border-color: var(--teal); background: var(--teal-soft); color: var(--ink); font-weight: 700; }
+    .seg label:has(input:focus-visible) { outline: 3px solid #E9B44C; }
+    input[type="datetime-local"], input[type="number"] {
+      width: 100%; font: inherit; font-size: 17px; padding: 11px 12px; border-radius: 12px;
+      border: 1.5px solid var(--line); background: var(--paper); color: inherit; font-variant-numeric: tabular-nums;
+    }
+    .num { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 10px; font-size: 17px; font-weight: 700; }
+    .hint { font-size: 12px; color: var(--muted); margin-top: 5px; }
+    .confirm { margin-top: 18px; background: var(--teal-soft); border-radius: 14px; padding: 12px 14px; font-size: 14px; }
+    .warn { margin-top: 8px; background: var(--amber-soft); color: var(--amber); border-radius: 12px; padding: 10px 12px; font-size: 13px; }
+    .sheet .actions { display: grid; gap: 8px; margin-top: 16px; }
+    .note { font-size: 12px; color: var(--muted); text-align: center; margin: 10px 0 0; }
+
+    @media (prefers-reduced-motion: no-preference) {
+      dialog[open] { animation: rise .22s ease-out; }
+      @keyframes rise { from { transform: translateY(24px); opacity: 0; } }
+    }
   </style>
 </head>
 <body>
-<main>
-  <header>
-    <h1>特典まとめ 管理</h1>
-    <a href="./" target="_blank" rel="noopener">まとめページを開く →</a>
+  <header class="top">
+    <div class="wrap">
+      <div class="bar">
+        <strong>特典まとめ 管理</strong>
+        <a href="./" target="_blank" rel="noopener">まとめページを見る</a>
+      </div>
+      <div id="next"></div>
+    </div>
   </header>
 
-  <div class="how">
-    使い方
-    <ol>
-      <li>出したい特典を選んで、日時と掲載番号を決める</li>
-      <li>「GitHubで確定する」→ 開いた画面の緑のボタン（Create）を押す</li>
-      <li>1分ほどで下の「最近の操作」に結果が出る。予約した特典はその時刻ちょうどにまとめページに出ます</li>
-    </ol>
-  </div>
+  <nav class="tabs" aria-label="表示の切り替え">
+    <div class="wrap" role="tablist">
+      <button class="tab" role="tab" data-tab="ready"><b id="nReady">–</b>出せる</button>
+      <button class="tab" role="tab" data-tab="scheduled"><b id="nScheduled">–</b>予約中</button>
+      <button class="tab" role="tab" data-tab="prep"><b id="nPrep">–</b>準備中</button>
+      <button class="tab" role="tab" data-tab="live"><b id="nLive">–</b>公開中</button>
+    </div>
+  </nav>
 
-  <p class="status-line" id="loadStatus">読み込み中…</p>
+  <main class="wrap">
+    <section class="panel" id="panel"></section>
 
-  <h2>予約中 <small id="scheduledCount"></small></h2>
-  <div class="list" id="scheduled"></div>
+    <section class="history">
+      <h2>最近の操作 <button type="button" id="reload">最新にする</button></h2>
+      <p class="state" id="loadState">読み込み中…</p>
+      <div class="log" id="log"></div>
+    </section>
+  </main>
 
-  <h2>出せる特典（下書き） <small id="readyCount"></small></h2>
-  <div class="list" id="ready"></div>
-  <details id="notReadyWrap" hidden>
-    <summary>準備中の下書き（画像や文言が足りないもの）</summary>
-    <div class="list" id="notReady"></div>
-  </details>
+  <dialog id="sheet" aria-labelledby="sheetTitle">
+    <form class="sheet" method="dialog" id="form">
+      <div class="sheet-head" id="sheetHead"></div>
 
-  <h2>公開中 <small id="liveCount"></small></h2>
-  <details>
-    <summary>一覧を見る</summary>
-    <div id="live"></div>
-  </details>
-
-  <h2>最近の操作 <small><a href="#" id="reload">更新</a></small></h2>
-  <div class="log" id="log"><p class="empty">読み込み中…</p></div>
-</main>
-
-<dialog id="sheet">
-  <form class="sheet" method="dialog" id="form">
-    <h3 id="sheetTitle"></h3>
-    <div class="sub" id="sheetSub"></div>
-
-    <div class="field">
-      <span class="label">いつ出す？</span>
-      <div class="seg">
-        <label><input type="radio" name="when" value="schedule" checked>日時を指定</label>
-        <label><input type="radio" name="when" value="now">今すぐ</label>
+      <div class="field">
+        <span class="label">いつ出す？</span>
+        <div class="seg">
+          <label><input type="radio" name="when" value="schedule" checked>日時を決める</label>
+          <label><input type="radio" name="when" value="now">今すぐ出す</label>
+        </div>
       </div>
-    </div>
 
-    <div class="field" id="atField">
-      <label for="at">公開日時（日本時間）</label>
-      <input type="datetime-local" id="at" step="60" required>
-    </div>
+      <div class="field" id="atField">
+        <label for="at">公開する日時（日本時間）</label>
+        <input type="datetime-local" id="at" step="60">
+      </div>
 
-    <div class="field">
-      <label for="number">掲載番号（特典○○）</label>
-      <input type="number" id="number" min="1" inputmode="numeric" required>
-      <div class="hint" id="numberHint"></div>
-    </div>
+      <div class="field">
+        <label for="number">まとめページでの番号</label>
+        <div class="num"><span>特典</span><input type="number" id="number" min="1" inputmode="numeric"></div>
+        <div class="hint" id="numberHint"></div>
+      </div>
 
-    <div class="summary" id="summary"></div>
-    <div class="warn" id="warn" hidden></div>
+      <div class="confirm" id="confirm"></div>
+      <div class="warn" id="warn" hidden></div>
 
-    <div class="actions">
-      <a class="btn primary" id="send" target="_blank" rel="noopener">GitHubで確定する</a>
-      <a class="btn danger" id="cancelSchedule" target="_blank" rel="noopener" hidden>この予約をやめる</a>
-      <button class="btn ghost" value="close">閉じる</button>
-    </div>
-    <p class="after">GitHubの画面で緑のボタンを押すまでは何も変わりません。</p>
-  </form>
-</dialog>
+      <div class="actions">
+        <a class="btn go" id="send" target="_blank" rel="noopener">GitHubで確定する</a>
+        <a class="btn stop" id="cancelSchedule" target="_blank" rel="noopener" hidden>この予約をやめる</a>
+        <button class="btn plain" value="close">閉じる</button>
+      </div>
+      <p class="note">開いたGitHubの画面で緑のボタン（Create）を押すと確定します。<br>押すまでは何も変わりません。</p>
+    </form>
+  </dialog>
 
 <script>
   const REPO = "smitch-ai-works/present-summary-page";
@@ -192,135 +260,214 @@
   const LEGACY_WITHOUT_VIDEO_COVER = ["no2-chatgpt-first-setting-info", "no3-chatgpt-palm-reading"];
 
   const $ = id => document.getElementById(id);
+  const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const plain = t => String(t || "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+  const pad = n => String(n).padStart(2, "0");
+  const shown = b => b.status === "live" || b.status === "scheduled";
+
   let doc = null;
+  let lpState = {};        // slug -> "up" | "down" | "unknown"
+  let tab = null;
   let current = null;
 
-  const plain = title => title.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
-  const shown = b => b.status === "live" || b.status === "scheduled";
-  const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-  const pad = n => String(n).padStart(2, "0");
-
-  // 公開日時は日本時間で扱う（端末のタイムゾーンに左右されない）
-  function jstParts(date) {
-    const j = new Date(date.getTime() + 9 * 3600 * 1000);
+  // ── 日時（いつも日本時間で表示・入力する）──
+  function jst(date) {
+    const j = new Date(date.getTime() + 9 * 3600e3);
     return { y: j.getUTCFullYear(), m: j.getUTCMonth() + 1, d: j.getUTCDate(), h: j.getUTCHours(), mi: j.getUTCMinutes() };
   }
-  function toLocalInput(date) {
-    const p = jstParts(date);
-    return `${p.y}-${pad(p.m)}-${pad(p.d)}T${pad(p.h)}:${pad(p.mi)}`;
-  }
-  function fromLocalInput(value) {
-    return new Date(value + ":00+09:00");
-  }
+  const toInput = date => { const p = jst(date); return `${p.y}-${pad(p.m)}-${pad(p.d)}T${pad(p.h)}:${pad(p.mi)}`; };
+  const fromInput = v => new Date(v + ":00+09:00");
   function label(date) {
-    const p = jstParts(date);
+    const p = jst(date);
     const w = "日月火水木金土"[new Date(Date.UTC(p.y, p.m - 1, p.d)).getUTCDay()];
     return `${p.m}/${p.d}（${w}）${pad(p.h)}:${pad(p.mi)}`;
   }
+  function untilText(date) {
+    let min = Math.round((date - Date.now()) / 60000);
+    if (min <= 0) return "まもなく表示";
+    const d = Math.floor(min / 1440); min -= d * 1440;
+    const h = Math.floor(min / 60); min -= h * 60;
+    return "あと " + (d ? `${d}日 ` : "") + (d || h ? `${h}時間` : `${min}分`);
+  }
   function defaultTime() {
-    const now = new Date();
-    const p = jstParts(now);
+    const now = new Date(); const p = jst(now);
     let t = new Date(`${p.y}-${pad(p.m)}-${pad(p.d)}T18:00:00+09:00`);
-    if (t.getTime() <= now.getTime() + 10 * 60 * 1000) t = new Date(t.getTime() + 24 * 3600 * 1000);
+    if (t - now < 10 * 60e3) t = new Date(t.getTime() + 864e5);
     return t;
   }
 
-  // ページに出すために必要な項目（tools/hub_data.py の validate と同じ考え方）
+  // ── 特典の情報 ──
+  const order = () => doc.bonuses.filter(shown);
+  const numberOf = b => order().indexOf(b) + 1;
+  const lpUrl = b => doc.base_url + b.slug + "/";
+  const adminNo = b => (b.slug.match(/^no(\d+)/) || [])[1];
+
   function missing(b) {
     const lack = [];
-    const need = { category: "カテゴリ", title: "タイトル", description: "説明文", image: "サムネ", accent: "色", source_video: "動画の文言" };
+    if (!b.source_thumbnail && !LEGACY_WITHOUT_VIDEO_COVER.includes(b.slug)) lack.push("動画の表紙");
+    else if (b.source_thumbnail && (b.source_video || "").split("\n").filter(s => s.trim()).length !== 3) lack.push("表紙の3行の文字");
+    const need = { title: "見出し", description: "説明文", image: "特典ページの画像", category: "カテゴリ", accent: "色" };
     for (const [k, name] of Object.entries(need)) if (!b[k] || !String(b[k]).trim()) lack.push(name);
     if (!b.tags || !b.tags.length) lack.push("タグ");
-    if (!LEGACY_WITHOUT_VIDEO_COVER.includes(b.slug)) {
-      if (!b.source_thumbnail) lack.push("動画の表紙");
-      else if ((b.source_video || "").split("\n").filter(s => s.trim()).length !== 3) lack.push("動画の文言3行");
-    }
+    if (lpState[b.slug] === "down") lack.unshift("特典ページの公開");
     return lack;
   }
 
-  function order() {
-    return doc.bonuses.filter(shown);
-  }
-  function numberOf(b) {
-    return order().indexOf(b) + 1;
+  function cover(b, cls = "cover") {
+    const src = b.source_thumbnail || (LEGACY_WITHOUT_VIDEO_COVER.includes(b.slug) ? b.image : "");
+    return src
+      ? `<img class="${cls}" src="${esc(src)}" alt="" loading="lazy">`
+      : `<div class="nocover">動画の表紙なし</div>`;
   }
 
-  function thumb(b) {
-    const src = b.source_thumbnail || b.image;
-    return src ? `<img class="thumb" src="${esc(src)}" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'thumb',textContent:'画像なし'}))">`
-               : `<div class="thumb">画像なし</div>`;
+  function ids(b) {
+    const out = [`<span class="id">管理#${esc(adminNo(b))}</span>`];
+    if (b.source_video_no) out.push(`<span class="id">台本No${esc(b.source_video_no)}</span>`);
+    if (b.category) out.push(`<span class="id">${esc(b.category)}</span>`);
+    return `<div class="ids">${out.join("")}</div>`;
+  }
+
+  function lpLink(b) {
+    const s = lpState[b.slug] || "unknown";
+    const text = { up: "公開済み", down: "未公開", unknown: "確認中…" }[s];
+    return `<a class="lp" href="${esc(lpUrl(b))}" target="_blank" rel="noopener">
+      ${b.image ? `<img src="${esc(b.image)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">` : `<span></span>`}
+      <span><u>特典ページを開く</u><span class="dot ${s}">${text}</span></span>
+    </a>`;
+  }
+
+  function card(b, foot) {
+    return `<article class="bonus">
+      ${cover(b)}
+      <div>
+        ${ids(b)}
+        <h3>${esc(plain(b.title))}</h3>
+        ${lpLink(b)}
+      </div>
+      <div class="foot">${foot}</div>
+    </article>`;
+  }
+
+  function groups() {
+    const drafts = doc.bonuses.filter(b => b.status === "draft");
+    return {
+      ready: drafts.filter(b => !missing(b).length),
+      scheduled: doc.bonuses.filter(b => b.status === "scheduled")
+        .sort((a, b) => new Date(a.publish_at) - new Date(b.publish_at)),
+      prep: drafts.filter(b => missing(b).length),
+      live: order()
+    };
+  }
+
+  function renderNext(g) {
+    const up = g.scheduled.filter(b => new Date(b.publish_at) > Date.now());
+    const b = up[0];
+    $("next").innerHTML = b ? `<div class="next">
+        ${cover(b)}
+        <div>
+          <div class="next-label">次に出る特典</div>
+          <div class="next-when">${label(new Date(b.publish_at))}</div>
+          <span class="next-left">${untilText(new Date(b.publish_at))}</span>
+          <div class="next-title">${esc(plain(b.title))}</div>
+          <span class="next-no">特典${pad(numberOf(b))}として掲載</span>
+        </div>
+      </div>`
+      : `<div class="next-none">予約はありません<small>「出せる」から特典を選ぶと、ここに次の予定が出ます</small></div>`;
+  }
+
+  function renderPanel(g) {
+    const p = $("panel");
+    if (tab === "ready") {
+      p.innerHTML = `<p class="lead">動画の表紙と特典ページがそろっている特典です。日時と番号を決めて出せます。</p>` +
+        (g.ready.length ? `<div class="stack">${g.ready.map(b => card(b,
+          `<button class="btn go" data-open="${esc(b.slug)}">日時と番号を決める</button>`)).join("")}</div>`
+          : `<div class="empty">今すぐ出せる特典はありません。<br>準備中の特典はClaudeに仕上げを頼んでください。</div>`);
+    } else if (tab === "scheduled") {
+      p.innerHTML = `<p class="lead">決めた時刻ちょうどにまとめページへ表示されます。</p>` +
+        (g.scheduled.length ? `<div class="stack">${g.scheduled.map(b => {
+          const at = new Date(b.publish_at);
+          const shownNow = at <= Date.now();
+          return card(b, `<div class="when"><span>${shownNow ? "表示中" : label(at)}</span><span>特典${pad(numberOf(b))}</span></div>
+            ${shownNow ? "" : `<button class="btn sub" data-open="${esc(b.slug)}">日時・番号を変える／やめる</button>`}`);
+        }).join("")}</div>` : `<div class="empty">予約はありません。</div>`);
+    } else if (tab === "prep") {
+      // 台本Noがあるもの＝動画と一緒に作っている途中。ないもの＝動画を作らずに残っている特典ページ
+      const active = g.prep.filter(b => b.source_video_no).sort((a, b) => adminNo(b) - adminNo(a));
+      const old = g.prep.filter(b => !b.source_video_no);
+      p.innerHTML = `<p class="lead">まだ出せない特典です。足りないものがそろうと「出せる」に移ります。</p>` +
+        (active.length ? `<div class="stack">${active.map(b => card(b,
+          `<div class="need"><b>足りないもの</b>${esc(missing(b).join("、"))}</div>`)).join("")}</div>`
+          : `<div class="empty">動画と一緒に準備中の特典はありません。</div>`) +
+        (old.length ? `<details class="old"><summary>動画がまだない特典ページ（${old.length}本）</summary>
+          <p class="lead">特典ページだけ先に作ってあるものです。対応する動画の表紙が登録されると出せるようになります。</p>
+          ${old.map(b => `<a class="row" href="${esc(lpUrl(b))}" target="_blank" rel="noopener">
+            ${b.image ? `<img src="${esc(b.image)}" alt="" loading="lazy">` : `<span></span>`}
+            <span><small>管理#${esc(adminNo(b))}</small>${esc(plain(b.title))}</span></a>`).join("")}
+        </details>` : "");
+    } else {
+      const now = Date.now();
+      p.innerHTML = `<p class="lead">まとめページに並んでいる順です。タップで特典ページを開きます。</p>
+        <div class="shelf">${g.live.map((b, i) => {
+          const soon = b.status === "scheduled" && new Date(b.publish_at) > now;
+          const src = b.source_thumbnail || b.image;
+          return `<a href="${esc(lpUrl(b))}" target="_blank" rel="noopener">
+            <div class="frame">${src ? `<img src="${esc(src)}" alt="" loading="lazy">` : `<div class="noimg">画像なし</div>`}
+            <span class="no${soon ? " soon" : ""}">${pad(i + 1)}${soon ? " 予約" : ""}</span></div>
+            <p>${esc(plain(b.title))}</p></a>`;
+        }).join("")}</div>`;
+    }
+    p.querySelectorAll("[data-open]").forEach(el => el.addEventListener("click", () => openSheet(el.dataset.open)));
   }
 
   function render() {
-    const now = Date.now();
-    const scheduled = doc.bonuses.filter(b => b.status === "scheduled");
-    const drafts = doc.bonuses.filter(b => b.status === "draft");
-    const ready = drafts.filter(b => !missing(b).length);
-    const notReady = drafts.filter(b => missing(b).length);
-    const live = doc.bonuses.filter(b => b.status === "live");
-
-    $("scheduledCount").textContent = `${scheduled.length}本`;
-    $("scheduled").innerHTML = scheduled.length ? scheduled.map(b => {
-      const at = new Date(b.publish_at);
-      const due = at.getTime() <= now;
-      return `<button class="item" data-slug="${esc(b.slug)}">
-        ${thumb(b)}
-        <span><span class="name">${esc(plain(b.title))}</span>
-        <span class="meta">${due ? "表示中（記録の更新待ち）" : label(at) + " に公開"}</span></span>
-        <span class="badge wait">特典${pad(numberOf(b))}</span>
-      </button>`;
-    }).join("") : `<p class="empty">予約はありません</p>`;
-
-    $("readyCount").textContent = `${ready.length}本`;
-    $("ready").innerHTML = ready.length ? ready.map(b => `<button class="item" data-slug="${esc(b.slug)}">
-        ${thumb(b)}
-        <span><span class="name">${esc(plain(b.title))}</span>
-        <span class="meta">${esc((b.source_video || "").replace(/\n/g, " / "))}</span></span>
-        <span class="badge">選ぶ</span>
-      </button>`).join("") : `<p class="empty">すぐ出せる下書きはありません</p>`;
-
-    $("notReadyWrap").hidden = !notReady.length;
-    $("notReady").innerHTML = notReady.map(b => `<div class="item">
-        ${thumb(b)}
-        <span><span class="name">${esc(plain(b.title))}</span>
-        <span class="meta">足りないもの：${esc(missing(b).join("・"))}</span></span>
-        <span></span>
-      </div>`).join("");
-
-    const visible = order().filter(b => b.status === "live" || new Date(b.publish_at).getTime() <= now);
-    $("liveCount").textContent = `${visible.length}本`;
-    $("live").innerHTML = order().map((b, i) => `<div class="live-row"><b>${pad(i + 1)}</b>
-      <span>${esc(plain(b.title))}${b.status === "scheduled" ? "（予約中）" : ""}</span></div>`).join("");
-
-    document.querySelectorAll("button.item").forEach(el => el.addEventListener("click", () => open(el.dataset.slug)));
+    const g = groups();
+    $("nReady").textContent = g.ready.length;
+    $("nScheduled").textContent = g.scheduled.length;
+    $("nPrep").textContent = g.prep.length;
+    $("nLive").textContent = g.live.filter(b => b.status === "live" || new Date(b.publish_at) <= Date.now()).length;
+    if (!tab) tab = g.ready.length ? "ready" : g.scheduled.length ? "scheduled" : "live";
+    document.querySelectorAll(".tab").forEach(t => t.setAttribute("aria-selected", String(t.dataset.tab === tab)));
+    renderNext(g);
+    renderPanel(g);
   }
 
+  document.querySelectorAll(".tab").forEach(t => t.addEventListener("click", () => { tab = t.dataset.tab; render(); }));
+
+  // 特典ページが公開済みかを確かめる（同じサイト内なので直接見られる）
+  async function checkPages() {
+    await Promise.all(doc.bonuses.filter(b => b.status !== "live").map(async b => {
+      try {
+        const r = await fetch(`../${b.slug}/`, { method: "HEAD", cache: "no-store" });
+        lpState[b.slug] = r.ok ? "up" : r.status === 404 ? "down" : "unknown";
+      } catch (e) { lpState[b.slug] = "unknown"; }
+    }));
+    doc.bonuses.filter(b => b.status === "live").forEach(b => { lpState[b.slug] = "up"; });
+    render();
+  }
+
+  // ── 予約シート ──
   function issueUrl(title, fields) {
     const body = [
       "緑のボタン（Create / Submit new issue）を押すと、まとめページに反映されます。",
-      "下の4行は書き換えないでください。",
+      "下の行は書き換えないでください。",
       "",
       ...Object.entries(fields).map(([k, v]) => `${k}: ${v}`)
     ].join("\n");
     return `https://github.com/${REPO}/issues/new?title=${encodeURIComponent("[まとめ操作] " + title)}&body=${encodeURIComponent(body)}`;
   }
 
-  function open(slug) {
+  function openSheet(slug) {
     current = doc.bonuses.find(b => b.slug === slug);
     const isScheduled = current.status === "scheduled";
-    $("sheetTitle").textContent = plain(current.title);
-    $("sheetSub").textContent = isScheduled
-      ? `いまの予約：${label(new Date(current.publish_at))}・特典${pad(numberOf(current))}`
-      : (current.source_video || "").replace(/\n/g, " / ");
+    $("sheetHead").innerHTML = `${cover(current)}<div><h3 id="sheetTitle">${esc(plain(current.title))}</h3>
+      <p>${isScheduled ? `いまの予約：${label(new Date(current.publish_at))}・特典${pad(numberOf(current))}` : `管理#${esc(adminNo(current))}${current.source_video_no ? `・台本No${esc(current.source_video_no)}` : ""}`}</p></div>`;
     $("form").elements.when.value = "schedule";
     const at = isScheduled ? new Date(current.publish_at) : defaultTime();
-    $("at").value = toLocalInput(at < new Date() ? defaultTime() : at);
-    $("at").min = toLocalInput(new Date());
+    $("at").value = toInput(at < new Date() ? defaultTime() : at);
+    $("at").min = toInput(new Date());
     $("number").value = isScheduled ? numberOf(current) : order().length + 1;
     $("cancelSchedule").hidden = !isScheduled;
-    $("cancelSchedule").href = isScheduled
-      ? issueUrl(`予約取消 ${plain(current.title)}`, { action: "cancel", slug: current.slug })
-      : "#";
+    if (isScheduled) $("cancelSchedule").href = issueUrl(`予約取消 ${plain(current.title)}`, { action: "cancel", slug: current.slug });
     update();
     $("sheet").showModal();
   }
@@ -329,28 +476,28 @@
     const when = $("form").elements.when.value;
     $("atField").hidden = when === "now";
     const name = plain(current.title);
-    const inOrder = order().filter(b => b !== current);
-    const max = inOrder.length + 1;
+    const others = order().filter(b => b !== current);
+    const max = others.length + 1;
     $("number").max = max;
     let n = parseInt($("number").value, 10);
-    const validNumber = n >= 1;
+    const okNumber = n >= 1;
     if (n > max) n = max;
-    $("numberHint").textContent = `いまの最後は特典${pad(inOrder.length)}。そのまま後ろに足すなら ${max}`;
+    $("numberHint").textContent = others.length
+      ? `いまの最後は特典${pad(others.length)}「${plain(others[others.length - 1].title)}」。最後に足すなら ${max}`
+      : "最初の1本です";
 
-    const at = fromLocalInput($("at").value || "");
-    const validAt = when === "now" || (!isNaN(at) && at.getTime() > Date.now());
-    const ok = validNumber && validAt;
+    const at = fromInput($("at").value || "");
+    const okAt = when === "now" || (!isNaN(at) && at > Date.now());
+    const ok = okNumber && okAt;
+    $("confirm").innerHTML = !okAt ? `<span class="err">公開日時を今より後にしてください</span>`
+      : !okNumber ? `<span class="err">番号を入れてください</span>`
+      : when === "now" ? `今すぐ、<b>特典${pad(n)}</b> としてまとめページに出します`
+      : `<b>${label(at)}</b> に、<b>特典${pad(n)}</b> としてまとめページに出します`;
 
-    $("summary").innerHTML = !validAt ? `<span class="error">公開日時を今より後にしてください</span>`
-      : !validNumber ? `<span class="error">掲載番号を入れてください</span>`
-      : when === "now"
-        ? `「${esc(name)}」を <b>今すぐ</b>、<b>特典${pad(n)}</b> として出します`
-        : `「${esc(name)}」を <b>${label(at)}</b> に、<b>特典${pad(n)}</b> として出します`;
-
-    const shifted = inOrder.slice(n - 1);
+    const shifted = others.slice(n - 1);
     $("warn").hidden = !(ok && shifted.length);
     $("warn").textContent = shifted.length
-      ? `特典${pad(n)}以降の${shifted.length}本の番号が1つずつ後ろにずれます。DMなどで番号を案内していたら直す必要があります。`
+      ? `いまの特典${pad(n)}「${plain(shifted[0].title)}」から後ろの${shifted.length}本は、番号が1つずつ後ろにずれます。DMなどで番号を案内していたら直してください。`
       : "";
 
     const send = $("send");
@@ -358,16 +505,11 @@
       const fields = when === "now"
         ? { action: "now", slug: current.slug, number: n }
         : { action: "schedule", slug: current.slug, publish_at: $("at").value, number: n };
-      const title = when === "now" ? `今すぐ公開 ${name}（特典${pad(n)}）` : `予約 ${name} → ${label(at)}（特典${pad(n)}）`;
-      send.href = issueUrl(title, fields);
+      send.href = issueUrl(when === "now" ? `今すぐ公開 ${name}（特典${pad(n)}）` : `予約 ${name} → ${label(at)}（特典${pad(n)}）`, fields);
       send.removeAttribute("aria-disabled");
-      send.style.pointerEvents = "";
-      send.style.opacity = "";
     } else {
       send.removeAttribute("href");
       send.setAttribute("aria-disabled", "true");
-      send.style.pointerEvents = "none";
-      send.style.opacity = ".45";
     }
   }
 
@@ -379,35 +521,37 @@
     setTimeout(load, 60000);
   }));
 
+  // ── 読み込み ──
   async function load() {
-    $("loadStatus").textContent = "読み込み中…";
+    $("loadState").textContent = "読み込み中…";
     try {
-      // GitHub上の最新（数秒前に反映した操作も含む）を直接読む。だめならページと一緒に公開されているものを使う
-      let res = await fetch(`${API}/contents/bonuses.json?ref=main&t=${Date.now()}`, { headers: { Accept: "application/vnd.github.raw+json" }, cache: "no-store" });
-      if (!res.ok) res = await fetch(`bonuses.json?t=${Date.now()}`, { cache: "no-store" });
-      if (!res.ok) throw new Error(res.status);
-      doc = await res.json();
+      // GitHub上の最新を直接読む。だめならページと一緒に公開されているものを使う
+      let r = await fetch(`${API}/contents/bonuses.json?ref=main&t=${Date.now()}`, { headers: { Accept: "application/vnd.github.raw+json" }, cache: "no-store" });
+      if (!r.ok) r = await fetch(`bonuses.json?t=${Date.now()}`, { cache: "no-store" });
+      if (!r.ok) throw new Error(r.status);
+      doc = await r.json();
       render();
-      $("loadStatus").textContent = `最新の状態（${label(new Date())} 時点）`;
+      checkPages();
+      $("loadState").textContent = `${label(new Date())} 時点の状態です`;
     } catch (e) {
-      $("loadStatus").innerHTML = `<span class="error">読み込めませんでした。少し待って再読み込みしてください。</span>`;
+      $("loadState").innerHTML = `<span class="err">読み込めませんでした。電波のよい所で「最新にする」を押してください。</span>`;
     }
   }
 
   async function loadLog() {
     try {
-      const res = await fetch(`${API}/issues?state=all&per_page=30&t=${Date.now()}`, { cache: "no-store" });
-      const issues = (await res.json()).filter(i => i.title.startsWith("[まとめ操作]") && !i.pull_request).slice(0, 8);
-      $("log").innerHTML = issues.length ? issues.map(i => {
+      const r = await fetch(`${API}/issues?state=all&per_page=30&t=${Date.now()}`, { cache: "no-store" });
+      const items = (await r.json()).filter(i => i.title.startsWith("[まとめ操作]") && !i.pull_request).slice(0, 8);
+      $("log").innerHTML = items.length ? items.map(i => {
         const mark = i.state === "open" ? "⏳" : i.state_reason === "completed" ? "✅" : "❌";
         return `<a href="${esc(i.html_url)}" target="_blank" rel="noopener"><span>${mark}</span><span>${esc(i.title.replace("[まとめ操作] ", ""))}</span></a>`;
-      }).join("") : `<p class="empty">まだ操作はありません</p>`;
+      }).join("") : `<p class="state">まだ操作はありません</p>`;
     } catch (e) {
-      $("log").innerHTML = `<p class="empty">読み込めませんでした</p>`;
+      $("log").innerHTML = `<p class="state">操作の履歴を読み込めませんでした</p>`;
     }
   }
 
-  $("reload").addEventListener("click", e => { e.preventDefault(); load(); loadLog(); });
+  $("reload").addEventListener("click", () => { load(); loadLog(); });
   load();
   loadLog();
 </script>

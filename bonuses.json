@@ -697,6 +697,59 @@
       "source_thumbnail": "assets/video-thumbs/no40.png",
       "source_thumbnail_sha256": "fedbac828aab10bc2403b607ff35db04c87a3f36ae476f061fcf4a064acab0b5",
       "published_url": "https://smitch-ai-works.github.io/no40-ai-motion-video/"
+    },
+    {
+      "id": 39,
+      "slug": "no39-ai-web-production",
+      "status": "draft",
+      "publish_at": null,
+      "category": "AIサイト制作",
+      "title": "AIサイト制作<br>スタートキット",
+      "description": "一発出しを狙う指示の設計、動く3D作例、店舗紹介LP、制作提案と納品の準備まで。",
+      "tags": [
+        "Codex",
+        "GPT-6.1 Sol",
+        "サイト制作"
+      ],
+      "image": "assets/preview-ai-v1/no39.jpg",
+      "accent": "#536655",
+      "source_video": "ChatGPT-6\nたった1回指示で\nこれ作れます",
+      "source_thumbnail": "assets/video-thumbs/no39.png",
+      "source_canva_page": 54,
+      "source_video_no": 166
+    },
+    {
+      "id": 41,
+      "slug": "no41-ai-puzzle",
+      "status": "draft",
+      "publish_at": null,
+      "category": "AIグッズ制作",
+      "title": "AIパズル制作キット",
+      "description": "ChatGPTでテーマと絵を作り、Printifyでパズルの商品準備へ。実画面・4つの指示文・印刷と販売前のチェック。",
+      "tags": [
+        "ChatGPT",
+        "Printify",
+        "パズル制作"
+      ],
+      "image": "assets/preview-ai-v1/no41.jpg",
+      "accent": "#52644B",
+      "source_video": "在庫なしでOK\nChatGPTで作る\nパズル販売",
+      "source_video_no": 168
+    },
+    {
+      "id": 42,
+      "slug": "no42-claude-code-image",
+      "status": "draft",
+      "publish_at": null,
+      "title": "Claude Code 画像生成スタートガイド",
+      "description": "Claude Codeから画像を作って保存。プラグインの導入、コピーできるコマンド・指示文と、カフェの実出力をまとめました。",
+      "tags": [
+        "Claude Code",
+        "Codex",
+        "画像生成"
+      ],
+      "image": "assets/preview-ai-v1/no42.jpg",
+      "source_video_no": 169
     }
   ]
 }
