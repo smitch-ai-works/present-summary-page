@@ -108,8 +108,44 @@ def push(root=ROOT, message=None):
     subprocess.run(["git", "add", "-A"], cwd=root, check=True)
     subprocess.run(["git", "commit", "-m", message or "ハブページを更新"],
                     cwd=root, check=True)
+    # 管理ページ（admin.html）経由の操作や毎時の公開でGitHub側が先に進んでいることがある
+    subprocess.run(["git", "pull", "--rebase", "origin", "main"], cwd=root, check=True)
     subprocess.run(["git", "push", "origin", "main"], cwd=root, check=True)
     return r.stdout
+
+
+def shown(b):
+    """ページに載る（または予約時刻に載る）ものか。掲載番号はこの並びで数える。"""
+    return b["status"] in ("live", "scheduled")
+
+
+def move_to_number(doc, b, number):
+    """b を「特典 number」の位置へ動かす。number が末尾より大きければ末尾に付ける。"""
+    items = doc["bonuses"]
+    items.remove(b)
+    rest = [x for x in items if shown(x)]
+    if number <= len(rest):
+        items.insert(items.index(rest[number - 1]), b)
+    elif rest:
+        items.insert(items.index(rest[-1]) + 1, b)
+    else:
+        items.insert(0, b)
+
+
+def card(doc, b, number):
+    return {
+        "number": f"{number:02d}",
+        "category": b["category"],
+        "title": b["title"],
+        "plainTitle": plain_title(b["title"]),
+        "description": b["description"],
+        "sourceVideo": b["source_video"],
+        "sourceThumbnail": b.get("source_thumbnail", ""),
+        "tags": b["tags"],
+        "url": doc["base_url"] + b["slug"] + "/",
+        "image": b["image"],
+        "accent": b["accent"],
+    }
 
 
 def live_cards(doc):
@@ -122,17 +158,23 @@ def live_cards(doc):
     for b in doc["bonuses"]:
         if b["status"] != "live":
             continue
-        cards.append({
-            "number": f"{len(cards) + 1:02d}",
-            "category": b["category"],
-            "title": b["title"],
-            "plainTitle": plain_title(b["title"]),
-            "description": b["description"],
-            "sourceVideo": b["source_video"],
-            "sourceThumbnail": b.get("source_thumbnail", ""),
-            "tags": b["tags"],
-            "url": doc["base_url"] + b["slug"] + "/",
-            "image": b["image"],
-            "accent": b["accent"],
-        })
+        cards.append(card(doc, b, len(cards) + 1))
+    return cards
+
+
+def page_cards(doc):
+    """index.html に埋め込む配列。live に加えて scheduled も publishAt 付きで入れる。
+
+    scheduled はページ側の revealDue() が publishAt を過ぎるまで隠すので、
+    GitHub Actions の起動が遅れても予約時刻ちょうどに表示される。
+    number はページ側で表示中のものだけ数え直す。
+    """
+    cards = []
+    for b in doc["bonuses"]:
+        if not shown(b):
+            continue
+        c = card(doc, b, len(cards) + 1)
+        if b["status"] == "scheduled":
+            c["publishAt"] = int(parse_at(b["publish_at"]).timestamp() * 1000)
+        cards.append(c)
     return cards

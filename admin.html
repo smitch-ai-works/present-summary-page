@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#2E5D50">
+  <title>特典まとめ 管理</title>
+  <style>
+    :root {
+      --teal: #2E5D50;
+      --teal-dark: #173B32;
+      --charcoal: #323836;
+      --beige: #DDC9A8;
+      --paper: #F7F5F0;
+      --white: #FFFFFF;
+      --muted: #6B7471;
+      --line: rgba(46, 93, 80, .15);
+      --warn: #9A5B12;
+      --warn-bg: #FBF1E2;
+      --danger: #A23B32;
+      --radius: 18px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--charcoal);
+      background: var(--paper);
+      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", system-ui, -apple-system, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+    main { max-width: 720px; margin: 0 auto; padding: 20px 16px 80px; }
+    header { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+    h1 { font-size: 20px; margin: 0; color: var(--teal-dark); }
+    header a { font-size: 13px; color: var(--teal); white-space: nowrap; }
+    .how {
+      background: var(--white); border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 12px 16px; font-size: 13px; color: var(--muted); margin-bottom: 22px;
+    }
+    .how ol { margin: 4px 0 0; padding-left: 20px; }
+    h2 { font-size: 15px; margin: 26px 0 10px; color: var(--teal-dark); display: flex; align-items: baseline; gap: 8px; }
+    h2 small { font-size: 12px; color: var(--muted); font-weight: normal; }
+    .list { display: grid; gap: 10px; }
+    .item {
+      display: grid; grid-template-columns: 54px 1fr auto; gap: 12px; align-items: center;
+      background: var(--white); border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 10px 12px; width: 100%; text-align: left; font: inherit; color: inherit;
+    }
+    button.item { cursor: pointer; }
+    button.item:hover { border-color: var(--teal); }
+    .thumb {
+      width: 54px; height: 72px; border-radius: 8px; object-fit: cover; background: #E9E5DC;
+      display: grid; place-items: center; font-size: 11px; color: var(--muted);
+    }
+    .item .name { font-weight: bold; font-size: 14px; line-height: 1.45; overflow-wrap: anywhere; }
+    .item .meta { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .badge {
+      font-size: 12px; font-weight: bold; padding: 4px 10px; border-radius: 999px; white-space: nowrap;
+      background: rgba(46, 93, 80, .1); color: var(--teal);
+    }
+    .badge.wait { background: var(--warn-bg); color: var(--warn); }
+    .live-row {
+      display: grid; grid-template-columns: 44px 1fr; gap: 8px; font-size: 13px;
+      padding: 7px 4px; border-bottom: 1px solid var(--line);
+    }
+    .live-row b { color: var(--teal); }
+    details summary { cursor: pointer; font-size: 13px; color: var(--teal); margin: 6px 0; }
+    .empty { font-size: 13px; color: var(--muted); padding: 4px 2px; }
+    .log { font-size: 13px; display: grid; gap: 6px; }
+    .log a { color: inherit; text-decoration: none; display: grid; grid-template-columns: 22px 1fr; gap: 6px; }
+    .log a:hover span:last-child { text-decoration: underline; }
+    .status-line { font-size: 13px; color: var(--muted); }
+    .error { color: var(--danger); }
+
+    dialog {
+      border: none; border-radius: 22px 22px 0 0; padding: 0; width: 100%; max-width: 720px;
+      margin: auto auto 0; max-height: 92vh; color: var(--charcoal); background: var(--white);
+    }
+    dialog::backdrop { background: rgba(23, 59, 50, .45); }
+    @media (min-width: 721px) { dialog { border-radius: 22px; margin: auto; } }
+    .sheet { padding: 20px 16px 22px; }
+    .sheet h3 { margin: 0 0 4px; font-size: 17px; line-height: 1.45; }
+    .sheet .sub { font-size: 12px; color: var(--muted); margin-bottom: 16px; }
+    .field { margin: 16px 0; }
+    .field > label, .field > .label { display: block; font-size: 13px; font-weight: bold; margin-bottom: 6px; }
+    .seg { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .seg label {
+      border: 1.5px solid var(--line); border-radius: 12px; padding: 11px 8px; text-align: center;
+      font-size: 14px; cursor: pointer;
+    }
+    .seg input { position: absolute; opacity: 0; pointer-events: none; }
+    .seg label:has(input:checked) { border-color: var(--teal); background: rgba(46, 93, 80, .08); color: var(--teal-dark); font-weight: bold; }
+    input[type="datetime-local"], input[type="number"] {
+      width: 100%; font: inherit; font-size: 16px; padding: 11px 12px; border-radius: 12px;
+      border: 1.5px solid var(--line); background: var(--paper); color: inherit;
+    }
+    .hint { font-size: 12px; color: var(--muted); margin-top: 5px; }
+    .summary {
+      background: rgba(46, 93, 80, .07); border-radius: 12px; padding: 12px 14px; font-size: 14px; margin: 18px 0 6px;
+    }
+    .warn { background: var(--warn-bg); color: var(--warn); border-radius: 12px; padding: 10px 12px; font-size: 13px; margin-top: 8px; }
+    .actions { display: grid; gap: 10px; margin-top: 16px; }
+    .btn {
+      display: block; width: 100%; text-align: center; font: inherit; font-size: 15px; font-weight: bold;
+      padding: 14px; border-radius: 14px; border: none; cursor: pointer; text-decoration: none;
+    }
+    .btn.primary { background: var(--teal); color: var(--white); }
+    .btn.ghost { background: transparent; color: var(--muted); border: 1.5px solid var(--line); }
+    .btn.danger { background: transparent; color: var(--danger); border: 1.5px solid rgba(162, 59, 50, .35); }
+    .btn[disabled] { opacity: .45; cursor: not-allowed; }
+    .after { font-size: 13px; color: var(--muted); text-align: center; }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>特典まとめ 管理</h1>
+    <a href="./" target="_blank" rel="noopener">まとめページを開く →</a>
+  </header>
+
+  <div class="how">
+    使い方
+    <ol>
+      <li>出したい特典を選んで、日時と掲載番号を決める</li>
+      <li>「GitHubで確定する」→ 開いた画面の緑のボタン（Create）を押す</li>
+      <li>1分ほどで下の「最近の操作」に結果が出る。予約した特典はその時刻ちょうどにまとめページに出ます</li>
+    </ol>
+  </div>
+
+  <p class="status-line" id="loadStatus">読み込み中…</p>
+
+  <h2>予約中 <small id="scheduledCount"></small></h2>
+  <div class="list" id="scheduled"></div>
+
+  <h2>出せる特典（下書き） <small id="readyCount"></small></h2>
+  <div class="list" id="ready"></div>
+  <details id="notReadyWrap" hidden>
+    <summary>準備中の下書き（画像や文言が足りないもの）</summary>
+    <div class="list" id="notReady"></div>
+  </details>
+
+  <h2>公開中 <small id="liveCount"></small></h2>
+  <details>
+    <summary>一覧を見る</summary>
+    <div id="live"></div>
+  </details>
+
+  <h2>最近の操作 <small><a href="#" id="reload">更新</a></small></h2>
+  <div class="log" id="log"><p class="empty">読み込み中…</p></div>
+</main>
+
+<dialog id="sheet">
+  <form class="sheet" method="dialog" id="form">
+    <h3 id="sheetTitle"></h3>
+    <div class="sub" id="sheetSub"></div>
+
+    <div class="field">
+      <span class="label">いつ出す？</span>
+      <div class="seg">
+        <label><input type="radio" name="when" value="schedule" checked>日時を指定</label>
+        <label><input type="radio" name="when" value="now">今すぐ</label>
+      </div>
+    </div>
+
+    <div class="field" id="atField">
+      <label for="at">公開日時（日本時間）</label>
+      <input type="datetime-local" id="at" step="60" required>
+    </div>
+
+    <div class="field">
+      <label for="number">掲載番号（特典○○）</label>
+      <input type="number" id="number" min="1" inputmode="numeric" required>
+      <div class="hint" id="numberHint"></div>
+    </div>
+
+    <div class="summary" id="summary"></div>
+    <div class="warn" id="warn" hidden></div>
+
+    <div class="actions">
+      <a class="btn primary" id="send" target="_blank" rel="noopener">GitHubで確定する</a>
+      <a class="btn danger" id="cancelSchedule" target="_blank" rel="noopener" hidden>この予約をやめる</a>
+      <button class="btn ghost" value="close">閉じる</button>
+    </div>
+    <p class="after">GitHubの画面で緑のボタンを押すまでは何も変わりません。</p>
+  </form>
+</dialog>
+
+<script>
+  const REPO = "smitch-ai-works/present-summary-page";
+  const API = `https://api.github.com/repos/${REPO}`;
+  const LEGACY_WITHOUT_VIDEO_COVER = ["no2-chatgpt-first-setting-info", "no3-chatgpt-palm-reading"];
+
+  const $ = id => document.getElementById(id);
+  let doc = null;
+  let current = null;
+
+  const plain = title => title.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+  const shown = b => b.status === "live" || b.status === "scheduled";
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const pad = n => String(n).padStart(2, "0");
+
+  // 公開日時は日本時間で扱う（端末のタイムゾーンに左右されない）
+  function jstParts(date) {
+    const j = new Date(date.getTime() + 9 * 3600 * 1000);
+    return { y: j.getUTCFullYear(), m: j.getUTCMonth() + 1, d: j.getUTCDate(), h: j.getUTCHours(), mi: j.getUTCMinutes() };
+  }
+  function toLocalInput(date) {
+    const p = jstParts(date);
+    return `${p.y}-${pad(p.m)}-${pad(p.d)}T${pad(p.h)}:${pad(p.mi)}`;
+  }
+  function fromLocalInput(value) {
+    return new Date(value + ":00+09:00");
+  }
+  function label(date) {
+    const p = jstParts(date);
+    const w = "日月火水木金土"[new Date(Date.UTC(p.y, p.m - 1, p.d)).getUTCDay()];
+    return `${p.m}/${p.d}（${w}）${pad(p.h)}:${pad(p.mi)}`;
+  }
+  function defaultTime() {
+    const now = new Date();
+    const p = jstParts(now);
+    let t = new Date(`${p.y}-${pad(p.m)}-${pad(p.d)}T18:00:00+09:00`);
+    if (t.getTime() <= now.getTime() + 10 * 60 * 1000) t = new Date(t.getTime() + 24 * 3600 * 1000);
+    return t;
+  }
+
+  // ページに出すために必要な項目（tools/hub_data.py の validate と同じ考え方）
+  function missing(b) {
+    const lack = [];
+    const need = { category: "カテゴリ", title: "タイトル", description: "説明文", image: "サムネ", accent: "色", source_video: "動画の文言" };
+    for (const [k, name] of Object.entries(need)) if (!b[k] || !String(b[k]).trim()) lack.push(name);
+    if (!b.tags || !b.tags.length) lack.push("タグ");
+    if (!LEGACY_WITHOUT_VIDEO_COVER.includes(b.slug)) {
+      if (!b.source_thumbnail) lack.push("動画の表紙");
+      else if ((b.source_video || "").split("\n").filter(s => s.trim()).length !== 3) lack.push("動画の文言3行");
+    }
+    return lack;
+  }
+
+  function order() {
+    return doc.bonuses.filter(shown);
+  }
+  function numberOf(b) {
+    return order().indexOf(b) + 1;
+  }
+
+  function thumb(b) {
+    const src = b.source_thumbnail || b.image;
+    return src ? `<img class="thumb" src="${esc(src)}" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'thumb',textContent:'画像なし'}))">`
+               : `<div class="thumb">画像なし</div>`;
+  }
+
+  function render() {
+    const now = Date.now();
+    const scheduled = doc.bonuses.filter(b => b.status === "scheduled");
+    const drafts = doc.bonuses.filter(b => b.status === "draft");
+    const ready = drafts.filter(b => !missing(b).length);
+    const notReady = drafts.filter(b => missing(b).length);
+    const live = doc.bonuses.filter(b => b.status === "live");
+
+    $("scheduledCount").textContent = `${scheduled.length}本`;
+    $("scheduled").innerHTML = scheduled.length ? scheduled.map(b => {
+      const at = new Date(b.publish_at);
+      const due = at.getTime() <= now;
+      return `<button class="item" data-slug="${esc(b.slug)}">
+        ${thumb(b)}
+        <span><span class="name">${esc(plain(b.title))}</span>
+        <span class="meta">${due ? "表示中（記録の更新待ち）" : label(at) + " に公開"}</span></span>
+        <span class="badge wait">特典${pad(numberOf(b))}</span>
+      </button>`;
+    }).join("") : `<p class="empty">予約はありません</p>`;
+
+    $("readyCount").textContent = `${ready.length}本`;
+    $("ready").innerHTML = ready.length ? ready.map(b => `<button class="item" data-slug="${esc(b.slug)}">
+        ${thumb(b)}
+        <span><span class="name">${esc(plain(b.title))}</span>
+        <span class="meta">${esc((b.source_video || "").replace(/\n/g, " / "))}</span></span>
+        <span class="badge">選ぶ</span>
+      </button>`).join("") : `<p class="empty">すぐ出せる下書きはありません</p>`;
+
+    $("notReadyWrap").hidden = !notReady.length;
+    $("notReady").innerHTML = notReady.map(b => `<div class="item">
+        ${thumb(b)}
+        <span><span class="name">${esc(plain(b.title))}</span>
+        <span class="meta">足りないもの：${esc(missing(b).join("・"))}</span></span>
+        <span></span>
+      </div>`).join("");
+
+    const visible = order().filter(b => b.status === "live" || new Date(b.publish_at).getTime() <= now);
+    $("liveCount").textContent = `${visible.length}本`;
+    $("live").innerHTML = order().map((b, i) => `<div class="live-row"><b>${pad(i + 1)}</b>
+      <span>${esc(plain(b.title))}${b.status === "scheduled" ? "（予約中）" : ""}</span></div>`).join("");
+
+    document.querySelectorAll("button.item").forEach(el => el.addEventListener("click", () => open(el.dataset.slug)));
+  }
+
+  function issueUrl(title, fields) {
+    const body = [
+      "緑のボタン（Create / Submit new issue）を押すと、まとめページに反映されます。",
+      "下の4行は書き換えないでください。",
+      "",
+      ...Object.entries(fields).map(([k, v]) => `${k}: ${v}`)
+    ].join("\n");
+    return `https://github.com/${REPO}/issues/new?title=${encodeURIComponent("[まとめ操作] " + title)}&body=${encodeURIComponent(body)}`;
+  }
+
+  function open(slug) {
+    current = doc.bonuses.find(b => b.slug === slug);
+    const isScheduled = current.status === "scheduled";
+    $("sheetTitle").textContent = plain(current.title);
+    $("sheetSub").textContent = isScheduled
+      ? `いまの予約：${label(new Date(current.publish_at))}・特典${pad(numberOf(current))}`
+      : (current.source_video || "").replace(/\n/g, " / ");
+    $("form").elements.when.value = "schedule";
+    const at = isScheduled ? new Date(current.publish_at) : defaultTime();
+    $("at").value = toLocalInput(at < new Date() ? defaultTime() : at);
+    $("at").min = toLocalInput(new Date());
+    $("number").value = isScheduled ? numberOf(current) : order().length + 1;
+    $("cancelSchedule").hidden = !isScheduled;
+    $("cancelSchedule").href = isScheduled
+      ? issueUrl(`予約取消 ${plain(current.title)}`, { action: "cancel", slug: current.slug })
+      : "#";
+    update();
+    $("sheet").showModal();
+  }
+
+  function update() {
+    const when = $("form").elements.when.value;
+    $("atField").hidden = when === "now";
+    const name = plain(current.title);
+    const inOrder = order().filter(b => b !== current);
+    const max = inOrder.length + 1;
+    $("number").max = max;
+    let n = parseInt($("number").value, 10);
+    const validNumber = n >= 1;
+    if (n > max) n = max;
+    $("numberHint").textContent = `いまの最後は特典${pad(inOrder.length)}。そのまま後ろに足すなら ${max}`;
+
+    const at = fromLocalInput($("at").value || "");
+    const validAt = when === "now" || (!isNaN(at) && at.getTime() > Date.now());
+    const ok = validNumber && validAt;
+
+    $("summary").innerHTML = !validAt ? `<span class="error">公開日時を今より後にしてください</span>`
+      : !validNumber ? `<span class="error">掲載番号を入れてください</span>`
+      : when === "now"
+        ? `「${esc(name)}」を <b>今すぐ</b>、<b>特典${pad(n)}</b> として出します`
+        : `「${esc(name)}」を <b>${label(at)}</b> に、<b>特典${pad(n)}</b> として出します`;
+
+    const shifted = inOrder.slice(n - 1);
+    $("warn").hidden = !(ok && shifted.length);
+    $("warn").textContent = shifted.length
+      ? `特典${pad(n)}以降の${shifted.length}本の番号が1つずつ後ろにずれます。DMなどで番号を案内していたら直す必要があります。`
+      : "";
+
+    const send = $("send");
+    if (ok) {
+      const fields = when === "now"
+        ? { action: "now", slug: current.slug, number: n }
+        : { action: "schedule", slug: current.slug, publish_at: $("at").value, number: n };
+      const title = when === "now" ? `今すぐ公開 ${name}（特典${pad(n)}）` : `予約 ${name} → ${label(at)}（特典${pad(n)}）`;
+      send.href = issueUrl(title, fields);
+      send.removeAttribute("aria-disabled");
+      send.style.pointerEvents = "";
+      send.style.opacity = "";
+    } else {
+      send.removeAttribute("href");
+      send.setAttribute("aria-disabled", "true");
+      send.style.pointerEvents = "none";
+      send.style.opacity = ".45";
+    }
+  }
+
+  $("form").addEventListener("input", update);
+  $("form").addEventListener("change", update);
+  [$("send"), $("cancelSchedule")].forEach(a => a.addEventListener("click", () => {
+    setTimeout(() => $("sheet").close(), 300);
+    setTimeout(loadLog, 20000);
+    setTimeout(load, 60000);
+  }));
+
+  async function load() {
+    $("loadStatus").textContent = "読み込み中…";
+    try {
+      // GitHub上の最新（数秒前に反映した操作も含む）を直接読む。だめならページと一緒に公開されているものを使う
+      let res = await fetch(`${API}/contents/bonuses.json?ref=main&t=${Date.now()}`, { headers: { Accept: "application/vnd.github.raw+json" }, cache: "no-store" });
+      if (!res.ok) res = await fetch(`bonuses.json?t=${Date.now()}`, { cache: "no-store" });
+      if (!res.ok) throw new Error(res.status);
+      doc = await res.json();
+      render();
+      $("loadStatus").textContent = `最新の状態（${label(new Date())} 時点）`;
+    } catch (e) {
+      $("loadStatus").innerHTML = `<span class="error">読み込めませんでした。少し待って再読み込みしてください。</span>`;
+    }
+  }
+
+  async function loadLog() {
+    try {
+      const res = await fetch(`${API}/issues?state=all&per_page=30&t=${Date.now()}`, { cache: "no-store" });
+      const issues = (await res.json()).filter(i => i.title.startsWith("[まとめ操作]") && !i.pull_request).slice(0, 8);
+      $("log").innerHTML = issues.length ? issues.map(i => {
+        const mark = i.state === "open" ? "⏳" : i.state_reason === "completed" ? "✅" : "❌";
+        return `<a href="${esc(i.html_url)}" target="_blank" rel="noopener"><span>${mark}</span><span>${esc(i.title.replace("[まとめ操作] ", ""))}</span></a>`;
+      }).join("") : `<p class="empty">まだ操作はありません</p>`;
+    } catch (e) {
+      $("log").innerHTML = `<p class="empty">読み込めませんでした</p>`;
+    }
+  }
+
+  $("reload").addEventListener("click", e => { e.preventDefault(); load(); loadLog(); });
+  load();
+  loadLog();
+</script>
+</body>
+</html>

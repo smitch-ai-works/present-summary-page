@@ -5,11 +5,12 @@ name: Publish scheduled bonuses
 # index.html を再生成し、差分があれば main に push する。
 # 該当がなければ何もしない（冪等）。
 #
-# GitHub Actions の schedule はもともと数分〜十数分遅れて起動する。
-# 「18:00ちょうど」は保証できず、「18:00台に出る」までが仕様上の限界。
+# GitHub Actions の schedule は大きく遅れたり間引かれたりする（実測で3〜5時間おき）。
+# 表示のタイミングはページ側の revealDue() が publish_at で決めるので、
+# ここは bonuses.json の記録を live に揃えるだけ。遅れても見え方は変わらない。
 on:
   schedule:
-    - cron: '0 * * * *'
+    - cron: '17 * * * *'
   workflow_dispatch:
 
 permissions:

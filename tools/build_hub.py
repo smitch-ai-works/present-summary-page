@@ -14,11 +14,11 @@ sys.stdout.reconfigure(encoding="utf-8")
 sys.path.insert(0, __import__("os").path.dirname(__import__("os").path.abspath(__file__)))
 import hub_data as D
 
-ARRAY_RE = r"const\s+bonuses\s*=\s*\[.*?\];"
+ARRAY_RE = r"const\s+bonuses\s*=\s*(?:revealDue\()?\[.*?\]\)?;"
 
 
 def render(doc):
-    return "const bonuses = " + json.dumps(D.live_cards(doc), ensure_ascii=False) + ";"
+    return "const bonuses = revealDue(" + json.dumps(D.page_cards(doc), ensure_ascii=False) + ");"
 
 
 def apply(html, doc):

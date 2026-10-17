@@ -1,0 +1,71 @@
+name: Apply hub command
+
+# 管理ページ（admin.html）で決めた操作を反映する。
+# 管理ページは「[まとめ操作]」で始まるIssueを本文入りで開くだけなので、
+# スマホでも GitHub にログインしていれば「Create」を押すだけで届く。トークンは使わない。
+# リポジトリ所有者が立てたIssue以外は無視する。
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: publish-hub
+  cancel-in-progress: false
+
+jobs:
+  apply:
+    if: github.event.issue.user.login == github.repository_owner && startsWith(github.event.issue.title, '[まとめ操作]')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 操作を bonuses.json に反映
+        id: apply
+        run: python tools/hub_command.py "$GITHUB_EVENT_PATH" "$RUNNER_TEMP/result.md"
+
+      - name: 予約時刻を過ぎたものを live にして index.html を再生成
+        run: |
+          python tools/publish_due.py
+          python tools/build_hub.py
+
+      - name: コミットして公開
+        env:
+          TITLE: ${{ github.event.issue.title }}
+          NUM: ${{ github.event.issue.number }}
+        run: |
+          if git diff --quiet; then
+            echo "差分なし"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add bonuses.json index.html
+          git commit -m "${TITLE#\[まとめ操作\] }（#${NUM}）"
+          git pull --rebase origin main
+          git push origin HEAD:main
+
+      - name: 結果をIssueに書いて閉じる
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          NUM: ${{ github.event.issue.number }}
+          OK: ${{ job.status == 'success' }}
+        run: |
+          f="$RUNNER_TEMP/result.md"
+          [ -s "$f" ] || echo "❌ 途中で止まりました。Actionsのログを確認してください。" > "$f"
+          gh issue comment "$NUM" --repo "$GITHUB_REPOSITORY" --body-file "$f"
+          if [ "$OK" = "true" ]; then
+            gh issue close "$NUM" --repo "$GITHUB_REPOSITORY" --reason completed
+          else
+            gh issue close "$NUM" --repo "$GITHUB_REPOSITORY" --reason "not planned"
+          fi
