@@ -7,6 +7,7 @@ GitHub Actions（hub-command.yml）が、リポジトリ所有者の立てた
 「[まとめ操作]」Issue の本文を渡して呼ぶ。本文は次の形：
 
     action: schedule        # schedule（日時を指定）/ now（今すぐ）/ cancel（予約をやめる）
+                            # archive（アーカイブにしまう）/ unarchive（アーカイブから戻す）
     slug: no40-ai-motion-video
     publish_at: 2026-10-20T18:00   # 日本時間。schedule のときだけ
     number: 29                     # 掲載番号。省略時は今の位置（未掲載なら末尾）
@@ -24,7 +25,7 @@ sys.stdout.reconfigure(encoding="utf-8")
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import hub_data as D
 
-ACTIONS = ("schedule", "now", "cancel")
+ACTIONS = ("schedule", "now", "cancel", "archive", "unarchive")
 
 
 def parse(body):
@@ -64,6 +65,24 @@ def apply(doc, f, now):
         b["publish_at"] = None
         return [f"「{name}」の公開予約を取り消しました。下書きに戻っています。"]
 
+    if action == "archive":
+        if b["status"] == "live":
+            raise ValueError(f"{name} は公開中です。公開中の特典はアーカイブにできません")
+        if b.get("archived"):
+            raise ValueError(f"{name} はもうアーカイブに入っています")
+        was_scheduled = b["status"] == "scheduled"
+        if was_scheduled:
+            b["status"] = "draft"
+            b["publish_at"] = None
+        b["archived"] = True
+        return [f"「{name}」をアーカイブにしまいました。" + ("公開予約も取り消しています。" if was_scheduled else ""),
+                "管理ページの「アーカイブ」からいつでも戻せます。"]
+
+    if action == "unarchive":
+        if not b.pop("archived", False):
+            raise ValueError(f"{name} はアーカイブに入っていません")
+        return [f"「{name}」をアーカイブから戻しました。管理ページの「出せる」か「準備中」に並びます。"]
+
     if b["status"] == "hidden":
         raise ValueError(f"{name} は非表示にした特典です。出し直すときはClaudeに頼んでください")
     if action == "schedule" and b["status"] == "live":
@@ -77,6 +96,7 @@ def apply(doc, f, now):
     elif not D.shown(b):
         D.move_to_number(doc, b, 10 ** 6)
 
+    b.pop("archived", None)  # アーカイブから直接出すときは取り出したことにする
     if action == "now":
         b["status"] = "live"
         b["publish_at"] = now.isoformat(timespec="seconds")

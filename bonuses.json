@@ -284,7 +284,8 @@
         "コマンド"
       ],
       "image": "assets/preview-ai-v1/no7.jpg",
-      "accent": "#3E4C6D"
+      "accent": "#3E4C6D",
+      "archived": true
     },
     {
       "slug": "no11-chatgpt-note",
@@ -302,7 +303,8 @@
       "accent": "#2F6E5A",
       "source_video_no": 120,
       "source_video": "ChatGPTで完結\nnoteに記事作成を\nさせたら…？",
-      "source_thumbnail": "assets/video-thumbs/no11.png"
+      "source_thumbnail": "assets/video-thumbs/no11.png",
+      "archived": true
     },
     {
       "slug": "no12-chatgpt-questions-earn",
@@ -320,7 +322,8 @@
       "accent": "#7A5C46",
       "source_video_no": 123,
       "source_video": "ChatGPTから\nｶｾげる方法を\n聞き出すと？",
-      "source_thumbnail": "assets/video-thumbs/no12.png"
+      "source_thumbnail": "assets/video-thumbs/no12.png",
+      "archived": true
     },
     {
       "slug": "no13-flow-youtube",
@@ -338,7 +341,8 @@
       "accent": "#9E4A4A",
       "source_video_no": 124,
       "source_video": "衝撃の事実\nただの女子大生が\nAIでサクッとﾌｸ業",
-      "source_thumbnail": "assets/video-thumbs/no13.png"
+      "source_thumbnail": "assets/video-thumbs/no13.png",
+      "archived": true
     },
     {
       "slug": "no15-chatgpt--palm-reading-coconala",
@@ -356,7 +360,8 @@
       "accent": "#6E5384",
       "source_video_no": 133,
       "source_video": "そろそろ気づいて\nあなたのChatGPTで\n月5ﾏｿ作れる！？",
-      "source_thumbnail": "assets/video-thumbs/no15.png"
+      "source_thumbnail": "assets/video-thumbs/no15.png",
+      "archived": true
     },
     {
       "slug": "no16-chatgpt-claude-translation-upwork",
@@ -374,7 +379,8 @@
       "accent": "#35707F",
       "source_video_no": 134,
       "source_video": "金欠でもイケる!?\n自宅の部屋から出ずに\nﾌｸ収入作る方法",
-      "source_thumbnail": "assets/video-thumbs/no16.png"
+      "source_thumbnail": "assets/video-thumbs/no16.png",
+      "archived": true
     },
     {
       "slug": "no19-ai-research-summary-upwork",
@@ -392,7 +398,8 @@
       "accent": "#4C6B4F",
       "source_video_no": 137,
       "source_video": "専門知識なしでも\nChatGPTでできる\n休日Vlog",
-      "source_thumbnail": "assets/video-thumbs/no19.png"
+      "source_thumbnail": "assets/video-thumbs/no19.png",
+      "archived": true
     },
     {
       "slug": "no22-claude-code-5-plugins",

@@ -58,16 +58,29 @@
       position: sticky; top: 0; z-index: 5; background: var(--paper);
       border-bottom: 1px solid var(--line);
     }
-    .tabs .wrap { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .tabs .wrap { display: grid; grid-template-columns: repeat(5, 1fr); }
     .tab {
       appearance: none; border: 0; background: none; font: inherit; color: var(--muted);
-      padding: 12px 2px 10px; font-size: 13px; cursor: pointer; border-bottom: 3px solid transparent;
+      padding: 12px 0 10px; font-size: 12px; cursor: pointer; border-bottom: 3px solid transparent; white-space: nowrap;
       display: grid; justify-items: center; gap: 0; line-height: 1.3;
     }
     .tab b { font-size: 19px; color: var(--text); font-variant-numeric: tabular-nums; }
     .tab[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--teal); font-weight: 700; }
     .tab[aria-selected="true"] b { color: var(--teal); }
 
+    .find { position: relative; margin-top: 16px; }
+    .find input {
+      width: 100%; font: inherit; font-size: 16px; padding: 12px 44px 12px 40px; border-radius: 14px;
+      border: 1.5px solid var(--line); background: var(--white); color: inherit; -webkit-appearance: none; appearance: none;
+    }
+    .find input::-webkit-search-cancel-button { display: none; }
+    .find input:focus { border-color: var(--teal); outline: none; }
+    .find svg { position: absolute; left: 13px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; color: var(--muted); pointer-events: none; }
+    .find button {
+      position: absolute; right: 6px; top: 50%; transform: translateY(-50%); width: 32px; height: 32px;
+      border: 0; border-radius: 50%; background: var(--paper); color: var(--muted); font-size: 16px; cursor: pointer;
+    }
+    .find-hint { font-size: 12px; color: var(--muted); margin: 6px 2px 0; }
     .panel { padding: 18px 0 8px; }
     .lead { font-size: 13px; color: var(--muted); margin: 0 0 14px; }
     .stack { display: grid; gap: 14px; }
@@ -106,6 +119,7 @@
       font-variant-numeric: tabular-nums;
     }
     .need { background: var(--paper); border-radius: 12px; padding: 10px 12px; font-size: 13px; }
+    .shelved { display: flex; justify-content: space-between; align-items: center; gap: 8px; background: var(--paper); color: var(--muted); border-radius: 12px; padding: 9px 12px; font-size: 13px; font-weight: 700; }
     .need b { display: block; font-size: 12px; color: var(--muted); font-weight: normal; margin-bottom: 2px; }
     .btn {
       display: block; width: 100%; text-align: center; font: inherit; font-size: 15px; font-weight: 700;
@@ -206,10 +220,17 @@
       <button class="tab" role="tab" data-tab="scheduled"><b id="nScheduled">–</b>予約中</button>
       <button class="tab" role="tab" data-tab="prep"><b id="nPrep">–</b>準備中</button>
       <button class="tab" role="tab" data-tab="live"><b id="nLive">–</b>公開中</button>
+      <button class="tab" role="tab" data-tab="archive"><b id="nArchive">–</b>アーカイブ</button>
     </div>
   </nav>
 
   <main class="wrap">
+    <div class="find" role="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" id="q" placeholder="特典名・管理#・台本Noで探す" aria-label="特典を探す" autocomplete="off" enterkeyhint="search">
+      <button type="button" id="qClear" aria-label="検索をやめる" hidden>×</button>
+    </div>
+    <p class="find-hint" id="qHint" hidden></p>
     <section class="panel" id="panel"></section>
 
     <section class="history">
@@ -248,6 +269,7 @@
       <div class="actions">
         <a class="btn go" id="send" target="_blank" rel="noopener">GitHubで確定する</a>
         <a class="btn stop" id="cancelSchedule" target="_blank" rel="noopener" hidden>この予約をやめる</a>
+        <a class="btn sub" id="archiveLink" target="_blank" rel="noopener">アーカイブにしまう</a>
         <button class="btn plain" value="close">閉じる</button>
       </div>
       <p class="note">開いたGitHubの画面で緑のボタン（Create）を押すと確定します。<br>押すまでは何も変わりません。</p>
@@ -264,6 +286,7 @@
   const plain = t => String(t || "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
   const pad = n => String(n).padStart(2, "0");
   const shown = b => b.status === "live" || b.status === "scheduled";
+  const archived = b => b.status === "draft" && !!b.archived;
 
   let doc = null;
   let lpState = {};        // slug -> "up" | "down" | "unknown"
@@ -348,14 +371,17 @@
     </article>`;
   }
 
+  const newest = (a, b) => adminNo(b) - adminNo(a);
+
   function groups() {
-    const drafts = doc.bonuses.filter(b => b.status === "draft");
+    const drafts = doc.bonuses.filter(b => b.status === "draft" && !b.archived);
     return {
-      ready: drafts.filter(b => !missing(b).length),
+      ready: drafts.filter(b => !missing(b).length).sort(newest),
       scheduled: doc.bonuses.filter(b => b.status === "scheduled")
         .sort((a, b) => new Date(a.publish_at) - new Date(b.publish_at)),
       prep: drafts.filter(b => missing(b).length),
-      live: order()
+      live: order(),
+      archive: doc.bonuses.filter(archived).sort(newest)
     };
   }
 
@@ -404,6 +430,10 @@
             ${b.image ? `<img src="${esc(b.image)}" alt="" loading="lazy">` : `<span></span>`}
             <span><small>管理#${esc(adminNo(b))}</small>${esc(plain(b.title))}</span></a>`).join("")}
         </details>` : "");
+    } else if (tab === "archive") {
+      p.innerHTML = `<p class="lead">しばらく出さない特典の置き場です。まとめページには出ません。開くと、日時を決めて出すことも、元の一覧へ戻すこともできます。</p>` +
+        (g.archive.length ? `<div class="stack">${g.archive.map(b => card(b, foot(b))).join("")}</div>`
+          : `<div class="empty">アーカイブは空です。<br>「日時と番号を決める」の画面から、しまっておきたい特典を入れられます。</div>`);
     } else {
       const now = Date.now();
       p.innerHTML = `<p class="lead">まとめページに並んでいる順です。タップで特典ページを開きます。</p>
@@ -416,22 +446,70 @@
             <p>${esc(plain(b.title))}</p></a>`;
         }).join("")}</div>`;
     }
-    p.querySelectorAll("[data-open]").forEach(el => el.addEventListener("click", () => openSheet(el.dataset.open)));
+    bindOpen(p);
+  }
+
+  const bindOpen = root => root.querySelectorAll("[data-open]").forEach(el => el.addEventListener("click", () => openSheet(el.dataset.open)));
+
+  // ── 検索（状態にかかわらず全部から探す）──
+  const norm = s => String(s ?? "").normalize("NFKC").toLowerCase();
+  function hits(b, words) {
+    // 「管理#41」「台本No168」「特典09」は その番号だけ、数字だけなら どれかに一致すれば出す
+    const nums = { "管理": Number(adminNo(b)), "台本": Number(b.source_video_no), "特典": shown(b) ? numberOf(b) : NaN };
+    const text = norm([plain(b.title), b.description, b.category, (b.tags || []).join(" "), b.source_video, b.slug].join(" "));
+    return words.every(w => {
+      const m = w.match(/^(管理|台本|特典)?(?:no|#|\.)*(\d+)$/);
+      if (!m) return text.includes(w);
+      const kind = m[1] || (/^(no)/.test(w) ? "台本" : /^#/.test(w) ? "管理" : null);
+      return kind ? nums[kind] === Number(m[2]) : Object.values(nums).includes(Number(m[2]));
+    });
+  }
+
+  function foot(b) {
+    if (archived(b)) return `<div class="shelved"><span>アーカイブ中</span></div>
+      <button class="btn sub" data-open="${esc(b.slug)}">開く（出す・戻す）</button>`;
+    if (b.status === "draft") return missing(b).length
+      ? `<div class="need"><b>準備中・足りないもの</b>${esc(missing(b).join("、"))}</div>`
+      : `<button class="btn go" data-open="${esc(b.slug)}">日時と番号を決める</button>`;
+    if (b.status === "scheduled") {
+      const at = new Date(b.publish_at);
+      return `<div class="when"><span>${at <= Date.now() ? "表示中" : "予約 " + label(at)}</span><span>特典${pad(numberOf(b))}</span></div>` +
+        (at <= Date.now() ? "" : `<button class="btn sub" data-open="${esc(b.slug)}">日時・番号を変える／やめる</button>`);
+    }
+    if (b.status === "live") return `<div class="shelved"><span>公開中</span><span>特典${pad(numberOf(b))}</span></div>`;
+    return `<div class="shelved"><span>非表示</span></div>`;
+  }
+
+  function renderSearch(q) {
+    const words = norm(q).split(/\s+/).filter(Boolean);
+    const found = doc.bonuses.filter(b => hits(b, words)).sort(newest);
+    $("qHint").hidden = !found.length;
+    $("qHint").textContent = `${found.length}件（公開中・アーカイブも含めて探しています）`;
+    $("panel").innerHTML = found.length ? `<div class="stack">${found.map(b => card(b, foot(b))).join("")}</div>`
+      : `<div class="empty">「${esc(q)}」に合う特典はありません。<br>言葉を短くするか、管理#や台本Noの数字だけで探してみてください。</div>`;
+    bindOpen($("panel"));
   }
 
   function render() {
     const g = groups();
+    $("nArchive").textContent = g.archive.length;
     $("nReady").textContent = g.ready.length;
     $("nScheduled").textContent = g.scheduled.length;
     $("nPrep").textContent = g.prep.length;
     $("nLive").textContent = g.live.filter(b => b.status === "live" || new Date(b.publish_at) <= Date.now()).length;
     if (!tab) tab = g.ready.length ? "ready" : g.scheduled.length ? "scheduled" : "live";
-    document.querySelectorAll(".tab").forEach(t => t.setAttribute("aria-selected", String(t.dataset.tab === tab)));
+    const q = $("q").value.trim();
+    $("qClear").hidden = !q;
+    document.querySelectorAll(".tab").forEach(t => t.setAttribute("aria-selected", String(!q && t.dataset.tab === tab)));
     renderNext(g);
+    if (q) return renderSearch(q);
+    $("qHint").hidden = true;
     renderPanel(g);
   }
 
-  document.querySelectorAll(".tab").forEach(t => t.addEventListener("click", () => { tab = t.dataset.tab; render(); }));
+  document.querySelectorAll(".tab").forEach(t => t.addEventListener("click", () => { tab = t.dataset.tab; $("q").value = ""; render(); }));
+  $("q").addEventListener("input", () => doc && render());
+  $("qClear").addEventListener("click", () => { $("q").value = ""; render(); $("q").focus(); });
 
   // 特典ページが公開済みかを確かめる（同じサイト内なので直接見られる）
   async function checkPages() {
@@ -459,8 +537,13 @@
   function openSheet(slug) {
     current = doc.bonuses.find(b => b.slug === slug);
     const isScheduled = current.status === "scheduled";
+    const isArchived = archived(current);
     $("sheetHead").innerHTML = `${cover(current)}<div><h3 id="sheetTitle">${esc(plain(current.title))}</h3>
-      <p>${isScheduled ? `いまの予約：${label(new Date(current.publish_at))}・特典${pad(numberOf(current))}` : `管理#${esc(adminNo(current))}${current.source_video_no ? `・台本No${esc(current.source_video_no)}` : ""}`}</p></div>`;
+      <p>${isScheduled ? `いまの予約：${label(new Date(current.publish_at))}・特典${pad(numberOf(current))}` : `${isArchived ? "アーカイブ中・" : ""}管理#${esc(adminNo(current))}${current.source_video_no ? `・台本No${esc(current.source_video_no)}` : ""}`}</p></div>`;
+    $("archiveLink").textContent = isArchived ? "アーカイブから戻す（日時はあとで決める）" : "アーカイブにしまう（しばらく出さない）";
+    $("archiveLink").href = isArchived
+      ? issueUrl(`アーカイブから戻す ${plain(current.title)}`, { action: "unarchive", slug: current.slug })
+      : issueUrl(`アーカイブ ${plain(current.title)}`, { action: "archive", slug: current.slug });
     $("form").elements.when.value = "schedule";
     const at = isScheduled ? new Date(current.publish_at) : defaultTime();
     $("at").value = toInput(at < new Date() ? defaultTime() : at);
@@ -515,7 +598,7 @@
 
   $("form").addEventListener("input", update);
   $("form").addEventListener("change", update);
-  [$("send"), $("cancelSchedule")].forEach(a => a.addEventListener("click", () => {
+  [$("send"), $("cancelSchedule"), $("archiveLink")].forEach(a => a.addEventListener("click", () => {
     setTimeout(() => $("sheet").close(), 300);
     setTimeout(loadLog, 20000);
     setTimeout(load, 60000);
