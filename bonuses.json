@@ -781,6 +781,27 @@
       "source_video": "在庫なしでOK\nChatGPTで作る\nパズル販売",
       "source_video_no": 168,
       "source_thumbnail": "assets/video-thumbs/no41.png"
+    },
+    {
+      "id": 43,
+      "slug": "no43-claude-code-codex",
+      "status": "draft",
+      "publish_at": null,
+      "category": "AI活用",
+      "title": "Claude Code×Codex<br>連携スタートガイド",
+      "description": "公式プラグインの導入、ChatGPTアカウントでのログイン、役割分担の指示と最初の仕事まで。コピーできる9つの指示文と実演つき。",
+      "tags": [
+        "Claude Code",
+        "Codex",
+        "AI連携"
+      ],
+      "image": "assets/preview-ai-v1/no43.jpg",
+      "accent": "#4A3F68",
+      "source_video": "ChatGPTとClaude\nまさか今も\n別々に使ってる？",
+      "source_video_no": 172,
+      "source_thumbnail": "assets/video-thumbs/no43.png",
+      "source_canva_design": "DAHKcxPBtxQ",
+      "source_canva_page_id": "PBs268xQ2qkkWs0p"
     }
   ]
 }
