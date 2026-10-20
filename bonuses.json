@@ -698,7 +698,7 @@
     {
       "id": 42,
       "slug": "no42-claude-code-image",
-      "status": "scheduled",
+      "status": "live",
       "publish_at": "2026-10-20T17:30:00+09:00",
       "title": "Claude Code<br>画像生成スタートガイド",
       "description": "Claude Codeの準備から、画像拡張の導入、日本語での依頼、PNGの保存まで。実画面と作例で追えるスタートガイド。",
