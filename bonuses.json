@@ -736,6 +736,25 @@
       "source_canva_page_id": "PBs268xQ2qkkWs0p"
     },
     {
+      "id": 41,
+      "slug": "no41-ai-puzzle",
+      "status": "scheduled",
+      "publish_at": "2026-10-24T17:30:00+09:00",
+      "category": "AIグッズ制作",
+      "title": "AIパズル制作キット",
+      "description": "ChatGPTでテーマと絵を作り、Printifyでパズルの商品準備へ。実画面・4つの指示文・印刷と販売前のチェック。",
+      "tags": [
+        "ChatGPT",
+        "Printify",
+        "パズル制作"
+      ],
+      "image": "assets/preview-ai-v1/no41.jpg",
+      "accent": "#52644B",
+      "source_video": "在庫なしでOK\nChatGPTで作る\nパズル販売",
+      "source_video_no": 168,
+      "source_thumbnail": "assets/video-thumbs/no41.png"
+    },
+    {
       "id": 40,
       "slug": "no40-ai-motion-video",
       "title": "AIモーション動画 制作キット",
@@ -783,25 +802,6 @@
       "source_thumbnail": "assets/video-thumbs/no39.png",
       "source_canva_page": 54,
       "source_video_no": 166
-    },
-    {
-      "id": 41,
-      "slug": "no41-ai-puzzle",
-      "status": "draft",
-      "publish_at": null,
-      "category": "AIグッズ制作",
-      "title": "AIパズル制作キット",
-      "description": "ChatGPTでテーマと絵を作り、Printifyでパズルの商品準備へ。実画面・4つの指示文・印刷と販売前のチェック。",
-      "tags": [
-        "ChatGPT",
-        "Printify",
-        "パズル制作"
-      ],
-      "image": "assets/preview-ai-v1/no41.jpg",
-      "accent": "#52644B",
-      "source_video": "在庫なしでOK\nChatGPTで作る\nパズル販売",
-      "source_video_no": 168,
-      "source_thumbnail": "assets/video-thumbs/no41.png"
     }
   ]
 }
