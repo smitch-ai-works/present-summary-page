@@ -755,6 +755,26 @@
       "source_thumbnail": "assets/video-thumbs/no41.png"
     },
     {
+      "id": 39,
+      "slug": "no39-ai-web-production",
+      "status": "scheduled",
+      "publish_at": "2026-10-26T18:00:00+09:00",
+      "category": "AIサイト制作",
+      "title": "AIサイト制作<br>スタートキット",
+      "description": "一発出しを狙う指示の設計、動く3D作例、店舗紹介LP、制作提案と納品の準備まで。",
+      "tags": [
+        "Codex",
+        "GPT-6.1 Sol",
+        "サイト制作"
+      ],
+      "image": "assets/preview-ai-v1/no39.jpg",
+      "accent": "#536655",
+      "source_video": "ChatGPT-6\nたった1回指示で\nこれ作れます",
+      "source_thumbnail": "assets/video-thumbs/no39.png",
+      "source_canva_page": 54,
+      "source_video_no": 166
+    },
+    {
       "id": 40,
       "slug": "no40-ai-motion-video",
       "title": "AIモーション動画 制作キット",
@@ -782,26 +802,6 @@
       "source_thumbnail": "assets/video-thumbs/no40.png",
       "source_thumbnail_sha256": "fedbac828aab10bc2403b607ff35db04c87a3f36ae476f061fcf4a064acab0b5",
       "published_url": "https://smitch-ai-works.github.io/no40-ai-motion-video/"
-    },
-    {
-      "id": 39,
-      "slug": "no39-ai-web-production",
-      "status": "draft",
-      "publish_at": null,
-      "category": "AIサイト制作",
-      "title": "AIサイト制作<br>スタートキット",
-      "description": "一発出しを狙う指示の設計、動く3D作例、店舗紹介LP、制作提案と納品の準備まで。",
-      "tags": [
-        "Codex",
-        "GPT-6.1 Sol",
-        "サイト制作"
-      ],
-      "image": "assets/preview-ai-v1/no39.jpg",
-      "accent": "#536655",
-      "source_video": "ChatGPT-6\nたった1回指示で\nこれ作れます",
-      "source_thumbnail": "assets/video-thumbs/no39.png",
-      "source_canva_page": 54,
-      "source_video_no": 166
     }
   ]
 }
