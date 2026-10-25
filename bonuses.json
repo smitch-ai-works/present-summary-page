@@ -846,14 +846,19 @@
       "image": "assets/preview-ai-v1/no46.jpg",
       "accent": "#245b96",
       "source_video_no": 174,
-      "source_video": "同じ動画を\nAIに任せたら\nどっち派？",
+      "source_video": "ChatGPTとClaude\n編集任せたら\nこうなった",
       "status": "draft",
       "publish_at": null,
-      "source_thumbnail": null,
+      "source_thumbnail": "assets/video-thumbs/no174.png",
       "published": true,
       "published_url": "https://smitch-ai-works.github.io/no46-ai-reel-editing/",
       "hub_registered": true,
-      "public_display_no": null
+      "public_display_no": null,
+      "source_canva_design_id": "DAHKcxPBtxQ",
+      "source_canva_page_id": "PBvsszsHDWKykC46",
+      "source_canva_page": 61,
+      "source_canva_page_checked_at": "2026-10-26",
+      "source_thumbnail_sha256": "101219f813d4766e658fc39edfcb42c348383d4868eb8ed47e8f70b55805f2a8"
     }
   ]
 }
