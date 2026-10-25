@@ -859,6 +859,36 @@
       "source_canva_page": 61,
       "source_canva_page_checked_at": "2026-10-26",
       "source_thumbnail_sha256": "101219f813d4766e658fc39edfcb42c348383d4868eb8ed47e8f70b55805f2a8"
+    },
+    {
+      "id": 45,
+      "slug": "no45-note-codex-workflow",
+      "status": "draft",
+      "publish_at": null,
+      "category": "AI活用・文章作成",
+      "title": "Codexでnoteづくり｜構成・本文・図解・下書きキット",
+      "description": "自分の読者と文体を設定し、テーマから記事・図解・note下書きへ進めるCodex版キット。導入手順と図解3枚入りの作例を収録。",
+      "tags": [
+        "note",
+        "Codex",
+        "スキル",
+        "文章作成"
+      ],
+      "image": "assets/preview-ai-v1/no45.jpg",
+      "accent": "#31674f",
+      "source_video_no": 178,
+      "source_video": "話題のnote\nChatGPT使うと\n記事ができる!?",
+      "source_thumbnail": "assets/video-thumbs/no178.png",
+      "source_thumbnail_status": "canva_formal_export",
+      "public_display_no": null,
+      "published": true,
+      "hub_registered": true,
+      "source_canva_page": 62,
+      "published_url": "https://smitch-ai-works.github.io/no45-note-codex-workflow/",
+      "source_canva_design_id": "DAHKcxPBtxQ",
+      "source_canva_page_id": "PBwv2McMdz4WvygM",
+      "source_canva_page_checked_at": "2026-10-26",
+      "source_thumbnail_sha256": "c21a69f0e7ebb30b11bc5c24192ee760c917fd6edf6a23ab0095d1c91df45789"
     }
   ]
 }
