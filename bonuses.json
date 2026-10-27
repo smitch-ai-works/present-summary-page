@@ -775,6 +775,34 @@
       "source_video_no": 166
     },
     {
+      "id": 44,
+      "slug": "no44-codex-ai-company",
+      "title": "Codexで自分専用のAI会社を作る",
+      "description": "5問で設定し、25人分の担当で記事・サムネ・Threads紹介文を作るCodex用キット。",
+      "category": "AI活用",
+      "tags": [
+        "Codex",
+        "AI社員",
+        "note"
+      ],
+      "accent": "#205749",
+      "image": "assets/preview-ai-v1/no44.jpg",
+      "source_thumbnail": "assets/video-thumbs/no173.png",
+      "source_video": "自分は社長\nAI社員25人に\n仕事を任せる",
+      "source_video_no": 173,
+      "source_canva_design_id": "DAHKcxPBtxQ",
+      "source_canva_page_id": "PBfxWWtCdK9JCCQ8",
+      "status": "scheduled",
+      "publish_at": "2026-10-28T17:30:00+09:00",
+      "source_canva_page": 60,
+      "source_canva_page_checked_at": "2026-10-25",
+      "published": true,
+      "hub_registered": true,
+      "published_url": "https://smitch-ai-works.github.io/no44-codex-ai-company/",
+      "public_display_no": null,
+      "source_thumbnail_sha256": "ec055be6ef59f4f57ba8625f86995c059a32e931eed4913da62bd488373ed710"
+    },
+    {
       "id": 46,
       "slug": "no46-ai-reel-editing",
       "category": "AI活用・動画編集",
@@ -831,34 +859,6 @@
       "source_thumbnail": "assets/video-thumbs/no40.png",
       "source_thumbnail_sha256": "fedbac828aab10bc2403b607ff35db04c87a3f36ae476f061fcf4a064acab0b5",
       "published_url": "https://smitch-ai-works.github.io/no40-ai-motion-video/"
-    },
-    {
-      "id": 44,
-      "slug": "no44-codex-ai-company",
-      "title": "Codexで自分専用のAI会社を作る",
-      "description": "5問で設定し、25人分の担当で記事・サムネ・Threads紹介文を作るCodex用キット。",
-      "category": "AI活用",
-      "tags": [
-        "Codex",
-        "AI社員",
-        "note"
-      ],
-      "accent": "#205749",
-      "image": "assets/preview-ai-v1/no44.jpg",
-      "source_thumbnail": "assets/video-thumbs/no173.png",
-      "source_video": "自分は社長\nAI社員25人に\n仕事を任せる",
-      "source_video_no": 173,
-      "source_canva_design_id": "DAHKcxPBtxQ",
-      "source_canva_page_id": "PBfxWWtCdK9JCCQ8",
-      "status": "draft",
-      "publish_at": null,
-      "source_canva_page": 60,
-      "source_canva_page_checked_at": "2026-10-25",
-      "published": true,
-      "hub_registered": true,
-      "published_url": "https://smitch-ai-works.github.io/no44-codex-ai-company/",
-      "public_display_no": null,
-      "source_thumbnail_sha256": "ec055be6ef59f4f57ba8625f86995c059a32e931eed4913da62bd488373ed710"
     },
     {
       "id": 45,
