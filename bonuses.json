@@ -889,6 +889,37 @@
       "source_canva_page_id": "PBwv2McMdz4WvygM",
       "source_canva_page_checked_at": "2026-10-26",
       "source_thumbnail_sha256": "c21a69f0e7ebb30b11bc5c24192ee760c917fd6edf6a23ab0095d1c91df45789"
+    },
+    {
+      "id": 47,
+      "slug": "no47-travel-photo-etsy",
+      "status": "draft",
+      "publish_at": null,
+      "source_video_no": 179,
+      "category": "AI副業",
+      "title": "旅の写真を、<br>海外向けの商品データに。",
+      "description": "写真選びから英語の商品情報、Canvaの調整、Etsy登録まで。図と実画面を見ながら進められる、コピー用指示文つきガイド。",
+      "tags": [
+        "ChatGPT",
+        "Canva",
+        "Etsy",
+        "写真販売"
+      ],
+      "accent": "#2c654c",
+      "image": "assets/preview-ai-v1/no47.jpg",
+      "source_thumbnail": "assets/video-thumbs/no47.png",
+      "source_video": "旅先の写真が\nChatGPTで\n商品になる!?",
+      "source_canva_page": 63,
+      "site_published": true,
+      "published_url": "https://smitch-ai-works.github.io/no47-travel-photo-etsy/",
+      "hub_registered": true,
+      "public_display_no": null,
+      "published": true,
+      "source_canva_design_id": "DAHKcxPBtxQ",
+      "source_canva_page_id": "PBZ3dlc6hlLwJ3K5",
+      "source_canva_page_checked_at": "2026-10-27",
+      "source_thumbnail_sha256": "c72da1c0dc80168afd6b939e23e19961bbd05d41711193a589cef6a67af5832a",
+      "source_thumbnail_status": "canva_user_corrected_formal_export"
     }
   ]
 }
