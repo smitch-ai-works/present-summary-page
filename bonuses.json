@@ -775,6 +775,35 @@
       "source_video_no": 166
     },
     {
+      "id": 46,
+      "slug": "no46-ai-reel-editing",
+      "category": "AI活用・動画編集",
+      "title": "日本語で頼んで、リールを編集する｜AIリール編集スタートガイド",
+      "description": "Codex・Claude Codeで動画を編集する準備、指示文、共通カットで比較する手順、検品まで。配布スターター付き。",
+      "tags": [
+        "Codex",
+        "Claude Code",
+        "動画編集",
+        "指示文"
+      ],
+      "image": "assets/preview-ai-v1/no46.jpg",
+      "accent": "#245b96",
+      "source_video_no": 174,
+      "source_video": "ChatGPTとClaude\n編集任せたら\nこうなった",
+      "status": "scheduled",
+      "publish_at": "2026-10-28T18:00:00+09:00",
+      "source_thumbnail": "assets/video-thumbs/no174.png",
+      "published": true,
+      "published_url": "https://smitch-ai-works.github.io/no46-ai-reel-editing/",
+      "hub_registered": true,
+      "public_display_no": null,
+      "source_canva_design_id": "DAHKcxPBtxQ",
+      "source_canva_page_id": "PBvsszsHDWKykC46",
+      "source_canva_page": 61,
+      "source_canva_page_checked_at": "2026-10-26",
+      "source_thumbnail_sha256": "101219f813d4766e658fc39edfcb42c348383d4868eb8ed47e8f70b55805f2a8"
+    },
+    {
       "id": 40,
       "slug": "no40-ai-motion-video",
       "title": "AIモーション動画 制作キット",
@@ -830,35 +859,6 @@
       "published_url": "https://smitch-ai-works.github.io/no44-codex-ai-company/",
       "public_display_no": null,
       "source_thumbnail_sha256": "ec055be6ef59f4f57ba8625f86995c059a32e931eed4913da62bd488373ed710"
-    },
-    {
-      "id": 46,
-      "slug": "no46-ai-reel-editing",
-      "category": "AI活用・動画編集",
-      "title": "日本語で頼んで、リールを編集する｜AIリール編集スタートガイド",
-      "description": "Codex・Claude Codeで動画を編集する準備、指示文、共通カットで比較する手順、検品まで。配布スターター付き。",
-      "tags": [
-        "Codex",
-        "Claude Code",
-        "動画編集",
-        "指示文"
-      ],
-      "image": "assets/preview-ai-v1/no46.jpg",
-      "accent": "#245b96",
-      "source_video_no": 174,
-      "source_video": "ChatGPTとClaude\n編集任せたら\nこうなった",
-      "status": "draft",
-      "publish_at": null,
-      "source_thumbnail": "assets/video-thumbs/no174.png",
-      "published": true,
-      "published_url": "https://smitch-ai-works.github.io/no46-ai-reel-editing/",
-      "hub_registered": true,
-      "public_display_no": null,
-      "source_canva_design_id": "DAHKcxPBtxQ",
-      "source_canva_page_id": "PBvsszsHDWKykC46",
-      "source_canva_page": 61,
-      "source_canva_page_checked_at": "2026-10-26",
-      "source_thumbnail_sha256": "101219f813d4766e658fc39edfcb42c348383d4868eb8ed47e8f70b55805f2a8"
     },
     {
       "id": 45,
