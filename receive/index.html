@@ -7,61 +7,80 @@
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="description" content="リールで紹介した特典の受け取り方。特典名をコピーして、オープンチャットの特典一覧で検索してください。">
   <title>リール特典の受け取り方｜すみっち</title>
-  <link rel="stylesheet" href="./style.css">
-  <script type="module" src="./app.mjs"></script>
+  <link rel="stylesheet" href="./style.css?v=20261031-guided1">
+  <script type="module" src="./app.mjs?v=20261031-guided1"></script>
 </head>
 <body>
   <main class="page">
     <header class="intro">
       <p class="intro-label">コメントありがとうございます！</p>
-      <h1>リールの特典は、<br>こちらから受け取れます。</h1>
-      <p class="intro-copy">特典名をコピーして、<br>下の受け取り方を確認してからご参加ください。</p>
+      <h1>まずは特典名を<br>コピーしてください。</h1>
+      <p class="intro-copy">あとで特典を検索するときに使います。</p>
     </header>
 
     <section class="ticket" aria-labelledby="bonus-heading" aria-busy="true" id="ticket">
       <div class="ticket-main">
         <p class="ticket-label" id="bonus-heading">今回の特典</p>
         <h2 id="bonus-title">特典を読み込んでいます</h2>
-        <p class="bonus-help" id="bonus-help">特典名を確認してから、受け取りへ進んでください。</p>
-        <button class="copy-button" id="copy-name" type="button" disabled>特典名をコピーする</button>
+        <p class="bonus-help" id="bonus-help">コピーすると、受け取り方が表示されます。</p>
+        <button class="copy-button" id="copy-name" type="button" disabled>特典名をコピーして進む ↓</button>
         <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
+        <button class="manual-next" id="manual-next" type="button" hidden>コピーできたら次へ</button>
       </div>
       <img class="bonus-image" id="bonus-image" alt="" hidden>
     </section>
 
-    <section class="steps" aria-labelledby="steps-heading">
-      <h2 id="steps-heading">参加後の受け取り方</h2>
+    <section class="steps" id="receipt-guide" aria-labelledby="steps-heading" hidden>
+      <div class="guide-heading">
+        <h2 id="steps-heading" tabindex="-1">特典の受け取り方</h2>
+        <p class="guide-progress" id="guide-progress" role="status" aria-live="polite">手順 1 / 4</p>
+      </div>
+      <p class="guide-intro">上から順番に、画面を確認してください。</p>
       <ol class="guide-steps">
-        <li class="guide-step">
+        <li class="guide-step" hidden>
           <h3><span class="step-number" aria-hidden="true">1</span>右上の「≡」を押す</h3>
           <img src="./assets/openchat-step-1.jpg" alt="オープンチャットのトーク画面。右上の三本線のメニューを赤い矢印で示しています。" width="1080" height="512">
+          <p class="step-scroll-prompt"><span aria-hidden="true">↓</span>下へスクロールして次の手順へ</p>
+          <button class="keyboard-next" type="button" data-next>手順2を表示する</button>
+          <div class="step-end" data-step-end aria-hidden="true"></div>
         </li>
-        <li class="guide-step">
+        <li class="guide-step" hidden>
           <h3><span class="step-number" aria-hidden="true">2</span>「ノート」を開く</h3>
-          <img src="./assets/openchat-step-2.jpg" alt="オープンチャットのメニュー。「ノート」の場所を赤い矢印で示しています。">
+          <img src="./assets/openchat-step-2.jpg" alt="オープンチャットのメニュー。「ノート」の場所を赤い矢印で示しています。" width="1078" height="1024">
+          <p class="step-scroll-prompt"><span aria-hidden="true">↓</span>下へスクロールして次の手順へ</p>
+          <button class="keyboard-next" type="button" data-next>手順3を表示する</button>
+          <div class="step-end" data-step-end aria-hidden="true"></div>
         </li>
-        <li class="guide-step">
+        <li class="guide-step" hidden>
           <h3><span class="step-number" aria-hidden="true">3</span>特典まとめページのリンクを開く</h3>
           <img src="./assets/openchat-step-3.jpg" alt="ノートの特典置き場。「特典まとめページはこちら」のリンクを赤枠と矢印で示しています。" width="1078" height="888">
+          <p class="step-scroll-prompt"><span aria-hidden="true">↓</span>下へスクロールして次の手順へ</p>
+          <button class="keyboard-next" type="button" data-next>手順4を表示する</button>
+          <div class="step-end" data-step-end aria-hidden="true"></div>
         </li>
-        <li class="guide-step search-step">
+        <li class="guide-step search-step" hidden>
           <h3><span class="step-number" aria-hidden="true">4</span>検索欄に特典名を貼り付ける</h3>
           <div class="search-example" aria-label="特典まとめページに入力する特典名">
             <p class="search-example-label">特典まとめページの検索欄</p>
             <div class="search-example-field"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.7-3.7"/></svg><span id="search-title">コピーした特典名をここに貼り付けます</span></div>
           </div>
           <p>表示された特典を開いてください。</p>
+          <p class="step-scroll-prompt"><span aria-hidden="true">↓</span>下へスクロールして受け取りへ</p>
+          <button class="keyboard-next" type="button" data-next>特典の受け取りボタンを表示する</button>
+          <div class="step-end" data-step-end aria-hidden="true"></div>
         </li>
       </ol>
+      <div class="flow-tail" id="flow-tail" aria-hidden="true"><span>↓</span></div>
     </section>
 
-    <section class="closing" aria-label="受け取りの案内">
-      <p>受け取り方を確認したら、<br>下のボタンからオプチャに参加してください。</p>
-      <a class="join-button" data-join href="https://line.me/ti/g2/qdW90KyHBLtjnWgW_cOOmUyWLUoKiN21i-lXwg?utm_source=invitation&amp;utm_medium=link_copy&amp;utm_campaign=default" target="_blank" rel="noopener noreferrer"><svg class="gift-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M3 8h18v4H3zM5 12v9h14v-9M12 8v13M12 8H8a3 3 0 1 1 3-3l1 3Zm0 0h4a3 3 0 1 0-3-3l-1 3Z"/></svg><span class="join-label">オプチャで特典を受け取る</span><span class="join-arrow" aria-hidden="true">↗</span></a>
-      <p class="join-note">参加済みの方も、同じボタンから開けます。</p>
+    <section class="closing" id="receipt-closing" aria-labelledby="closing-heading" hidden>
+      <div class="closing-spark" aria-hidden="true">✦</div>
+      <h2 id="closing-heading">特典は、<br>ここにまとめています。</h2>
+      <p>今回の特典はもちろん、<br>ほかの特典もまとめています。<br>気になるものも、一緒に持っていってください🙌</p>
+      <div class="join-frame"><a class="join-button" data-join href="https://line.me/ti/g2/qdW90KyHBLtjnWgW_cOOmUyWLUoKiN21i-lXwg?utm_source=invitation&amp;utm_medium=link_copy&amp;utm_campaign=default" target="_blank" rel="noopener noreferrer"><svg class="gift-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M3 8h18v4H3zM5 12v9h14v-9M12 8v13M12 8H8a3 3 0 1 1 3-3l1 3Zm0 0h4a3 3 0 1 0-3-3l-1 3Z"/></svg><span class="join-label">特典を受け取る</span><span class="join-arrow" aria-hidden="true">›</span></a></div>
     </section>
     <footer>すみっち <a href="https://www.instagram.com/smitch_ai_works/" target="_blank" rel="noopener noreferrer">Instagram</a></footer>
-    <noscript><p class="noscript">DMにある特典名を控え、オプチャのノートから特典一覧へ進んで検索してください。</p></noscript>
+    <noscript><p class="noscript">DMにある特典名を控え、下のボタンからオプチャへ。右上の「≡」→「ノート」→特典まとめページへ進み、特典名で検索してください。</p><a class="join-button" href="https://line.me/ti/g2/qdW90KyHBLtjnWgW_cOOmUyWLUoKiN21i-lXwg?utm_source=invitation&amp;utm_medium=link_copy&amp;utm_campaign=default" target="_blank" rel="noopener noreferrer">特典を受け取る</a></noscript>
   </main>
 </body>
 </html>
