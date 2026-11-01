@@ -19,7 +19,11 @@ export function visibleBonuses(doc, now = Date.now()) {
 export function resolveBonus(doc, request, now) {
   if (request.invalid) return null;
   const index = buildPublicNumberIndex(doc, now);
-  return request.key ? index.byKey.get(request.key) ?? null : index.byNumber.get(request.no) ?? null;
+  if (!request.key) return index.byNumber.get(request.no) ?? null;
+  // 管理登録済みの特典は、掲載前でもDMのkeyから同じ名前をコピーできる。
+  // 公開一覧・番号検索・掲載日時には影響させない。
+  return index.byKey.get(request.key) ?? doc.bonuses.find(item =>
+    item.slug === request.key && ['draft', 'scheduled'].includes(item.status)) ?? null;
 }
 
 // 特典一覧と同じ公開データから逆引きを作る。別の番号台帳を手入力で維持しない。
