@@ -920,6 +920,26 @@
       "source_thumbnail": "assets/video-thumbs/no40.png",
       "source_thumbnail_sha256": "fedbac828aab10bc2403b607ff35db04c87a3f36ae476f061fcf4a064acab0b5",
       "published_url": "https://smitch-ai-works.github.io/no40-ai-motion-video/"
+    },
+    {
+      "id": 48,
+      "slug": "no48-japanese-remote-work",
+      "category": "AI活用",
+      "title": "日本語を生かす海外在宅ワークの探し方",
+      "description": "LinkedInで日本語の仕事を探し、AIで募集文を読み、応募を準備する手順。",
+      "tags": [
+        "在宅ワーク",
+        "日本語",
+        "LinkedIn"
+      ],
+      "image": "assets/preview-ai-v1/no48.jpg",
+      "accent": "#0a66c2",
+      "source_video": "日本語が武器に!?\n海外で見つかる\n在宅ワーク",
+      "source_thumbnail": "assets/video-thumbs/no187.png",
+      "source_video_no": 187,
+      "status": "draft",
+      "publish_at": null,
+      "source_canva_page": 64
     }
   ]
 }
