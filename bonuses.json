@@ -919,7 +919,9 @@
       "source_video": "可能性無限大\nAIと話すだけで\n動画が作れる!?",
       "source_thumbnail": "assets/video-thumbs/no40.png",
       "source_thumbnail_sha256": "fedbac828aab10bc2403b607ff35db04c87a3f36ae476f061fcf4a064acab0b5",
-      "published_url": "https://smitch-ai-works.github.io/no40-ai-motion-video/"
+      "published_url": "https://smitch-ai-works.github.io/no40-ai-motion-video/",
+      "lgram_flow_id": 462936,
+      "lgram_flow_name": "【配布】No165_投稿待ち"
     },
     {
       "id": 48,
@@ -939,7 +941,9 @@
       "source_video_no": 187,
       "status": "draft",
       "publish_at": null,
-      "source_canva_page": 64
+      "source_canva_page": 64,
+      "lgram_flow_id": 462522,
+      "lgram_flow_name": "【配布】No187_日本語在宅"
     },
     {
       "id": 52,
