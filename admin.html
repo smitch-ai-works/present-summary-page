@@ -112,6 +112,9 @@
     .dot.up::before { background: var(--green); }
     .dot.down::before { background: var(--red); }
     .dot.down { color: var(--red); }
+    .lgram-ref { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line); display: grid; gap: 3px; font-size: 12px; }
+    .lgram-ref span { color: var(--muted); }
+    .lgram-ref a { color: var(--teal); font-weight: 700; text-underline-offset: 3px; overflow-wrap: anywhere; }
     .foot { grid-column: 1 / -1; display: grid; gap: 8px; }
     .when {
       display: flex; justify-content: space-between; align-items: center; gap: 8px; background: var(--amber-soft);
@@ -359,6 +362,15 @@
     </a>`;
   }
 
+  function lgramLink(b) {
+    const id = String(b.lgram_flow_id || "");
+    if (!/^\d+$/.test(id)) return "";
+    const name = b.lgram_flow_name || `自動応答 ${id}`;
+    return `<div class="lgram-ref"><span>対応するエルグラム</span>
+      <a href="https://go.lgram.jp/instagram/auto-reply/new/${id}" target="_blank" rel="noopener noreferrer">${esc(name)} ↗</a>
+    </div>`;
+  }
+
   function card(b, foot) {
     return `<article class="bonus">
       ${cover(b)}
@@ -366,6 +378,7 @@
         ${ids(b)}
         <h3>${esc(plain(b.title))}</h3>
         ${lpLink(b)}
+        ${lgramLink(b)}
       </div>
       <div class="foot">${foot}</div>
     </article>`;

@@ -940,6 +940,29 @@
       "status": "draft",
       "publish_at": null,
       "source_canva_page": 64
+    },
+    {
+      "id": 52,
+      "slug": "no52-youtube-agent-skills",
+      "status": "draft",
+      "publish_at": null,
+      "source_video_no": 185,
+      "title": "YouTubeの企画と台本をCodexに頼む設定ガイド",
+      "description": "11種類の役割、Codexで使う準備、企画・台本・タイトル・返信案・1週間の計画と調査の指示文をまとめたガイド。",
+      "category": "AI活用",
+      "tags": [
+        "YouTube",
+        "Codex",
+        "企画",
+        "台本"
+      ],
+      "accent": "#A72C35",
+      "image": "assets/preview-ai-v1/no52.jpg",
+      "source_video": "ChatGPTで\nYouTuberに\n転身できる!?",
+      "source_thumbnail": null,
+      "source_canva_page": null,
+      "lgram_flow_id": 463071,
+      "lgram_flow_name": "【準備】No185_YouTube"
     }
   ]
 }
