@@ -1062,6 +1062,39 @@
       "published": true,
       "hub_registered": true,
       "published_url": "https://smitch-ai-works.github.io/no54-chatgpt-dots-secretary/"
+    },
+    {
+      "id": 49,
+      "slug": "no49-street-photo-stickers",
+      "source_video_no": 181,
+      "status": "draft",
+      "publish_at": null,
+      "category": "AI副業",
+      "title": "スマホ写真で作る街並みステッカー出品ガイド",
+      "description": "写真から透過PNGを作り、単品の保存、英語の商品説明、Etsyの出品準備まで。実作例とコピーできる指示文付き。",
+      "tags": [
+        "ChatGPT",
+        "Etsy",
+        "ステッカー"
+      ],
+      "accent": "#9b7836",
+      "image": "assets/preview-ai-v1/no49.jpg",
+      "source_thumbnail": "assets/video-thumbs/no49.png",
+      "source_video": "AI画像はNG!?\n知っておきたい\n意外な落とし穴",
+      "public_display_no": null,
+      "source_canva_page": 65,
+      "public_guide_video_policy": "no_video",
+      "source_thumbnail_sha256": "2d5f580aebc0eb74189a61ef7b0f8248bd0dd1b73a640fceae32422bf0a7a3d5",
+      "source_canva_design_id": "DAHKcxPBtxQ",
+      "source_canva_page_id": "PBfnPmy1zf2G7DPK",
+      "source_canva_page_checked_at": "2026-11-03",
+      "source_thumbnail_format": "editable_canva_elements",
+      "published": true,
+      "hub_registered": true,
+      "published_url": "https://smitch-ai-works.github.io/no49-street-photo-stickers/",
+      "lgram_flow_id": 462314,
+      "lgram_flow_name": "【オプチャ】No181_ステッカー",
+      "lgram_template_id": 3942912
     }
   ]
 }
