@@ -1059,8 +1059,9 @@
       "source_canva_page": 69,
       "source_canva_page_checked_at": "2026-11-03",
       "source_thumbnail_format": "editable_canva_elements",
-      "published": false,
-      "hub_registered": true
+      "published": true,
+      "hub_registered": true,
+      "published_url": "https://smitch-ai-works.github.io/no54-chatgpt-dots-secretary/"
     }
   ]
 }
