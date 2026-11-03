@@ -998,6 +998,38 @@
       "hub_registered": true,
       "lgram_flow_id": 463144,
       "lgram_flow_name": "【オプチャ】#51_No180"
+    },
+    {
+      "id": 50,
+      "slug": "no50-instagram-ai-team",
+      "source_video_no": 188,
+      "status": "draft",
+      "publish_at": null,
+      "title": "Claude Codeで作る インスタAI社員スタートガイド",
+      "description": "社長役と9担当の役割分担、5つの質問、依頼とチェックの指示文、設定用スターター。",
+      "category": "AI活用",
+      "tags": [
+        "Claude Code",
+        "AI社員",
+        "インスタ運用"
+      ],
+      "image": "assets/preview-ai-v1/no50.jpg",
+      "accent": "#4A3F68",
+      "source_video": "僕のインスタ\n実は10人の\nAI社員が運用",
+      "source_canva_design_id": "DAHKcxPBtxQ",
+      "source_canva_page_id": "PBd5QHb1wnNVhbqB",
+      "lgram_flow_id": 463156,
+      "lgram_flow_name": "【オプチャ】#50_No188",
+      "lgram_template_id": 3971122,
+      "public_guide_video_policy": "no_video",
+      "source_thumbnail": "assets/video-thumbs/no50.png",
+      "source_thumbnail_sha256": "76b71d53b9aa6c74162fa31da4ee904a7b3a9c0c755017db3d59e36ad7c110f4",
+      "source_canva_page": 68,
+      "source_canva_page_checked_at": "2026-11-03",
+      "source_thumbnail_format": "editable_canva_elements",
+      "published_url": "https://smitch-ai-works.github.io/no50-instagram-ai-team/",
+      "published": true,
+      "hub_registered": true
     }
   ]
 }
