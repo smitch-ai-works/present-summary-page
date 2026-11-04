@@ -1095,6 +1095,37 @@
       "lgram_flow_id": 462314,
       "lgram_flow_name": "【オプチャ】No181_ステッカー",
       "lgram_template_id": 3942912
+    },
+    {
+      "id": 55,
+      "slug": "no55-ai-ehon-work-auto",
+      "source_video_no": 192,
+      "status": "draft",
+      "publish_at": null,
+      "title": "ChatGPTで作るAI絵本 3ステップと自動化ガイド",
+      "description": "ChatGPTで構成案と絵を作り、Canvaで仕上げる3ステップと、ChatGPTのWorkに指示文を1回送って絵本PDFまで自動で作る手順。KDP出品の流れつき。",
+      "category": "AI活用",
+      "tags": [
+        "ChatGPT",
+        "AI絵本",
+        "自動化"
+      ],
+      "image": "assets/preview-ai-v1/no55.jpg",
+      "accent": "#B45F1E",
+      "source_video": "再ブーム到来!?\nスキマ時間で\nAI絵本vlog",
+      "source_canva_design_id": "DAHKcxPBtxQ",
+      "source_canva_page_id": "PBWDF5b6J4ymyVXx",
+      "lgram_flow_id": null,
+      "lgram_flow_name": null,
+      "public_guide_video_policy": "no_video",
+      "source_thumbnail": "assets/video-thumbs/no55.png",
+      "source_thumbnail_sha256": "2a65be77abd62e15a18b91dec159d576a19aa41c6e2edb77c37d8b305e3e7964",
+      "source_canva_page": 71,
+      "source_canva_page_checked_at": "2026-11-04",
+      "source_thumbnail_format": "editable_canva_elements",
+      "published": true,
+      "published_url": "https://smitch-ai-works.github.io/no55-ai-ehon-work-auto/",
+      "hub_registered": true
     }
   ]
 }
