@@ -1126,6 +1126,38 @@
       "published": true,
       "published_url": "https://smitch-ai-works.github.io/no55-ai-ehon-work-auto/",
       "hub_registered": true
+    },
+    {
+      "id": 53,
+      "slug": "no53-ai-coloring-book",
+      "source_video_no": 184,
+      "status": "draft",
+      "publish_at": null,
+      "title": "AIでつくる大人の塗り絵 販売スタートガイド",
+      "description": "テーマ選びから画像生成、原稿の整理、KDP出品まで。3つの指示文と練習用作例つき。",
+      "category": "AI副業",
+      "tags": [
+        "ChatGPT",
+        "塗り絵",
+        "Amazon KDP"
+      ],
+      "accent": "#355A45",
+      "image": "assets/preview-ai-v1/no53.jpg",
+      "source_video": "絵が苦手でも\nAIに任せて\n塗り絵販売",
+      "source_thumbnail": "assets/video-thumbs/no53.png",
+      "source_canva_design_id": "DAHKcxPBtxQ",
+      "source_canva_page_id": "PB9FV49BnHqJkQGh",
+      "source_canva_page": 66,
+      "source_canva_page_checked_at": "2026-11-04",
+      "source_thumbnail_format": "editable_canva_elements",
+      "source_thumbnail_sha256": "7f9c6317fd5a2ee808f82be29be10e337d28d898968687860711e7f35b32461e",
+      "lgram_flow_id": 464293,
+      "lgram_flow_name": "【準備】No184_AI塗り絵",
+      "public_guide_video_policy": "no_video",
+      "published": true,
+      "published_url": "https://smitch-ai-works.github.io/no53-ai-coloring-book/",
+      "hub_registered": true,
+      "lgram_template_id": 3998865
     }
   ]
 }
