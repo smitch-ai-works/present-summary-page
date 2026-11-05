@@ -1180,9 +1180,15 @@
       "lgram_flow_id": 464950,
       "lgram_flow_name": "【準備】No193_塗り絵しおり",
       "public_guide_video_policy": "no_video",
-      "published": false,
+      "published": true,
       "published_url": "https://smitch-ai-works.github.io/no56-chatgpt-bookmark-workflow/",
-      "hub_registered": true
+      "hub_registered": true,
+      "source_thumbnail": "assets/video-thumbs/no56.png",
+      "source_thumbnail_sha256": "8a224ae9b30c2e2048872603a9b77f882e5da345329c8dac08d0fc542262fa29",
+      "source_canva_page": 72,
+      "source_canva_page_id": "PBX8vrQvJypWDJyJ",
+      "source_canva_page_checked_at": "2026-11-06",
+      "source_thumbnail_format": "editable_canva_elements"
     }
   ]
 }
