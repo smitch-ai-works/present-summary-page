@@ -1211,8 +1211,16 @@
       "lgram_flow_id": 464965,
       "lgram_flow_name": "【準備】No195_愛用AI4選",
       "public_guide_video_policy": "no_video",
-      "published": false,
-      "hub_registered": true
+      "published": true,
+      "hub_registered": true,
+      "published_url": "https://smitch-ai-works.github.io/no58-ai-tools-workflow/",
+      "source_thumbnail": "assets/video-thumbs/no58.png",
+      "source_thumbnail_sha256": "8107e1692310677cb4fcce2a4197d2cc7f200e79d6e8c8719cb9684f8352b0ac",
+      "source_canva_design_id": "DAHKcxPBtxQ",
+      "source_canva_page": 74,
+      "source_canva_page_id": "PB1Kk2gc4DYPSvTd",
+      "source_canva_page_checked_at": "2026-11-06",
+      "source_thumbnail_format": "editable_canva_elements"
     },
     {
       "id": 57,
