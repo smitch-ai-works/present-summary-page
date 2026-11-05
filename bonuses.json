@@ -1189,6 +1189,30 @@
       "source_canva_page_id": "PBX8vrQvJypWDJyJ",
       "source_canva_page_checked_at": "2026-11-06",
       "source_thumbnail_format": "editable_canva_elements"
+    },
+    {
+      "id": 58,
+      "slug": "no58-ai-tools-workflow",
+      "source_video_no": 195,
+      "status": "draft",
+      "publish_at": null,
+      "title": "愛用AI4選の使い分けノート",
+      "description": "台本・調査、動画・LP、企画・画像、表紙。4つのAIに任せる仕事と、試せる依頼文を図と手順でまとめました。",
+      "category": "AI副業",
+      "tags": [
+        "Claude Code",
+        "Codex",
+        "ChatGPT",
+        "Canva"
+      ],
+      "image": "assets/preview-ai-v1/no58.jpg",
+      "accent": "#796126",
+      "source_video": "副業で月100万円\n僕が愛用する\nAIツール4選",
+      "lgram_flow_id": 464965,
+      "lgram_flow_name": "【準備】No195_愛用AI4選",
+      "public_guide_video_policy": "no_video",
+      "published": false,
+      "hub_registered": true
     }
   ]
 }
