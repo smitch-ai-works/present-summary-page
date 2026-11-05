@@ -1213,6 +1213,37 @@
       "public_guide_video_policy": "no_video",
       "published": false,
       "hub_registered": true
+    },
+    {
+      "id": 57,
+      "slug": "no57-chatgpt-mercari-photo",
+      "source_video_no": 194,
+      "status": "draft",
+      "publish_at": null,
+      "title": "ChatGPTで整えるメルカリ出品写真｜撮り直しなしの3ステップ",
+      "description": "手持ちの服の写真1枚を、ChatGPTでマネキン着用・白背景・表紙風の商品画像へ。実際に使った3つの指示文と作例、出品前に確かめる3つのことつき。",
+      "category": "AI副業",
+      "tags": [
+        "ChatGPT",
+        "メルカリ",
+        "出品写真"
+      ],
+      "image": "assets/preview-ai-v1/no57.jpg",
+      "accent": "#B23A3A",
+      "source_video": "これでいいの!?\nChatGPT×メルカリ\n簡単活用術",
+      "source_canva_design_id": "DAHKcxPBtxQ",
+      "lgram_flow_id": null,
+      "lgram_flow_name": null,
+      "public_guide_video_policy": "no_video",
+      "published": true,
+      "published_url": "https://smitch-ai-works.github.io/no57-chatgpt-mercari-photo/",
+      "hub_registered": true,
+      "source_thumbnail": "assets/video-thumbs/no57.png",
+      "source_thumbnail_sha256": "cf103c49f782d54674d07d58a00af566ed214eb87faa695c598a73dd4bc8e074",
+      "source_canva_page": 73,
+      "source_canva_page_id": "PBKgp4mrckqMNqcM",
+      "source_canva_page_checked_at": "2026-11-06",
+      "source_thumbnail_format": "editable_canva_elements"
     }
   ]
 }
