@@ -1158,6 +1158,31 @@
       "published_url": "https://smitch-ai-works.github.io/no53-ai-coloring-book/",
       "hub_registered": true,
       "lgram_template_id": 3998865
+    },
+    {
+      "id": 56,
+      "slug": "no56-chatgpt-bookmark-workflow",
+      "source_video_no": 193,
+      "status": "draft",
+      "publish_at": null,
+      "title": "ChatGPTで作る塗り絵しおり｜プロンプトと制作を任せる手順",
+      "description": "日本風景の線画、英語の商品説明、次の制作をまとめて頼む3本のプロンプト。作例と保存用ZIP、Etsyへ出す前の確認手順つき。",
+      "category": "AI副業",
+      "tags": [
+        "ChatGPT",
+        "塗り絵しおり",
+        "Etsy"
+      ],
+      "image": "assets/preview-ai-v1/no56.jpg",
+      "accent": "#927036",
+      "source_video": "海外に刺さる!?\nChatGPTで\n塗り絵しおり",
+      "source_canva_design_id": "DAHKcxPBtxQ",
+      "lgram_flow_id": 464950,
+      "lgram_flow_name": "【準備】No193_塗り絵しおり",
+      "public_guide_video_policy": "no_video",
+      "published": false,
+      "published_url": "https://smitch-ai-works.github.io/no56-chatgpt-bookmark-workflow/",
+      "hub_registered": true
     }
   ]
 }
