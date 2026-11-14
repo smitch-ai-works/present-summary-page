@@ -1351,7 +1351,7 @@
       "slug": "no64-chatgpt-pr-video",
       "status": "draft",
       "publish_at": null,
-      "title": "すみっち式 AIに動画の仕事を任せるマニュアル",
+      "title": "すみっち式 AI動画副業マニュアル",
       "description": "商品写真からPR動画を作り、確認・修正・MP4保存まで。全文プロンプト、練習用写真、2本の動画見本を収録。",
       "category": "AI動画制作",
       "tags": [
@@ -1368,7 +1368,7 @@
       "source_canva_page": 78,
       "lgram_flow_id": 470172,
       "lgram_flow_name": "【準備】No199_AI動画制作",
-      "published": false,
+      "published": true,
       "lgram_status": "draft_saved",
       "hub_registered": true,
       "source_canva_design_id": "DAHKcxPBtxQ",
@@ -1376,7 +1376,11 @@
       "source_canva_page_checked_at": "2026-11-14",
       "source_thumbnail_format": "editable_canva_elements",
       "source_thumbnail_sha256": "5f7570dd03ecc67bad146a460d205026613be81d56a533a85b8cfdbfc30e2b00",
-      "explanation_video_received": false
+      "explanation_video_received": false,
+      "bonus_cover": "assets/bonus-covers/no64.png",
+      "bonus_cover_approved": true,
+      "bonus_cover_sha256": "b0475f23d84402c5fbec7678785416a1d0baeae8357e9a667c75da39521af311",
+      "published_url": "https://smitch-ai-works.github.io/no64-chatgpt-pr-video/"
     },
     {
       "id": 63,
