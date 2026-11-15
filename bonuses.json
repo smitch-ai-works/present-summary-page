@@ -1380,7 +1380,9 @@
       "bonus_cover": "assets/bonus-covers/no64.png",
       "bonus_cover_approved": true,
       "bonus_cover_sha256": "b0475f23d84402c5fbec7678785416a1d0baeae8357e9a667c75da39521af311",
-      "published_url": "https://smitch-ai-works.github.io/no64-chatgpt-pr-video/"
+      "published_url": "https://smitch-ai-works.github.io/no64-chatgpt-pr-video/",
+      "public_guide_video_policy": "no_video",
+      "explanation_video_required": false
     },
     {
       "id": 63,
