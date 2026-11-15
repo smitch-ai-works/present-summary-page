@@ -1486,6 +1486,36 @@
       "explanation_video_required": false,
       "source_thumbnail_sha256": "032f63ccecf580648e13131acd826599b3d759209a1ef7d1d62948b9b82d8ff1",
       "bonus_cover_sha256": "c4ddfdc4fd73945b3305904123a5e8141584599865d255f9ee021687089ff512"
+    },
+    {
+      "id": 65,
+      "slug": "no65-free-ai-start",
+      "status": "draft",
+      "publish_at": null,
+      "title": "すみっち式 0円AI使い倒しマニュアル",
+      "description": "FreeLLMAPIの設定から、無料枠で見出しを作成・修正・保存するまで。全文指示文と練習キット付き。",
+      "category": "AI活用",
+      "tags": [
+        "FreeLLMAPI",
+        "無料枠",
+        "SNS投稿"
+      ],
+      "accent": "#12387a",
+      "image": "assets/preview-ai-v1/no65.jpg",
+      "bonus_cover": "assets/bonus-covers/no65.png",
+      "source_video_no": 203,
+      "source_video": "0円AI\n使い倒し\nマニュアル",
+      "source_thumbnail": "assets/video-thumbs/no65.png",
+      "source_canva_page": null,
+      "published": true,
+      "hub_registered": true,
+      "lgram_status": "not_configured",
+      "public_guide_video_policy": "no_video",
+      "explanation_video_required": false,
+      "source_thumbnail_format": "generated_local_cover_not_canva_export",
+      "source_thumbnail_sha256": "fc3a94137befdc8339566134d9186d3b7be036628d40377688fcec9613cace04",
+      "url": "https://smitch-ai-works.github.io/no65-free-ai-start/",
+      "published_url": "https://smitch-ai-works.github.io/no65-free-ai-start/"
     }
   ]
 }
