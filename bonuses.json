@@ -1504,18 +1504,21 @@
       "image": "assets/preview-ai-v1/no65.jpg",
       "bonus_cover": "assets/bonus-covers/no65.png",
       "source_video_no": 203,
-      "source_video": "0円AI\n使い倒し\nマニュアル",
-      "source_thumbnail": "assets/video-thumbs/no65.png",
-      "source_canva_page": null,
+      "source_video": "AIに課金する前に\nGeminiも\n0円で使い倒す!?",
+      "source_thumbnail": "assets/video-thumbs/no65-canva-v1.png",
+      "source_canva_page": 81,
       "published": true,
       "hub_registered": true,
       "lgram_status": "not_configured",
       "public_guide_video_policy": "no_video",
       "explanation_video_required": false,
-      "source_thumbnail_format": "generated_local_cover_not_canva_export",
-      "source_thumbnail_sha256": "fc3a94137befdc8339566134d9186d3b7be036628d40377688fcec9613cace04",
+      "source_thumbnail_format": "official_canva_png_1080x1920",
+      "source_thumbnail_sha256": "cfd6b9d3f7c4596fb162d4a1452b2ecc6f2b924429f370175ef12d19e2e75f59",
       "url": "https://smitch-ai-works.github.io/no65-free-ai-start/",
-      "published_url": "https://smitch-ai-works.github.io/no65-free-ai-start/"
+      "published_url": "https://smitch-ai-works.github.io/no65-free-ai-start/",
+      "source_canva_design_id": "DAHKcxPBtxQ",
+      "source_canva_page_id": "PBrk52wJqVqflhgL",
+      "source_canva_page_checked_at": "2026-11-15"
     }
   ]
 }
