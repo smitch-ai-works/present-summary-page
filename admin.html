@@ -330,7 +330,7 @@
 
   function missing(b) {
     const lack = [];
-    if (!b.source_thumbnail && !LEGACY_WITHOUT_VIDEO_COVER.includes(b.slug)) lack.push("動画の表紙");
+    if (!b.source_thumbnail && b.source_thumbnail_required !== false && !LEGACY_WITHOUT_VIDEO_COVER.includes(b.slug)) lack.push("動画の表紙");
     else if (b.source_thumbnail && (b.source_video || "").split("\n").filter(s => s.trim()).length !== 3) lack.push("表紙の3行の文字");
     const need = { title: "見出し", description: "説明文", image: "特典ページの画像", category: "カテゴリ", accent: "色" };
     for (const [k, name] of Object.entries(need)) if (!b[k] || !String(b[k]).trim()) lack.push(name);
@@ -340,7 +340,7 @@
   }
 
   function cover(b, cls = "cover") {
-    const src = b.source_thumbnail || (LEGACY_WITHOUT_VIDEO_COVER.includes(b.slug) ? b.image : "");
+    const src = b.source_thumbnail || (b.source_thumbnail_required === false || LEGACY_WITHOUT_VIDEO_COVER.includes(b.slug) ? b.image : "");
     return src
       ? `<img class="${cls}" src="${esc(src)}" alt="" loading="lazy">`
       : `<div class="nocover">動画の表紙なし</div>`;

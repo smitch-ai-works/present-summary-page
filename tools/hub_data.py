@@ -60,19 +60,22 @@ def validate(doc):
             raise ValueError(f"{slug}: 公開予約の日時が空です")
 
         keys = ("title", "image")
+        thumbnail = b.get("source_thumbnail")
+        cover_optional = b.get("source_thumbnail_required") is False
         if b["status"] in ("live", "scheduled"):
-            keys = ("category", "title", "description", "tags", "image", "accent",
-                    "source_video")
+            keys = ("category", "title", "description", "tags", "image", "accent")
+            if thumbnail or not cover_optional:
+                keys += ("source_video",)
         for key in keys:
             value = b.get(key)
             if not value or (isinstance(value, str) and not value.strip()):
                 tail = ("（ページに出すには全項目が必要です）"
                         if b["status"] in ("live", "scheduled") else "")
                 raise ValueError(f"{slug}: {LABELS[key]}が空です{tail}")
-        thumbnail = b.get("source_thumbnail")
         if thumbnail and not os.path.isfile(os.path.join(ROOT, thumbnail)):
             raise ValueError(f"{slug}: 動画サムネが見つかりません: {thumbnail}")
-        if b["status"] in ("live", "scheduled") and slug not in LEGACY_WITHOUT_VIDEO_COVER:
+        cover_applies = thumbnail or not cover_optional
+        if b["status"] in ("live", "scheduled") and cover_applies and slug not in LEGACY_WITHOUT_VIDEO_COVER:
             if not thumbnail:
                 raise ValueError(f"{slug}: 動画サムネが空です（Canvaの表紙を登録してください）")
             lines = b["source_video"].splitlines()
@@ -139,7 +142,7 @@ def card(doc, b, number):
         "title": b["title"],
         "plainTitle": plain_title(b["title"]),
         "description": b["description"],
-        "sourceVideo": b["source_video"],
+        "sourceVideo": b.get("source_video") or "",
         "sourceThumbnail": b.get("source_thumbnail", ""),
         "tags": b["tags"],
         "url": doc["base_url"] + b["slug"] + "/",

@@ -1234,6 +1234,7 @@ const bonuses = revealDue([{"number": "01", "category": "ChatGPT活用", "title"
             <div class="card-body">
               <span class="category">${item.category}</span>
               <h3>${item.title}</h3>
+              ${item.sourceThumbnail || item.sourceVideo ? `
               <div class="source-video">
                 ${item.sourceThumbnail ? `<img class="source-video-thumb" src="${escapeAttribute(item.sourceThumbnail)}" alt="" loading="lazy">` : `<span class="source-video-icon" aria-hidden="true">▶</span>`}
                 <span class="source-video-copy">
@@ -1241,6 +1242,7 @@ const bonuses = revealDue([{"number": "01", "category": "ChatGPT活用", "title"
                   <span class="source-video-title">${escapeAttribute(item.sourceVideo)}</span>
                 </span>
               </div>
+              ` : ""}
               <p class="card-description">${item.description}</p>
               <div class="tags">
                 ${item.tags.map(tag => `<span class="tag">${tag}</span>`).join("")}
