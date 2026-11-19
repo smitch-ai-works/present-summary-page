@@ -417,7 +417,7 @@
   function renderPanel(g) {
     const p = $("panel");
     if (tab === "ready") {
-      p.innerHTML = `<p class="lead">動画の表紙と特典ページがそろっている特典です。日時と番号を決めて出せます。</p>` +
+      p.innerHTML = `<p class="lead">特典まとめページに掲載できる下書きです。日時と番号を決めて出せます。</p>` +
         (g.ready.length ? `<div class="stack">${g.ready.map(b => card(b,
           `<button class="btn go" data-open="${esc(b.slug)}">日時と番号を決める</button>`)).join("")}</div>`
           : `<div class="empty">今すぐ出せる特典はありません。<br>準備中の特典はClaudeに仕上げを頼んでください。</div>`);
