@@ -1369,6 +1369,35 @@
       "explanation_video_required": false
     },
     {
+      "id": 67,
+      "slug": "no67-claude-video-editing",
+      "source_video_no": 205,
+      "title": "すみっち式 Claudeで動画編集 完全マニュアル",
+      "description": "自分の声と素材で、Claudeに縦型リールを1本作らせる6ステップ。実際の修正例と、編集・修正・ルール保存に使える指示文6本付き。",
+      "category": "Claude活用",
+      "tags": [
+        "Claude",
+        "動画編集",
+        "リール"
+      ],
+      "status": "live",
+      "source_thumbnail_required": false,
+      "publish_at": "2026-11-21T19:52:34+09:00",
+      "accent": "#963c27",
+      "url": "https://smitch-ai-works.github.io/no67-claude-video-editing/",
+      "image": "assets/preview-ai-v1/no67.jpg",
+      "bonus_cover": "assets/bonus-covers/no67.png",
+      "bonus_cover_sha256": "add15f35d7d03ea13685df8c1d537a1978e9be5eee79c6304ba91e885d9f8fc2",
+      "source_video": "",
+      "lgram_flow_id": 473351,
+      "lgram_flow_name": "【準備】No205_Claude動画編集",
+      "lgram_status": "draft_saved",
+      "explanation_video_required": true,
+      "published": true,
+      "published_url": "https://smitch-ai-works.github.io/no67-claude-video-editing/",
+      "hub_registered": true
+    },
+    {
       "id": 40,
       "slug": "no40-ai-motion-video",
       "title": "AIモーション動画 制作キット",
@@ -1519,35 +1548,6 @@
       "bonus_cover": "assets/bonus-covers/no62.png",
       "source_canva_page_checked_at": "2026-11-15",
       "published_url": "https://smitch-ai-works.github.io/no62-claude-rakuten-selection/"
-    },
-    {
-      "id": 67,
-      "slug": "no67-claude-video-editing",
-      "source_video_no": 205,
-      "title": "すみっち式 Claudeで動画編集 完全マニュアル",
-      "description": "自分の声と素材で、Claudeに縦型リールを1本作らせる6ステップ。実際の修正例と、編集・修正・ルール保存に使える指示文6本付き。",
-      "category": "Claude活用",
-      "tags": [
-        "Claude",
-        "動画編集",
-        "リール"
-      ],
-      "status": "draft",
-      "source_thumbnail_required": false,
-      "publish_at": null,
-      "accent": "#963c27",
-      "url": "https://smitch-ai-works.github.io/no67-claude-video-editing/",
-      "image": "assets/preview-ai-v1/no67.jpg",
-      "bonus_cover": "assets/bonus-covers/no67.png",
-      "bonus_cover_sha256": "add15f35d7d03ea13685df8c1d537a1978e9be5eee79c6304ba91e885d9f8fc2",
-      "source_video": "",
-      "lgram_flow_id": 473351,
-      "lgram_flow_name": "【準備】No205_Claude動画編集",
-      "lgram_status": "draft_saved",
-      "explanation_video_required": true,
-      "published": true,
-      "published_url": "https://smitch-ai-works.github.io/no67-claude-video-editing/",
-      "hub_registered": true
     }
   ]
 }
