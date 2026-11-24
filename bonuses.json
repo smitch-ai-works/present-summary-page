@@ -1765,6 +1765,39 @@
       "published": true,
       "published_url": "https://smitch-ai-works.github.io/no74-ai-narration/",
       "hub_registered": true
+    },
+    {
+      "id": 75,
+      "slug": "no75-ai-first-product",
+      "title": "すみっち式 AI副業 はじめの1商品実践ガイド",
+      "description": "一人の困りごとから商品を決め、試作を届け、反応から次を考える。note・LINEスタンプ・LPに使えるシートと作例つき。",
+      "category": "AI副業",
+      "tags": [
+        "ChatGPT",
+        "note",
+        "商品づくり",
+        "SNS集客"
+      ],
+      "accent": "#236c5b",
+      "image": "assets/preview-ai-v1/no75.jpg",
+      "bonus_cover": "assets/bonus-covers/no75.png",
+      "bonus_cover_sha256": "10cfa84c0208a35eff0d3536c14a2160ce448dd23807303cf5a709d7b90231c7",
+      "source_video_no": 202,
+      "source_account": "smitch_ai_works",
+      "source_video": "",
+      "source_thumbnail_required": false,
+      "comment_prompt": "好きなAI",
+      "status": "draft",
+      "publish_at": null,
+      "lgram_flow_id": 475327,
+      "lgram_flow_name": "【準備】No202_AI副業ノウハウ",
+      "explanation_video_required": false,
+      "explanation_video_policy": "none_by_user_request",
+      "url": "https://smitch-ai-works.github.io/no75-ai-first-product/",
+      "published_url": "https://smitch-ai-works.github.io/no75-ai-first-product/",
+      "published": true,
+      "hub_registered": true,
+      "lgram_status": "draft_message_pending"
     }
   ]
 }
