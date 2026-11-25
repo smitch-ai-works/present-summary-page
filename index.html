@@ -1,1287 +1,375 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="すみっちがInstagramで配布してきた特典をまとめたアクセスページです。">
-  <meta name="theme-color" content="#2E5D50">
-  <title>すみっち｜これまでの特典まとめ</title>
-  <style>
-    :root {
-      --teal: #2E5D50;
-      --teal-dark: #173B32;
-      --charcoal: #323836;
-      --beige: #DDC9A8;
-      --paper: #F7F5F0;
-      --white: #FFFFFF;
-      --muted: #6B7471;
-      --line: rgba(46, 93, 80, .13);
-      --shadow: 0 22px 55px rgba(28, 61, 52, .10);
-      --radius: 28px;
-    }
-
-    * { box-sizing: border-box; }
-
-    html {
-      scroll-behavior: smooth;
-      background: var(--paper);
-    }
-
-    body {
-      margin: 0;
-      color: var(--charcoal);
-      background:
-        radial-gradient(circle at 7% 2%, rgba(221, 201, 168, .38), transparent 28rem),
-        radial-gradient(circle at 96% 23%, rgba(46, 93, 80, .10), transparent 28rem),
-        var(--paper);
-      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", system-ui, -apple-system, sans-serif;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    a { color: inherit; }
-    button, input { font: inherit; }
-
-    .container {
-      width: min(1160px, calc(100% - 40px));
-      margin: 0 auto;
-    }
-
-    .hero {
-      position: relative;
-      overflow: hidden;
-      padding: 26px 0 84px;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      top: -230px;
-      right: -180px;
-      width: 570px;
-      height: 570px;
-      border: 1px solid rgba(46, 93, 80, .10);
-      border-radius: 50%;
-      box-shadow:
-        0 0 0 48px rgba(46, 93, 80, .025),
-        0 0 0 104px rgba(46, 93, 80, .018);
-      pointer-events: none;
-    }
-
-    .mini-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      min-height: 46px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .mini-brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--teal-dark);
-      font-size: 13px;
-      font-weight: 900;
-      letter-spacing: .05em;
-    }
-
-    .mini-brand::before {
-      content: "";
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: var(--teal);
-      box-shadow: 0 0 0 6px rgba(46, 93, 80, .10);
-    }
-
-    .update-note {
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 700;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.18fr) minmax(320px, .82fr);
-      align-items: center;
-      gap: 60px;
-      min-height: 560px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 22px;
-      padding: 9px 14px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      color: var(--teal);
-      background: rgba(255,255,255,.58);
-      font-size: 12px;
-      font-weight: 900;
-      backdrop-filter: blur(10px);
-    }
-
-    .eyebrow span {
-      display: inline-grid;
-      place-items: center;
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      color: var(--white);
-      background: var(--teal);
-      font-size: 11px;
-    }
-
-    h1 {
-      max-width: 720px;
-      margin: 0;
-      color: #24302D;
-      font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
-      font-size: clamp(47px, 6.3vw, 78px);
-      font-weight: 700;
-      line-height: 1.2;
-      letter-spacing: -.055em;
-    }
-
-    h1 em {
-      color: var(--teal);
-      font-style: normal;
-      position: relative;
-      white-space: nowrap;
-    }
-
-    h1 em::after {
-      content: "";
-      position: absolute;
-      left: 2%;
-      right: 1%;
-      bottom: -7px;
-      height: 9px;
-      border-radius: 999px;
-      background: rgba(221, 201, 168, .78);
-      transform: rotate(-1deg);
-      z-index: -1;
-    }
-
-    .hero-lead {
-      max-width: 650px;
-      margin: 29px 0 0;
-      color: var(--muted);
-      font-size: clamp(15px, 1.7vw, 18px);
-      line-height: 2;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 14px;
-      margin-top: 34px;
-    }
-
-    .primary-button {
-      display: inline-flex;
-      align-items: center;
-      gap: 13px;
-      min-height: 54px;
-      padding: 0 22px;
-      border-radius: 999px;
-      color: var(--white);
-      background: var(--teal);
-      box-shadow: 0 14px 30px rgba(46, 93, 80, .20);
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 900;
-      transition: transform .2s ease, background .2s ease;
-    }
-
-    .primary-button:hover {
-      transform: translateY(-2px);
-      background: var(--teal-dark);
-    }
-
-    .primary-button i {
-      display: grid;
-      place-items: center;
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: rgba(255,255,255,.14);
-      font-style: normal;
-    }
-
-    .sub-note {
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 700;
-    }
-
-    .character-stage {
-      position: relative;
-      display: grid;
-      place-items: center;
-      min-height: 470px;
-    }
-
-    .character-stage::before {
-      content: "";
-      position: absolute;
-      width: 360px;
-      height: 360px;
-      border-radius: 46% 54% 51% 49% / 57% 43% 57% 43%;
-      background: linear-gradient(145deg, rgba(46,93,80,.18), rgba(221,201,168,.36));
-      transform: rotate(-8deg);
-    }
-
-    .character-stage::after {
-      content: "";
-      position: absolute;
-      width: 92px;
-      height: 92px;
-      right: 18px;
-      top: 56px;
-      border-radius: 24px;
-      border: 1px solid rgba(46,93,80,.12);
-      transform: rotate(18deg);
-    }
-
-    .character-card {
-      position: relative;
-      width: min(390px, 100%);
-      aspect-ratio: 1;
-      padding: 12px;
-      border: 1px solid rgba(255,255,255,.8);
-      border-radius: 50%;
-      background: rgba(255,255,255,.66);
-      box-shadow: 0 30px 80px rgba(35, 72, 62, .16);
-      backdrop-filter: blur(14px);
-      transform: rotate(2deg);
-    }
-
-    .character-card img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      object-fit: cover;
-      background: #fff;
-    }
-
-    .character-label {
-      position: absolute;
-      right: -4px;
-      bottom: 42px;
-      padding: 12px 17px;
-      border: 1px solid rgba(46,93,80,.10);
-      border-radius: 15px;
-      color: var(--teal-dark);
-      background: rgba(255,255,255,.92);
-      box-shadow: 0 14px 40px rgba(35,72,62,.12);
-      font-size: 13px;
-      font-weight: 900;
-      transform: rotate(-4deg);
-    }
-
-    main {
-      padding-bottom: 84px;
-    }
-
-    .tool-panel {
-      display: grid;
-      grid-template-columns: minmax(250px, 1fr) auto;
-      gap: 22px;
-      align-items: center;
-      margin-bottom: 38px;
-      padding: 18px;
-      border: 1px solid rgba(255,255,255,.9);
-      border-radius: 24px;
-      background: rgba(255,255,255,.72);
-      box-shadow: 0 18px 50px rgba(35,72,62,.08);
-      backdrop-filter: blur(16px);
-    }
-
-    .search-wrap {
-      position: relative;
-    }
-
-    .search-wrap svg {
-      position: absolute;
-      left: 17px;
-      top: 50%;
-      width: 18px;
-      height: 18px;
-      color: #7A8581;
-      transform: translateY(-50%);
-      pointer-events: none;
-    }
-
-    .search-input {
-      width: 100%;
-      height: 48px;
-      padding: 0 18px 0 46px;
-      border: 1px solid var(--line);
-      border-radius: 15px;
-      outline: none;
-      color: var(--charcoal);
-      background: rgba(255,255,255,.88);
-      font-size: 13px;
-      transition: border-color .2s ease, box-shadow .2s ease;
-    }
-
-    .search-input:focus {
-      border-color: rgba(46,93,80,.42);
-      box-shadow: 0 0 0 4px rgba(46,93,80,.08);
-    }
-
-    .filters {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-      gap: 8px;
-    }
-
-    .filter-button {
-      appearance: none;
-      min-height: 40px;
-      padding: 0 15px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      color: #596562;
-      background: #fff;
-      cursor: pointer;
-      font-size: 11px;
-      font-weight: 900;
-      transition: transform .2s ease, background .2s ease, color .2s ease;
-    }
-
-    .filter-button:hover {
-      transform: translateY(-1px);
-    }
-
-    .filter-button.active {
-      color: #fff;
-      border-color: var(--teal);
-      background: var(--teal);
-    }
-
-    .section-heading {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 24px;
-      margin: 0 0 25px;
-    }
-
-    .section-heading h2 {
-      margin: 0;
-      color: #27322F;
-      font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
-      font-size: clamp(30px, 4vw, 44px);
-      letter-spacing: -.04em;
-    }
-
-    .section-heading p {
-      margin: 0 0 4px;
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 700;
-      white-space: nowrap;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 22px;
-    }
-
-    .swipe-guide {
-      display: none;
-    }
-
-    .card {
-      --accent: var(--teal);
-      overflow: hidden;
-      min-width: 0;
-      border: 1px solid rgba(46,93,80,.10);
-      border-radius: var(--radius);
-      background: rgba(255,255,255,.94);
-      box-shadow: 0 14px 40px rgba(35,72,62,.07);
-      transition: transform .24s ease, box-shadow .24s ease;
-      animation: cardIn .5s ease both;
-    }
-
-    .card:hover {
-      transform: translateY(-7px);
-      box-shadow: var(--shadow);
-    }
-
-    @keyframes cardIn {
-      from { opacity: 0; transform: translateY(14px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .card-link {
-      display: flex;
-      min-height: 100%;
-      flex-direction: column;
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .preview {
-      position: relative;
-      overflow: hidden;
-      height: 210px;
-      background:
-        radial-gradient(circle at 80% 10%, rgba(255,255,255,.36), transparent 32%),
-        linear-gradient(135deg, color-mix(in srgb, var(--accent) 85%, #173B32), color-mix(in srgb, var(--accent) 48%, #F2E8D7));
-      isolation: isolate;
-    }
-
-    .preview-browser {
-      position: absolute;
-      inset: 0;
-      overflow: hidden;
-      transition: transform .5s ease;
-    }
-
-    .card:hover .preview-browser {
-      transform: scale(1.035);
-    }
-
-    .preview-browser img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
-      display: block;
-    }
-
-    .preview::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: 2;
-      background:
-        linear-gradient(180deg, rgba(18,43,36,.55) 0%, rgba(18,43,36,0) 26%),
-        linear-gradient(120deg, color-mix(in srgb, var(--accent) 18%, transparent), transparent 55%);
-      pointer-events: none;
-    }
-
-    .preview-top {
-      position: absolute;
-      z-index: 3;
-      top: 17px;
-      left: 17px;
-      right: 17px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-    }
-
-    .preview-number,
-    .preview-hint {
-      padding: 7px 10px;
-      border: 1px solid rgba(255,255,255,.30);
-      border-radius: 999px;
-      color: #fff;
-      background: rgba(19,45,38,.36);
-      box-shadow: 0 8px 30px rgba(0,0,0,.08);
-      backdrop-filter: blur(10px);
-      font-size: 10px;
-      font-weight: 900;
-    }
-
-    .preview-hint {
-      opacity: .82;
-    }
-
-    .card-body {
-      display: flex;
-      flex: 1;
-      flex-direction: column;
-      padding: 24px 24px 22px;
-    }
-
-    .category {
-      align-self: flex-start;
-      padding: 6px 10px;
-      border-radius: 999px;
-      color: var(--accent);
-      background: color-mix(in srgb, var(--accent) 10%, white);
-      font-size: 10px;
-      font-weight: 900;
-    }
-
-    .card h3 {
-      margin: 15px 0 11px;
-      color: #293431;
-      font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
-      font-size: 23px;
-      line-height: 1.45;
-      letter-spacing: -.035em;
-    }
-
-    .card-description {
-      margin: 0;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.8;
-    }
-
-    .source-video {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-      min-height: 70px;
-      margin: 0 0 16px;
-      padding: 10px;
-      border: 1px solid color-mix(in srgb, var(--accent) 20%, white);
-      border-radius: 12px;
-      background: color-mix(in srgb, var(--accent) 5%, white);
-    }
-
-    .source-video-thumb,
-    .source-video-icon {
-      width: 58px;
-      height: 80px;
-      flex: none;
-      border-radius: 6px;
-    }
-
-    .source-video-thumb { object-fit: cover; }
-    .source-video-icon {
-      display: grid;
-      place-items: center;
-      color: white;
-      background: var(--accent);
-      font-size: 21px;
-    }
-
-    .source-video-copy { min-width: 0; }
-    .source-video-label {
-      display: block;
-      margin-bottom: 3px;
-      color: var(--accent);
-      font-size: 10px;
-      font-weight: 900;
-    }
-    .source-video-title {
-      display: block;
-      color: #293431;
-      font-size: 12px;
-      font-weight: 800;
-      line-height: 1.45;
-      white-space: pre-line;
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-      margin: 18px 0 21px;
-    }
-
-    .tag {
-      padding: 5px 8px;
-      border: 1px solid rgba(46,93,80,.09);
-      border-radius: 8px;
-      color: #727B78;
-      background: #FAFBF9;
-      font-size: 10px;
-      font-weight: 700;
-    }
-
-    .open-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      margin-top: auto;
-      padding-top: 18px;
-      border-top: 1px solid var(--line);
-      color: var(--teal-dark);
-      font-size: 13px;
-      font-weight: 900;
-    }
-
-    .open-icon {
-      display: grid;
-      place-items: center;
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      color: #fff;
-      background: var(--teal);
-      transition: transform .2s ease, background .2s ease;
-    }
-
-    .card:hover .open-icon {
-      transform: translateX(3px);
-      background: var(--teal-dark);
-    }
-
-    .empty-state {
-      display: none;
-      padding: 70px 25px;
-      border: 1px dashed rgba(46,93,80,.20);
-      border-radius: 24px;
-      color: var(--muted);
-      background: rgba(255,255,255,.54);
-      text-align: center;
-      font-size: 14px;
-      line-height: 1.8;
-    }
-
-    .empty-state.show { display: block; }
-
-    .closing {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      align-items: center;
-      gap: 25px;
-      margin-top: 66px;
-      padding: 30px 34px;
-      border-radius: 27px;
-      color: #fff;
-      background:
-        radial-gradient(circle at 92% 8%, rgba(221,201,168,.18), transparent 19rem),
-        linear-gradient(135deg, #173B32, #2E5D50);
-      box-shadow: 0 22px 55px rgba(28,61,52,.15);
-    }
-
-    .closing-mark {
-      display: grid;
-      place-items: center;
-      width: 66px;
-      height: 66px;
-      border: 1px solid rgba(255,255,255,.16);
-      border-radius: 20px;
-      background: rgba(255,255,255,.08);
-      font-size: 28px;
-    }
-
-    .closing h2 {
-      margin: 0 0 7px;
-      font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
-      font-size: clamp(23px, 3vw, 32px);
-      letter-spacing: -.03em;
-    }
-
-    .closing p {
-      margin: 0;
-      color: rgba(255,255,255,.72);
-      font-size: 13px;
-      line-height: 1.8;
-    }
-
-    footer {
-      padding: 25px 0 38px;
-      color: #7A8380;
-      font-size: 11px;
-      text-align: center;
-    }
-
-    @media (max-width: 980px) {
-      .hero-grid {
-        grid-template-columns: minmax(0, 1.1fr) minmax(280px, .9fr);
-        gap: 30px;
-      }
-
-      .cards {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .tool-panel {
-        grid-template-columns: 1fr;
-      }
-
-      .filters {
-        justify-content: flex-start;
-      }
-    }
-
-    @media (max-width: 720px) {
-      .container {
-        width: min(100% - 24px, 1160px);
-      }
-
-      .hero {
-        padding-top: 15px;
-        padding-bottom: 60px;
-      }
-
-      .update-note {
-        font-size: 10px;
-      }
-
-      .hero-grid {
-        grid-template-columns: 1fr;
-        min-height: auto;
-        gap: 26px;
-        padding-top: 48px;
-      }
-
-      h1 {
-        font-size: clamp(40px, 12.4vw, 55px);
-        line-height: 1.25;
-      }
-
-      h1 em {
-        white-space: normal;
-      }
-
-      .hero-lead {
-        margin-top: 23px;
-        font-size: 15px;
-        line-height: 1.85;
-      }
-
-      .character-stage {
-        grid-row: 1;
-        min-height: 310px;
-      }
-
-      .character-stage::before {
-        width: 280px;
-        height: 280px;
-      }
-
-      .character-stage::after {
-        width: 60px;
-        height: 60px;
-        right: 8px;
-        top: 28px;
-      }
-
-      .character-card {
-        width: 285px;
-      }
-
-      .character-label {
-        right: 3px;
-        bottom: 27px;
-        padding: 10px 14px;
-        font-size: 11px;
-      }
-
-      .tool-panel {
-        margin-bottom: 32px;
-        padding: 13px;
-        border-radius: 19px;
-      }
-
-      .section-heading {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 7px;
-      }
-
-      .cards {
-        grid-template-columns: none;
-        grid-auto-flow: column;
-        grid-auto-columns: calc(100% - 36px);
-        gap: 14px;
-        overflow-x: auto;
-        overflow-y: hidden;
-        padding: 5px 12px 16px 1px;
-        scroll-snap-type: x mandatory;
-        scroll-padding-inline-start: 1px;
-        scrollbar-width: none;
-        -webkit-overflow-scrolling: touch;
-      }
-
-      .cards::-webkit-scrollbar {
-        display: none;
-      }
-
-      .cards .card {
-        scroll-snap-align: start;
-      }
-
-      .swipe-guide:not([hidden]) {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin: -12px 2px 14px;
-        color: var(--teal-dark);
-        font-size: 12px;
-        font-weight: 800;
-      }
-
-      .preview {
-        height: 205px;
-      }
-
-      .card h3 {
-        font-size: 22px;
-      }
-
-      .closing {
-        grid-template-columns: 1fr;
-        gap: 16px;
-        padding: 29px 24px;
-      }
-
-      .closing-mark {
-        width: 54px;
-        height: 54px;
-        border-radius: 17px;
-        font-size: 23px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      * {
-        scroll-behavior: auto !important;
-        transition: none !important;
-        animation: none !important;
-      }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="すみっちがInstagramで配布したAI活用・副業の特典をまとめたページです。">
+<meta name="theme-color" content="#142b22">
+<title>すみっちの特典まとめ</title>
 <style>
-/* ===== すみっち共通ブロック（sk kit / 2026-08） =====
-   配色・幅・角丸・フォントは全て --sk-* 変数。
-   ページごとの THEME で上書きして、元のデザインに馴染ませる。 */
-:root{
- --sk-ink:#242130; --sk-muted:#6E6878;
- --sk-accent:#4A3F68; --sk-accent2:#6F5F96;
- --sk-line:#E5E0EB; --sk-page:#FCFBFE; --sk-card:#FFFFFF;
- --sk-surface:#F7F5FB; --sk-soft:#EEEAF8;
- --sk-warm:#FFF3EF; --sk-warm-bd:#F0CBC0; --sk-warm-ink:#68433A; --sk-warm-b:#B24826;
- --sk-dark1:#242130; --sk-dark2:#33475D; --sk-hl:#FFD9CB;
- --sk-green:#06C755;
- --sk-radius:22px; --sk-radius-sm:16px;
- --sk-wrap:660px;
- --sk-shadow:0 12px 34px rgba(0,0,0,.07);
- --sk-font:-apple-system,BlinkMacSystemFont,"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
- --sk-serif:var(--sk-font);
-}
-/* 親が display:flex / grid のページでも潰れないようにする。
-   また、ページ側が *{box-sizing:border-box} を持たない場合に
-   padding分だけ横へはみ出すため、ここで明示的に指定する。 */
-.sk-author-strip,.sk-sec,.sk-gap,.sk-cta,.sk-footer{width:100%;max-width:100%;flex:0 0 100%;
- grid-column:1/-1;align-self:stretch;display:block;box-sizing:border-box}
-.sk-author-strip *,.sk-sec *,.sk-gap *,.sk-cta *,.sk-footer *,
-.sk-author-strip *:before,.sk-sec *:before,.sk-gap *:before,.sk-cta *:before,.sk-footer *:before,
-.sk-author-strip *:after,.sk-sec *:after,.sk-gap *:after,.sk-cta *:after,.sk-footer *:after{box-sizing:border-box}
-.sk-sec{font-family:var(--sk-font);line-height:1.85;color:var(--sk-ink);background:var(--sk-page);
- padding:56px 16px;margin:0;text-align:left;font-size:16px;font-weight:400}
-.sk-wrap{width:min(var(--sk-wrap),100%);margin:0 auto}
-.sk-head{text-align:center;margin-bottom:26px}
-.sk-kicker{display:block;font-size:12px;font-weight:900;letter-spacing:.18em;color:var(--sk-accent2)}
-.sk-sec h2.sk-h,.sk-gap h2.sk-h,.sk-cta h2.sk-h{font-family:var(--sk-serif);
- font-size:clamp(24px,4.2vw,34px);line-height:1.4;margin:8px 0 0;color:inherit;font-weight:700;letter-spacing:-.01em}
-.sk-br{display:none}
-/* -- 著者カード -- */
-.sk-author-strip{padding:18px 16px;background:var(--sk-surface);border-bottom:1px solid var(--sk-line);
- font-family:var(--sk-font)}
-.sk-author{display:flex;align-items:center;gap:14px;width:min(420px,100%);margin:0 auto;padding:10px 14px;
- border-radius:var(--sk-radius-sm);background:var(--sk-card);border:1px solid var(--sk-line);
- text-decoration:none;color:var(--sk-ink);box-shadow:var(--sk-shadow);
- transition:transform .2s ease,box-shadow .2s ease}
-.sk-author:hover{transform:translateY(-2px)}
-.sk-author img{width:52px;height:52px;flex:none;border-radius:50%;background:#fff;display:block}
-.sk-author-txt{min-width:0}
-.sk-author-role,.sk-author-name,.sk-author-id{display:block}
-.sk-author-role{font-size:11px;color:var(--sk-muted);line-height:1.5}
-.sk-author-name{font-weight:900;font-size:16px;line-height:1.45;color:var(--sk-ink)}
-.sk-author-id{font-size:11px;color:var(--sk-muted);font-weight:400;line-height:1.5}
-.sk-author-arrow{margin-left:auto;color:var(--sk-muted);opacity:.6;font-weight:900;font-size:18px}
-/* -- 疑問3連 -- */
-.sk-doubt-lead{margin:0 auto 22px;text-align:center;color:var(--sk-muted);font-size:15px;line-height:1.9}
-.sk-doubts{display:grid;gap:11px}
-.sk-doubt{display:flex;gap:13px;align-items:flex-start;background:var(--sk-card);border:1px solid var(--sk-line);
- border-radius:var(--sk-radius-sm);padding:15px 18px;box-shadow:var(--sk-shadow)}
-.sk-doubt .sk-no{flex:none;width:26px;height:26px;border-radius:8px;display:grid;place-items:center;
- background:var(--sk-soft);color:var(--sk-accent);font-weight:900;font-size:12px}
-.sk-doubt p{margin:0;font-size:15px;line-height:1.8}
-.sk-answer{margin:18px 0 0;padding:19px 22px;border-left:5px solid var(--sk-accent2);background:var(--sk-soft);
- border-radius:0 var(--sk-radius-sm) var(--sk-radius-sm) 0;font-size:14.5px;line-height:1.95}
-.sk-answer strong{color:var(--sk-accent)}
-.sk-answer .sk-n{font-weight:900;color:var(--sk-accent2)}
-/* -- 断絶 -- */
-.sk-gap{background:linear-gradient(160deg,var(--sk-dark1) 0%,var(--sk-dark2) 100%);color:#fff;
- padding:64px 16px;font-family:var(--sk-font);line-height:1.85;font-size:16px}
-.sk-gap h2.sk-h{color:#fff}
-.sk-gap .sk-kicker{color:var(--sk-hl);opacity:.9}
-.sk-gap-lead{margin:0 auto;font-size:clamp(15.5px,2.2vw,17.5px);line-height:2;
- color:rgba(255,255,255,.87);text-align:center}
-.sk-gap-lead strong{color:var(--sk-hl)}
-.sk-gap-list{width:min(560px,100%);margin:26px auto 0;list-style:none;padding:20px 22px;
- background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);
- border-radius:var(--sk-radius);display:grid;gap:12px}
-.sk-gap-list li{display:flex;gap:12px;font-size:14.5px;color:rgba(255,255,255,.9);line-height:1.7}
-.sk-gap-list li:before{content:"\25B8";color:var(--sk-hl);font-weight:900;flex:none}
-.sk-gap-close{margin:22px auto 0;color:rgba(255,255,255,.72);font-size:14.5px;text-align:center}
-/* -- ストーリー -- */
-.sk-story{width:min(620px,100%);margin:46px auto 0;background:var(--sk-card);color:var(--sk-ink);
- border-radius:var(--sk-radius);padding:34px 28px 26px;box-shadow:0 24px 60px rgba(0,0,0,.28);position:relative}
-.sk-story-tag{position:absolute;top:-16px;left:50%;transform:translateX(-50%);white-space:nowrap;
- background:var(--sk-dark1);color:#fff;border:4px solid var(--sk-card);border-radius:999px;
- padding:6px 18px;font-weight:900;font-size:13px}
-.sk-story p{margin:0 0 14px;font-size:15px;line-height:1.9}
-.sk-story p:last-child{margin-bottom:0}
-.sk-punch{font-size:clamp(17px,2.8vw,20px);font-weight:900;line-height:1.7;color:var(--sk-accent);
- border-bottom:3px solid var(--sk-soft);display:inline;padding-bottom:2px}
-.sk-habit{background:var(--sk-warm);border-left:5px solid var(--sk-warm-b);
- border-radius:0 var(--sk-radius-sm) var(--sk-radius-sm) 0;
- padding:15px 18px;color:var(--sk-warm-ink);font-size:14.5px;line-height:1.85}
-.sk-habit b{color:var(--sk-warm-b)}
-/* -- オファー＋CTA -- */
-.sk-cta{background:var(--sk-surface);padding:60px 16px 56px;font-family:var(--sk-font);
- line-height:1.85;font-size:16px;color:var(--sk-ink)}
-.sk-bridge{margin:0 auto 22px;text-align:center;color:var(--sk-ink);opacity:.86;
- font-size:clamp(15px,2.2vw,17px);font-weight:700;line-height:1.95}
-.sk-offer{width:min(560px,100%);margin:0 auto 24px;background:var(--sk-card);border:1px solid var(--sk-line);
- border-radius:var(--sk-radius);padding:30px 24px;box-shadow:var(--sk-shadow);position:relative}
-.sk-offer-badge{position:absolute;top:-13px;right:18px;background:var(--sk-warm-b);color:#fff;font-weight:900;
- font-size:12px;padding:6px 14px;border-radius:999px}
-.sk-offer h3{margin:0 0 18px;text-align:center;font-family:var(--sk-serif);
- font-size:clamp(21px,3.6vw,27px);font-weight:700;line-height:1.4;color:var(--sk-ink)}
-.sk-cover{width:min(320px,100%);margin:0 auto 20px}
-.sk-cover img{width:100%;border-radius:12px;display:block}
-.sk-toc{background:var(--sk-surface);border:1px solid var(--sk-line);border-radius:var(--sk-radius-sm);padding:20px 22px}
-.sk-toc-head{text-align:center;font-weight:900;font-size:14px;padding-bottom:11px;margin:0 0 6px;
- border-bottom:1px solid var(--sk-line);color:var(--sk-ink)}
-.sk-toc ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
-.sk-toc li{display:flex;gap:10px;font-size:14px;line-height:1.7;color:var(--sk-ink)}
-.sk-toc li:before{content:"\25C6";color:var(--sk-accent2);flex:none}
-.sk-toc li b{flex:none;white-space:nowrap;min-width:3.6em}
-.sk-offer-close{margin:20px 0 0;font-size:14px;color:var(--sk-muted);line-height:1.9}
-.sk-offer-close strong{color:var(--sk-accent)}
-.sk-line-btn{display:flex;flex-direction:column;align-items:center;gap:5px;width:min(560px,100%);margin:0 auto;
- padding:19px 20px;border-radius:var(--sk-radius);background:var(--sk-green);color:#fff;font-weight:900;
- text-decoration:none;box-shadow:0 16px 40px rgba(6,199,85,.30);position:relative;transition:transform .2s ease}
-.sk-line-btn:hover{transform:translateY(-3px)}
-.sk-line-btn:active{transform:translateY(0) scale(.99)}
-.sk-line-btn:after{content:"";position:absolute;inset:0;border-radius:inherit;
- animation:skPulse 2.4s ease-out infinite;pointer-events:none}
-@keyframes skPulse{0%{box-shadow:0 0 0 0 rgba(9,126,42,.35)}70%{box-shadow:0 0 0 14px rgba(9,126,42,0)}
- 100%{box-shadow:0 0 0 0 rgba(9,126,42,0)}}
-.sk-tap{font-size:12px;font-weight:800;background:rgba(255,255,255,.22);padding:3px 13px;border-radius:999px}
-.sk-btn-main{display:flex;align-items:center;gap:10px;font-size:clamp(17px,3vw,21px)}
-.sk-btn-main svg{width:24px;height:24px;flex:none}
-.sk-scarcity{width:min(560px,100%);margin:14px auto 0;padding:13px 16px;background:var(--sk-warm);
- border:1px solid var(--sk-warm-bd);border-radius:var(--sk-radius-sm);color:var(--sk-warm-ink);
- font-size:12.5px;line-height:1.85}
-.sk-note{text-align:center;color:var(--sk-muted);font-size:12px;margin:12px 0 0}
-/* -- コピー直後のひとこと（離脱ポイント対策）--
-   プロンプトをコピーした瞬間＝読者の目的達成。そこからCTAまで距離があるため、
-   その瞬間だけ画面下に小さく出す。押し売りにならないよう、
-   ページ側の配色を使い、8秒で自動的に消え、×で閉じられる。 */
-.sk-cue{position:fixed;left:50%;bottom:16px;z-index:99999;display:flex;align-items:center;gap:10px;
- width:min(420px,calc(100% - 24px));padding:12px 14px;border-radius:14px;
- background:var(--sk-dark1);color:#fff;font-family:var(--sk-font);font-size:13.5px;line-height:1.6;
- box-shadow:0 14px 40px rgba(0,0,0,.34);text-decoration:none;
- transform:translate(-50%,18px);opacity:0;pointer-events:none;
- transition:opacity .28s ease,transform .28s ease}
-.sk-cue.is-on{opacity:1;transform:translate(-50%,0);pointer-events:auto}
-.sk-cue b{color:var(--sk-hl)}
-.sk-cue .sk-cue-arrow{margin-left:auto;flex:none;font-weight:900;color:var(--sk-hl)}
-.sk-cue-x{position:absolute;top:-9px;right:-9px;width:24px;height:24px;border-radius:50%;border:0;
- background:var(--sk-dark1);color:rgba(255,255,255,.8);font-size:14px;line-height:1;cursor:pointer;
- box-shadow:0 4px 12px rgba(0,0,0,.3)}
-@media(prefers-reduced-motion:reduce){.sk-cue{transition:none}}
-/* -- フッター -- */
-.sk-footer{padding:40px 16px 56px;text-align:center;border-top:1px solid var(--sk-line);
- background:var(--sk-surface);font-family:var(--sk-font);line-height:1.8}
-.sk-footer-ig{display:inline-flex;align-items:center;gap:9px;color:var(--sk-accent2);font-weight:850;
- font-size:14px;text-decoration:none;margin-bottom:14px}
-.sk-footer-ig:hover{text-decoration:underline}
-.sk-footer-ig svg{width:19px;height:19px}
-.sk-footer p{margin:0 0 4px;font-size:13px;color:var(--sk-muted)}
-.sk-footer .sk-copy{margin:6px 0 0;font-size:11.5px;color:var(--sk-muted);opacity:.75}
-.sk-footer .sk-tagline{margin:0 0 12px;font-size:12px;color:var(--sk-muted);opacity:.85;letter-spacing:.03em}
-@media(prefers-reduced-motion:reduce){.sk-line-btn:after{animation:none}}
-@media(max-width:600px){
- .sk-br{display:inline}
- .sk-sec{padding:44px 14px}
- .sk-gap{padding:48px 14px}
- .sk-cta{padding:48px 14px 44px}
- .sk-story{padding:28px 17px 22px;margin-top:38px}
- .sk-story-tag{font-size:11.5px;padding:6px 14px}
- .sk-offer{padding:24px 16px}
- .sk-toc{padding:16px 14px}
- .sk-gap-list{padding:17px 16px}
- .sk-author{padding:9px 11px;gap:11px}
- .sk-author img{width:46px;height:46px}
- .sk-footer{padding:34px 14px 48px}
-}
+  :root {
+    color-scheme: light;
+    --paper: #f4eddf; --card: #fffaf1; --ink: #1e2e26;
+    --subtle: #555c50; --line: #dcd0b9; --green: #224938;
+    --mint: #e6e8db; --gold: #d4ad70; --feature: #142d23;
+    --cream: #fff7e6; --on-dark: #dedac7;
+    --serif: "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", "Noto Serif CJK JP", "Meiryo", serif;
+    font-family: "Hiragino Sans", "Yu Gothic UI", "Meiryo", sans-serif;
+    font-synthesis: none;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  body { margin: 0; color: var(--ink); background: var(--paper); }
+  h1, h2, h3, p { margin: 0; }
+  img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  a { color: inherit; text-decoration: none; }
+  button, input { color: inherit; font: inherit; }
+  button { cursor: pointer; }
+  a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid #197756; outline-offset: 3px; }
+  [hidden] { display: none !important; }
+  .shell { width: min(100% - 36px, 960px); margin-inline: auto; }
 
-/* --- このページ用のテーマ上書き --- */
-:root{ --sk-ink:#323836; --sk-muted:#6B7471; --sk-accent:#2E5D50; --sk-accent2:#2E5D50; --sk-line:rgba(46,93,80,.16); --sk-page:#F7F5F0; --sk-card:#FFFFFF; --sk-surface:#F1EEE7; --sk-soft:#E9F0EC; --sk-warm:#F6EFE2; --sk-warm-bd:#DDC9A8; --sk-warm-ink:#55483A; --sk-warm-b:#8A6B32; --sk-dark1:#173B32; --sk-dark2:#2E5D50; --sk-hl:#DDC9A8; --sk-radius:24px; --sk-radius-sm:18px; --sk-shadow:0 12px 38px rgba(28,61,52,.10); --sk-wrap:720px; --sk-font:"Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic",sans-serif; --sk-serif:"Noto Serif JP","Yu Mincho",serif; }
+  .site-header { background: #142b22; color: var(--cream); border-bottom: 1px solid #d4ad7033; }
+  .site-header .shell { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 65px; }
+  .profile { display: inline-flex; align-items: center; gap: 9px; min-width: 0; }
+  .profile img { flex: 0 0 42px; width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--gold); }
+  .profile strong, .profile span { display: block; }
+  .profile strong { font-size: 14px; line-height: 1.25; word-break: auto-phrase; }
+  .profile span { color: var(--on-dark); font-size: 11px; margin-top: 3px; }
+  .jump { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; font-size: 12px; font-weight: 750; color: #efcf99; white-space: nowrap; }
+  .jump span { font-size: 15px; }
+
+  .showcase {
+    background: radial-gradient(ellipse at 80% 3%, #364c39, transparent 58%), var(--feature);
+    color: var(--cream);
+    border-bottom: 1px solid #c0a171;
+  }
+  .site-header a:focus-visible, .showcase a:focus-visible { outline-color: var(--gold); }
+  .recent { padding-block: 19px 20px; }
+  .section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 11px; margin-bottom: 12px; }
+  h1, h2 { font-family: var(--serif); font-weight: 700; letter-spacing: -.035em; }
+  h1 { font-size: clamp(28px, 7vw, 42px); line-height: 1.22; }
+  h2 { font-size: clamp(20px, 5vw, 28px); line-height: 1.3; }
+  .section-head::after { content: ""; flex: 1; align-self: center; height: 1px; background: var(--line); }
+  .showcase .section-head::after { background: #d4ad7055; }
+  .section-head time, .section-head .count { order: 1; font-size: 12px; white-space: nowrap; }
+  .section-head time { color: #efcf99; }
+  .section-head .count { color: var(--subtle); }
+
+  .recent-grid { display: grid; gap: 8px; }
+  .featured {
+    display: grid; overflow: hidden; isolation: isolate;
+    border: 1px solid #c1a376; border-radius: 13px;
+    background: #203b2e; box-shadow: 0 10px 24px #0a1c1650;
+  }
+  .featured-image { position: relative; display: block; aspect-ratio: 2.10; overflow: hidden; background: #233b2f; }
+  .featured-image::after {
+    content: ""; position: absolute; inset: 50% 0 0; pointer-events: none;
+    background: linear-gradient(transparent, #203b2e);
+  }
+  .featured-image img { object-position: center 44%; }
+  .featured-copy { position: relative; padding: 0 14px 14px; margin-top: -6px; }
+  .meta { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 7px; font-size: 11px; line-height: 1.35; color: var(--subtle); }
+  .showcase .meta { color: var(--on-dark); }
+  .new { display: inline-flex; align-items: center; justify-content: center; min-height: 19px; padding: 1px 6px; border-radius: 4px; background: #e9d3a4; color: #3d2e1c; font: 800 10px/1.15 system-ui,sans-serif; letter-spacing: .05em; }
+  .featured h2 { font-size: clamp(20px, 5.2vw, 30px); line-height: 1.32; margin-block: 6px 5px; word-break: auto-phrase; text-wrap: pretty; }
+  .featured p { color: var(--on-dark); font-size: 13px; line-height: 1.6; text-wrap: pretty; }
+  .featured-cta { display: flex; align-items: center; justify-content: space-between; min-height: 44px; padding: 8px 12px; margin-top: 11px; border-radius: 6px; background: #ead4a5; color: #223126; font-size: 13px; font-weight: 800; }
+  .featured:active .featured-cta, .featured:focus-visible .featured-cta { background: #fff0cc; }
+  .arrow { font: 500 17px/1 system-ui,sans-serif; }
+
+  .recent-small, .catalog-item { min-width: 0; display: grid; grid-template-columns: 64px minmax(0,1fr) 17px; align-items: center; gap: 10px; padding: 8px 10px; }
+  .recent-small { border: 1px solid #d4ad7045; border-radius: 8px; background: #fff9e908; }
+  .recent-small .cover, .catalog-item .cover { display: block; overflow: hidden; height: 64px; border-radius: 4px; background: var(--mint); }
+  .recent-small h2, .catalog-item h3 { font: 800 14px/1.36 "Hiragino Sans", "Yu Gothic UI", "Meiryo", sans-serif; letter-spacing: -.025em; margin: 3px 0 2px; overflow-wrap: anywhere; word-break: auto-phrase; text-wrap: pretty; }
+  .recent-small p, .catalog-item p { font-size: 12px; line-height: 1.5; overflow-wrap: anywhere; }
+  .recent-small p { color: var(--on-dark); }
+  .recent-small .arrow { color: #efcf99; }
+  .recent-small:active { border-color: #d4ad70; }
+
+  .catalog { padding-top: 23px; scroll-margin-top: 14px; }
+  .search { position: relative; display: block; }
+  .search::before { content: ""; position: absolute; pointer-events: none; top: 15px; left: 14px; width: 12px; height: 12px; border: 1.7px solid var(--green); border-radius: 50%; }
+  .search::after { content: ""; position: absolute; pointer-events: none; top: 26px; left: 24px; width: 7px; height: 1.7px; background: var(--green); transform: rotate(45deg); transform-origin: left; }
+  .search input { display: block; width: 100%; min-height: 46px; padding: 9px 12px 9px 38px; border: 1px solid #c6b79b; border-radius: 7px; background: var(--card); font-size: 16px; }
+  .search input::placeholder { color: #5b6c60; font-size: 13px; }
+  .filter-set { display: flex; flex-wrap: wrap; gap: 4px; margin-block: 7px 10px; }
+  .filter { min-height: 44px; padding: 5px 10px; border: 0; border-radius: 6px; background: transparent; font-size: 12px; font-weight: 750; }
+  .filter[aria-pressed="true"] { color: white; background: var(--green); }
+  .results { display: grid; border-block-start: 1px solid var(--line); }
+  .results:empty { border-block-start: 0; }
+  .catalog-item { grid-template-columns: 82px minmax(0,1fr) 17px; align-items: start; min-height: 101px; padding: 11px 4px; border-bottom: 1px solid var(--line); }
+  .catalog-item .cover { height: 67px; margin-top: 2px; }
+  .catalog-item .arrow { align-self: center; color: var(--green); }
+  .catalog-item p { color: var(--subtle); }
+  .catalog-item:active, .filter:active { background: #e7e5d6; }
+  .filter[aria-pressed="true"]:active { background: var(--green); }
+  .empty { border: 1px dashed #a9b9ab; padding: 15px; font-size: 14px; line-height: 1.65; border-radius: 9px; }
+
+  .footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-top: 28px; margin-bottom: 24px; padding-top: 14px; color: var(--subtle); font-size: 12px; }
+  .footer a { color: var(--green); text-decoration: underline; text-underline-offset: 3px; }
+  @media (hover: hover) {
+    .featured:hover .featured-cta { background: #fff0cc; }
+    .recent-small:hover { border-color: #d4ad70; background: #fff9e910; }
+    .catalog-item:hover { background: #fff9ed; }
+    .filter:not([aria-pressed="true"]):hover { background: var(--mint); }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
+    .featured-image img { animation: cover-arrive 780ms cubic-bezier(.19,.65,.2,1) both; }
+    .featured-cta { transition: background-color 180ms ease; }
+    .featured-cta .arrow { transition: transform 180ms ease; }
+    .featured:active .arrow, .featured:focus-visible .arrow { transform: translateX(3px); }
+    @media (hover: hover) {
+      .featured:hover .arrow { transform: translateX(3px); }
+    }
+  }
+  @keyframes cover-arrive {
+    from { clip-path: inset(0 0 18% 0); opacity: .64; transform: scale(1.085); }
+    to { clip-path: inset(0); opacity: 1; transform: scale(1); }
+  }
+  @media (max-width: 350px) {
+    .shell { width: calc(100% - 28px); }
+    .search input::placeholder { font-size: 12px; }
+    .catalog-item { grid-template-columns: 67px minmax(0, 1fr) 14px; gap: 8px; }
+    .catalog-item .cover { height: 61px; }
+  }
+  @media (min-width: 720px) {
+    .site-header .shell { min-height: 72px; }
+    .recent { padding-block: 26px 32px; }
+    .section-head { margin-bottom: 14px; }
+    .recent-grid { grid-template-columns: 1.55fr 1fr; grid-template-rows: 1fr 1fr; gap: 11px; }
+    .featured { grid-row: span 2; }
+    .featured-image { aspect-ratio: 2.32; }
+    .featured-copy { padding: 0 19px 19px; }
+    .featured-cta { margin-top: 14px; }
+    .recent-small { grid-template-columns: 100px minmax(0,1fr) 18px; padding: 12px; gap: 12px; }
+    .recent-small .cover { height: 100px; }
+    .recent-small h2, .catalog-item h3 { font-size: 16px; }
+    .recent-small p, .catalog-item p { font-size: 13px; }
+    .catalog { padding-top: 31px; }
+    .catalog-item { grid-template-columns: 122px minmax(0,1fr) 20px; align-items: center; min-height: 98px; padding: 10px 8px; column-gap: 15px; }
+    .catalog-item .cover { height: 74px; margin: 0; }
+  }
 </style>
 </head>
 <body>
-  <header class="hero">
-    <div class="container">
-      <div class="mini-header">
-        <div class="mini-brand">すみっちの特典まとめ</div>
-        <div class="update-note">新しい特典も順次追加します</div>
+<header class="site-header">
+  <div class="shell">
+    <a class="profile" href="https://www.instagram.com/smitch_ai_works/" target="_blank" rel="noopener noreferrer">
+      <img src="assets/profile-instagram-20261124.webp" width="43" height="43" alt="">
+      <div><strong>すみっちの特典まとめ</strong><span>@smitch_ai_works</span></div>
+    </a>
+    <a class="jump" href="#bonus-list">特典を探す <span aria-hidden="true">↓</span></a>
+  </div>
+</header>
+
+<main>
+  <section class="showcase" aria-labelledby="recent-heading">
+    <div class="recent shell">
+      <div class="section-head">
+        <h1 id="recent-heading">新着特典</h1>
+        <time id="latest-update" hidden></time>
       </div>
-
-      <div class="hero-grid">
-        <div class="hero-copy">
-          <div class="eyebrow"><span>✓</span> Instagramで配布した特典</div>
-          <h1>これまでの特典を<br><em>まとめちゃいました！</em></h1>
-          <p class="hero-lead">
-            Instagramで配布してきたAI活用・画像制作・副業系の特典を、
-            ここからまとめて見返せます。気になるものから自由に開いてみてください。
-          </p>
-          <div class="hero-actions">
-            <a class="primary-button" href="#bonus-list">
-              特典一覧を見る
-              <i>↓</i>
-            </a>
-            <span class="sub-note">内容は今後も増えていきます</span>
-          </div>
-        </div>
-
-        <div class="character-stage" aria-label="すみっちのプロフィール写真">
-          <div class="character-card">
-            <img src="assets/profile-instagram-20261031.png" alt="すみっち">
-            <div class="character-label">すみっちです！</div>
-          </div>
-        </div>
-      </div>
+      <div id="recent" class="recent-grid"></div>
     </div>
-  </header>
-<div class="sk-author-strip">
- <a class="sk-author" href="https://www.instagram.com/smitch_ai_works/" target="_blank" rel="noopener">
-  <img src="assets/profile-instagram-20261031.png" alt="すみっち" width="52" height="52">
-  <span class="sk-author-txt">
-   <span class="sk-author-role">AI × 副業を発信中</span>
-   <span class="sk-author-name">すみっち</span>
-   <span class="sk-author-id">30歳・現役エンジニア ／ @smitch_ai_works</span>
-  </span>
-  <span class="sk-author-arrow">&rsaquo;</span>
- </a>
-</div>
-
-  <main id="bonus-list">
-    <div class="container">
-      <section class="tool-panel" aria-label="特典の検索と絞り込み">
-        <div class="search-wrap">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-            <circle cx="11" cy="11" r="7"></circle>
-            <path d="m20 20-3.7-3.7"></path>
-          </svg>
-          <input id="searchInput" class="search-input" type="search" placeholder="特典No・動画の文字で検索" aria-label="特典Noやキーワードで検索">
-        </div>
-        <div id="filters" class="filters" role="group" aria-label="カテゴリーで絞り込む"></div>
-      </section>
-
-      <section aria-labelledby="collection-title">
-        <div class="section-heading">
-          <h2 id="collection-title">受け取れる特典</h2>
-          <p><span id="resultCount">0</span>件を表示中</p>
-        </div>
-
-        <div id="swipeHint" class="swipe-guide" hidden>
-          <span>← 横にスワイプして探す →</span>
-          <span id="swipePosition">1 / 23</span>
-        </div>
-
-        <div id="cards" class="cards" tabindex="0" aria-label="特典カード。スマホでは左右にスワイプできます"></div>
-        <div id="emptyState" class="empty-state">
-          条件に合う特典が見つかりませんでした。<br>
-          別のキーワードまたはカテゴリーをお試しください。
-        </div>
-      </section>
-
-      <section class="closing">
-        <div class="closing-mark">☝</div>
-        <div>
-          <h2>気になった特典から、ひとつ試してみてください。</h2>
-          <p>カードから気になる特典をそのまま受け取れます。タップすると、各特典ページへそのまま進めます。</p>
-        </div>
-      </section>
+  </section>
+  <section class="catalog shell" id="bonus-list" aria-labelledby="collection-title">
+    <div class="section-head">
+      <h2 id="collection-title">すべての特典</h2>
+      <span id="resultCount" class="count" role="status"></span>
     </div>
-  </main>
+    <label class="search">
+      <input id="searchInput" type="search" placeholder="キーワード・動画の文言・特典番号" aria-label="キーワード、動画の文言、特典番号で検索">
+    </label>
+    <div class="filter-set" role="group" aria-label="目的で絞り込む">
+      <button type="button" class="filter" data-purpose="" aria-pressed="true">すべて</button>
+      <button type="button" class="filter" data-purpose="AI活用" aria-pressed="false">AI活用</button>
+      <button type="button" class="filter" data-purpose="作品づくり" aria-pressed="false">作品づくり</button>
+      <button type="button" class="filter" data-purpose="副業・販売" aria-pressed="false">副業・販売</button>
+    </div>
+    <div class="results" id="cards"></div>
+    <p id="empty" class="empty" hidden>特典が見つかりませんでした。キーワードを短くするか、絞り込みを「すべて」にしてください。</p>
+  </section>
+</main>
 
-<footer class="sk-footer">
- <a class="sk-footer-ig" href="https://www.instagram.com/smitch_ai_works/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>Instagram：@smitch_ai_works</a>
- <p>すみっち ｜ 30歳・現役エンジニア／AI×副業を発信中</p>
- <p class="sk-copy">&copy; 2026 @smitch_ai_works. All Rights Reserved.</p>
+<footer class="footer shell">
+  <span>すみっちの特典まとめ</span>
+  <a href="https://www.instagram.com/smitch_ai_works/" target="_blank" rel="noopener noreferrer">Instagram</a>
 </footer>
 
-  
+<script>
+  // tools/build_hub.py が掲載対象の配列を bonuses.json から生成する。
+  function revealDue(entries) {
+    const now = Date.now();
+    return entries
+      .filter(item => !item.publishAt || item.publishAt <= now)
+      .map((item, index) => ({ ...item, number: String(index + 1).padStart(2, '0') }));
+  }
 
-  <script>
-    /*
-      ───────────────────────────────────────────────
-      掲載データは bonuses.json から生成します。
-      新しい特典と対応動画は bonuses.json に登録してください。
-      ───────────────────────────────────────────────
-    */
-    // 予約中の特典は publishAt（公開時刻）を過ぎるまで出さない。番号は表示中のものだけで振る。
-    function revealDue(all) {
-      const now = Date.now();
-      return all
-        .filter(item => !item.publishAt || item.publishAt <= now)
-        .map((item, index) => ({ ...item, number: String(index + 1).padStart(2, "0") }));
+const bonuses = revealDue([{"number": "01", "category": "ChatGPT活用", "title": "ChatGPTを最強の相棒に<br>3分で完了する究極の最適化", "plainTitle": "ChatGPTを最強の相棒に 3分で完了する究極の最適化", "description": "データ設定・メモリ・カスタム指示を整え、ChatGPTを自分専用の相棒へ変える初期設定ガイド。", "sourceVideo": "ChatGPT、初期設定のまま使っていませんか？", "sourceThumbnail": "", "tags": ["初期設定", "3ステップ", "初心者向け"], "url": "https://smitch-ai-works.github.io/no2-chatgpt-first-setting-info/", "image": "assets/preview-ai-v1/no2.jpg", "accent": "#2E5D50", "slug": "no2-chatgpt-first-setting-info"}, {"number": "02", "category": "ChatGPT活用", "title": "スマホ1枚＋5分で<br>プロ級の手相鑑定書が完成", "plainTitle": "スマホ1枚＋5分で プロ級の手相鑑定書が完成", "description": "手のひら写真をChatGPTで分析し、自己理解レポートとしてまとめる方法とコピペ用プロンプト。", "sourceVideo": "ChatGPTで手相鑑定ができるって知ってましたか？", "sourceThumbnail": "", "tags": ["画像解析", "手相", "プロンプト"], "url": "https://smitch-ai-works.github.io/no3-chatgpt-palm-reading/", "image": "assets/preview-ai-v1/no3.jpg", "accent": "#785C7D", "slug": "no3-chatgpt-palm-reading"}, {"number": "03", "category": "ChatGPT活用", "title": "AIプロンプト記号<br>完全ガイド30選", "plainTitle": "AIプロンプト記号 完全ガイド30選", "description": "AIへの指示を整理し、意図を正確に伝えるために使える30種類の記号をまとめた保存版。", "sourceVideo": "ChatGPT\n効率を爆上げする\n特殊な記号知ってる？", "sourceThumbnail": "assets/video-thumbs/no4.jpg", "tags": ["30種類", "指示改善", "保存版"], "url": "https://smitch-ai-works.github.io/no4-ai-keywords/", "image": "assets/preview-ai-v1/no4.jpg", "accent": "#45698E", "slug": "no4-ai-keywords"}, {"number": "04", "category": "画像・動画制作", "title": "残業後でもできる<br>30分のAI絶景動画ルーティン", "plainTitle": "残業後でもできる 30分のAI絶景動画ルーティン", "description": "ChatGPT・ImageFX・Pikaを順番に使い、日本の絶景画像と動画を作る4ステップ。", "sourceVideo": "忙しくてもOK!？\n旅行気分でできる\n絶景動画の作り方", "sourceThumbnail": "assets/video-thumbs/no5.jpg", "tags": ["ChatGPT", "ImageFX", "Pika"], "url": "https://smitch-ai-works.github.io/no5-ai-movie-creater/", "image": "assets/preview-ai-v1/no5.jpg", "accent": "#347B86", "slug": "no5-ai-movie-creater"}, {"number": "05", "category": "画像・動画制作", "title": "このステッカー、<br>海外でめっちゃ売れてます。", "plainTitle": "このステッカー、 海外でめっちゃ売れてます。", "description": "ぷっくり立体的なデジタルステッカーをAIで作るための、コピペ対応プロンプト。", "sourceVideo": "AI1つで完結！\n海外でバズってる\nステッカーの作り方", "sourceThumbnail": "assets/video-thumbs/no6.jpg", "tags": ["画像生成", "ステッカー", "海外販売"], "url": "https://smitch-ai-works.github.io/no6-ai-sticker/", "image": "assets/preview-ai-v1/no6.jpg", "accent": "#B66D82", "slug": "no6-ai-sticker"}, {"number": "06", "category": "AI副業", "title": "ChatGPTで作る<br>Pinterest副業ルーティン", "plainTitle": "ChatGPTで作る Pinterest副業ルーティン", "description": "記事案・画像・投稿をChatGPTと組み合わせ、Pinterestのピンを継続して作る手順まとめ。", "sourceVideo": "残業後でもできる！\nChatGPTで仕込む\n30歳の限界夜活", "sourceThumbnail": "assets/video-thumbs/no8.jpg", "tags": ["Pinterest", "コンテンツ制作", "集客"], "url": "https://smitch-ai-works.github.io/no8-chatgpt-pintarest/", "image": "assets/preview-ai-v1/no8.jpg", "accent": "#A55460", "slug": "no8-chatgpt-pintarest"}, {"number": "07", "category": "AI副業", "title": "クラウドワークス × ChatGPT<br>アイコン制作", "plainTitle": "クラウドワークス × ChatGPT アイコン制作", "description": "SNSアイコン案件を探し、要望をプロンプトへ落とし込んで制作・納品する一連の流れ。", "sourceVideo": "30分で出来ちゃう！？\n寝起き後でやる\n出勤前AIﾌｸ業", "sourceThumbnail": "assets/video-thumbs/no9.jpg", "tags": ["案件獲得", "SNSアイコン", "テンプレート"], "url": "https://smitch-ai-works.github.io/no9-chatgpt-icon-works/", "image": "assets/preview-ai-v1/no9.jpg", "accent": "#4F7479", "slug": "no9-chatgpt-icon-works"}, {"number": "08", "category": "AI副業", "title": "AI × 日本語で作り出す<br>最強錬金術", "plainTitle": "AI × 日本語で作り出す 最強錬金術", "description": "Claudeを使って英文を自然な日本語へ整え、翻訳案件へ応用するシンプルな手順。", "sourceVideo": "案件急増中の\n日本語翻訳を\nAI使ってﾌｸ収入化", "sourceThumbnail": "assets/video-thumbs/no10.jpg", "tags": ["Claude", "翻訳", "Fiverr"], "url": "https://smitch-ai-works.github.io/no10-claude-translation/", "image": "assets/preview-ai-v1/no10.jpg", "accent": "#A2735D", "slug": "no10-claude-translation"}, {"number": "09", "category": "画像・動画制作", "title": "あなたのスマホ、<br>5万円を眠らせてます。", "plainTitle": "あなたのスマホ、 5万円を眠らせてます。", "description": "日本の風景写真をChatGPTで整え、ストックフォトへ出品するまでの3ステップ。", "sourceVideo": "知らないのは損\nあなたの撮った写真で\n月5ﾏｿ作れる！？", "sourceThumbnail": "assets/video-thumbs/no14-126.png", "tags": ["写真編集", "日本の風景", "ストックフォト"], "url": "https://smitch-ai-works.github.io/no14-chatgpt-picture-japan/", "image": "assets/preview-ai-v1/no14.jpg", "accent": "#71814F", "slug": "no14-chatgpt-picture-japan"}, {"number": "10", "category": "AI副業", "title": "文章が書けなくても、<br>1本3,000円のライターになれる", "plainTitle": "文章が書けなくても、 1本3,000円のライターになれる", "description": "クラウドワークスで案件を探し、ChatGPTで台本を作りClaudeで自然な文章に仕上げて納品するまでの3ステップ。", "sourceVideo": "スキマ時間でOK\nChatGPT×Claude\nAI台本作成ﾌｸ業", "sourceThumbnail": "assets/video-thumbs/no17.jpg", "tags": ["クラウドワークス", "ChatGPT", "Claude"], "url": "https://smitch-ai-works.github.io/no17-ai-script-crowdworks/", "image": "assets/preview-ai-v1/no17.jpg", "accent": "#4A3F68", "slug": "no17-ai-script-crowdworks"}, {"number": "11", "category": "AI副業", "title": "あなたのPCの中に、<br>休まず働く5人のAIチームを作る。", "plainTitle": "あなたのPCの中に、 休まず働く5人のAIチームを作る。", "description": "Claude Codeに指示を1回出すだけで、リサーチ・記事作成・タイトル・校正・集客の5役が自動で動き出すnote自動化の仕組み。", "sourceVideo": "AIで社長になれる!?\nClaudeCodeで\n専門組織を作る裏技", "sourceThumbnail": "assets/video-thumbs/no20.jpg", "tags": ["Claude Code", "自動化", "サブエージェント"], "url": "https://smitch-ai-works.github.io/no20-claude-code-ai-note-organization/", "image": "assets/preview-ai-v1/no20.jpg", "accent": "#3F5347", "slug": "no20-claude-code-ai-note-organization"}, {"number": "12", "category": "AI副業", "title": "寝る前の30分が、<br>Amazonに並ぶ絵本に変わる。", "plainTitle": "寝る前の30分が、 Amazonに並ぶ絵本に変わる。", "description": "ChatGPTで絵本のテキストと挿絵を作り、Canvaでまとめて仕上げ、Amazon KDPで販売するまでの手順。", "sourceVideo": "資産性抜群！？\n絵心なしでもイケる\nAI絵本作りがヤバイ", "sourceThumbnail": "assets/video-thumbs/no18.jpg", "tags": ["ChatGPT", "Canva", "Amazon KDP"], "url": "https://smitch-ai-works.github.io/no18-ai-ehon-kdp/", "image": "assets/preview-ai-v1/no18.jpg", "accent": "#4A3F68", "slug": "no18-ai-ehon-kdp"}, {"number": "13", "category": "AI副業", "title": "提案資料も、<br>ポートフォリオも。指示ひとつでCanvaに届く。", "plainTitle": "提案資料も、 ポートフォリオも。指示ひとつでCanvaに届く。", "description": "ChatGPTとCanvaを連携させ、内容を伝えるだけでプレゼン資料の下書きを作る手順。本業の提案資料にも副業のポートフォリオにも使える。", "sourceVideo": "ChatGPTと\nCanvaを連携で\nスライドが作れるかも!?", "sourceThumbnail": "assets/video-thumbs/no21.jpg", "tags": ["ChatGPT", "Canva", "スライド作成"], "url": "https://smitch-ai-works.github.io/no21-chatgpt-canva-slide/", "image": "assets/preview-ai-v1/no21.jpg", "accent": "#5B4B9E", "slug": "no21-chatgpt-canva-slide"}, {"number": "14", "category": "AI副業", "title": "在庫も発送もなしで、<br>あなたのデザインがTシャツになる。", "plainTitle": "在庫も発送もなしで、 あなたのデザインがTシャツになる。", "description": "ChatGPTでデザインを作り、Canvaで整えて、SUZURIに登録するまでの手順。在庫を持たず、注文が入ってから作られるので初期費用がかからない。", "sourceVideo": "ChatGPTで\nTシャツ作って\nｶｾぐ日のVlog", "sourceThumbnail": "assets/video-thumbs/no26.jpg", "tags": ["ChatGPT", "Canva", "SUZURI"], "url": "https://smitch-ai-works.github.io/no26-chatgpt-tshirt-suzuri/", "image": "assets/preview-ai-v1/no26.jpg", "accent": "#E0592A", "slug": "no26-chatgpt-tshirt-suzuri", "publishedAt": 1788044400000}, {"number": "15", "category": "AI副業", "title": "スクロールで動く高級サイトを、<br>Claude Codeで作る。", "plainTitle": "スクロールで動く高級サイトを、 Claude Codeで作る。", "description": "プロンプト1つでサイト全体を生成し、ChatGPTで作った商品ビジュアルを反映して仕上げる4ステップ。", "sourceVideo": "ClaudeCode\n簡単指示出しで\nプロ級サイト作れます", "sourceThumbnail": "assets/video-thumbs/no24.jpg", "tags": ["Claude Code", "Three.js", "サイト制作"], "url": "https://smitch-ai-works.github.io/no24-claude-code-luxury-site/", "image": "assets/preview-ai-v1/no24.jpg", "accent": "#2C3A4F", "slug": "no24-claude-code-luxury-site", "publishedAt": 1787995620000}, {"number": "16", "category": "AI副業", "title": "スマホの中の写真1枚が、<br>売り物のLINEスタンプになる。", "plainTitle": "スマホの中の写真1枚が、 売り物のLINEスタンプになる。", "description": "ChatGPTで10個入りのスタンプ画像を1枚作り、LINE公式アプリで切り抜いて販売申請まで出す手順。", "sourceVideo": "再ブーム到来\nLINEスタンプを\nChatGPTで作る方法", "sourceThumbnail": "assets/video-thumbs/no27.jpg", "tags": ["ChatGPT", "LINEスタンプ", "スマホ完結"], "url": "https://smitch-ai-works.github.io/no27-chatgpt-line-sticker/", "image": "assets/preview-ai-v1/no27.jpg", "accent": "#00B900", "slug": "no27-chatgpt-line-sticker"}, {"number": "17", "category": "AI活用", "title": "ChatGPTだけで、<br>自分のWebサイトが持てる時代。", "plainTitle": "ChatGPTだけで、 自分のWebサイトが持てる時代。", "description": "ChatGPTのWorkに切り替えて@Sitesを呼び出し、用途別プロンプトを貼るだけでサイトを作る3ステップ。", "sourceVideo": "ChatGPTだけで\nWebページ\n作れます", "sourceThumbnail": "assets/video-thumbs/no25.jpg", "tags": ["ChatGPT Sites", "テンプレ", "LP制作"], "url": "https://smitch-ai-works.github.io/no25-chatgpt-sites-templates/", "image": "assets/preview-ai-v1/no25.jpg", "accent": "#4F5BA6", "slug": "no25-chatgpt-sites-templates", "publishedAt": 1788339960000}, {"number": "18", "category": "画像・動画制作", "title": "撮っただけの動画が、<br>投稿できる1本になって返ってくる。", "plainTitle": "撮っただけの動画が、 投稿できる1本になって返ってくる。", "description": "ChatGPT（Codex）とChatCutをつなぎ、カット・テロップ・AI映像・BGMまで文章で頼んで動画を仕上げる手順。", "sourceVideo": "これで完結!?\n動画編集できる\n話題のAIがヤバイ", "sourceThumbnail": "assets/video-thumbs/no29.jpg", "tags": ["ChatGPT", "Codex", "ChatCut"], "url": "https://smitch-ai-works.github.io/no29-chatgpt-codex-chatcut/", "image": "assets/preview-ai-v1/no29.jpg", "accent": "#4A3F68", "slug": "no29-chatgpt-codex-chatcut"}, {"number": "19", "category": "AI副業", "title": "プロンプトを2回貼るだけで、<br>LINE絵文字40個が完成する。", "plainTitle": "プロンプトを2回貼るだけで、 LINE絵文字40個が完成する。", "description": "Codexにプロンプトを2回貼るだけで、絵の生成から40枚への分割・背景透過・180px化・連番・検査・提出用ZIPまで終わらせる手順。", "sourceVideo": "センス不要\nLINE絵文字を\nAIでゼロから作る", "sourceThumbnail": "assets/video-thumbs/no28.jpg", "tags": ["Codex", "LINE絵文字", "スマホ完結"], "url": "https://smitch-ai-works.github.io/no28-chatgpt-codex-line-emoji/", "image": "assets/preview-ai-v1/no28.jpg", "accent": "#C08A3E", "slug": "no28-chatgpt-codex-line-emoji"}, {"number": "20", "category": "AI副業", "title": "日本の日常を、<br>世界に飾る一枚へ。", "plainTitle": "日本の日常を、 世界に飾る一枚へ。", "description": "ChatGPTで和風ポスター10枚と英語の紹介文を作り、Etsyで海外に販売するまでの手順。", "sourceVideo": "日本人ならやるべき\nChatGPTで\n和風ポスター作る方法", "sourceThumbnail": "assets/video-thumbs/no31.jpg", "tags": ["ChatGPT", "和風ポスター", "Etsy"], "url": "https://smitch-ai-works.github.io/no31-japanese-posters/", "image": "assets/preview-ai-v1/no31.jpg", "accent": "#86672F", "slug": "no31-japanese-posters", "publishedAt": 1789461000000}, {"number": "21", "category": "AI副業", "title": "商品探しから投稿まで、<br>Claudeに任せる。", "plainTitle": "商品探しから投稿まで、 Claudeに任せる。", "description": "楽天のID設定からClaude Code・Typefullyの連携、Threadsの下書きと予約まで。画面付きの手順と、そのまま貼れる指示文をまとめました。", "sourceVideo": "勝手に積み上がる!?\n楽天アフィを\nClaudeにやらせると...", "sourceThumbnail": "assets/video-thumbs/no30.jpg", "tags": ["Claude", "楽天", "Threads"], "url": "https://smitch-ai-works.github.io/no30-claude-rakuten-threads/", "image": "assets/preview-ai-v1/no30.jpg", "accent": "#1F5FBF", "slug": "no30-claude-rakuten-threads"}, {"number": "22", "category": "AI副業", "title": "仕事の口ぐせが、<br>売れるスタンプに。", "plainTitle": "仕事の口ぐせが、 売れるスタンプに。", "description": "仕事の言葉で作るLINEスタンプ。検索件数で穴場を探し、ChatGPTで作って申請するまで図解で。", "sourceVideo": "LINEスタンプ\n作っても売れない\n意外な理由", "sourceThumbnail": "assets/video-thumbs/no37.png", "tags": ["LINEスタンプ", "ChatGPT", "AI副業"], "url": "https://smitch-ai-works.github.io/no37-line-work-stickers/", "image": "assets/preview-ai-v1/no37.jpg", "accent": "#06A94D", "slug": "no37-line-work-stickers", "publishedAt": 1790240400000}, {"number": "23", "category": "画像・動画制作", "title": "素材を渡して、<br>編集を任せる。", "plainTitle": "素材を渡して、 編集を任せる。", "description": "貼るだけの指示文4本で、準備からカット・字幕・修正まで。素材の置き方と確認ポイントもまとめました。", "sourceVideo": "編集者いらず!?\nChatGPTで\n動画編集できます", "sourceThumbnail": "assets/video-thumbs/no35.png", "tags": ["Codex", "動画編集", "SNS"], "url": "https://smitch-ai-works.github.io/no35-codex-video-editing/", "image": "assets/preview-ai-v1/no35.jpg", "accent": "#4A3F68", "slug": "no35-codex-video-editing", "publishedAt": 1790586000000}, {"number": "24", "category": "AI副業", "title": "ChatGPT × Canva<br>オリジナルデザインキット", "plainTitle": "ChatGPT × Canva オリジナルデザインキット", "description": "好きなテーマでTシャツのデザインを作り、Amazon Merch on Demandへ出品するまで。プロンプトと制作手順、つまずき対策つき。", "sourceVideo": "在庫なしでOK\nChatGPT×Amazon\nTシャツ販売", "sourceThumbnail": "assets/video-thumbs/no33-511f61c6.jpg", "tags": ["Tシャツ", "ChatGPT", "Canva"], "url": "https://smitch-ai-works.github.io/no33-cat-tshirt/", "image": "assets/preview-ai-v1/no33.jpg", "accent": "#4A3F68", "slug": "no33-cat-tshirt"}, {"number": "25", "category": "AI活用", "title": "Codex<br>導入ガイド", "plainTitle": "Codex 導入ガイド", "description": "導入から初めてのツール制作まで。Web・動画・スタンプの指示文も収録。", "sourceVideo": "ClaudeCode\n今から始めるなら\nCodex一択です", "sourceThumbnail": "assets/video-thumbs/no34.png", "tags": ["Codex", "AI活用", "仕事効率化"], "url": "https://smitch-ai-works.github.io/no34-codex-starter/", "image": "assets/preview-ai-v1/no34.jpg", "accent": "#1F5FBF", "slug": "no34-codex-starter"}, {"number": "26", "category": "AI副業", "title": "Substack<br>スタートガイド", "plainTitle": "Substack スタートガイド", "description": "登録からAIで書く最初の1本、有料化、5つの落とし穴まで図解で。", "sourceVideo": "海外で話題!?\nSubstack×AI\nSNS収益化", "sourceThumbnail": "assets/video-thumbs/no36.png", "tags": ["Substack", "AI活用", "SNS運用"], "url": "https://smitch-ai-works.github.io/no36-substack-starter/", "image": "assets/preview-ai-v1/no36.jpg", "accent": "#D9480F", "slug": "no36-substack-starter"}, {"number": "27", "category": "AI音楽制作", "title": "AI CMソング制作キット", "plainTitle": "AI CMソング制作キット", "description": "お店の特徴から歌詞・作曲・試聴まで。実際のCMソング、ChatGPTとGeminiの指示文、提案前の確認をまとめた制作キット。", "sourceVideo": "AIで作った曲\n実は海外では\nバカ売れ!?", "sourceThumbnail": "assets/video-thumbs/no38.png", "tags": ["ChatGPT", "Gemini", "CMソング"], "url": "https://smitch-ai-works.github.io/no38-ai-cm-song/", "image": "assets/preview-ai-v1/no38.jpg", "accent": "#52644B", "slug": "no38-ai-cm-song", "publishedAt": 1791968400000}, {"number": "28", "category": "AI副業", "title": "日本の風景を、<br>自分で彩るしおりに。", "plainTitle": "日本の風景を、 自分で彩るしおりに。", "description": "ChatGPTで日本風景の塗り絵しおりと英語の紹介文を作り、印刷データを整えてEtsyに出品するまでの手順。コピーして使えるプロンプト2本付き。", "sourceVideo": "海外で流行中!?\nChatGPTで\n塗り絵しおり作る方法", "sourceThumbnail": "assets/video-thumbs/no32.png", "tags": ["ChatGPT", "塗り絵しおり", "Etsy"], "url": "https://smitch-ai-works.github.io/no32-japanese-bookmarks/", "image": "assets/preview-ai-v1/no32.jpg", "accent": "#927036", "slug": "no32-japanese-bookmarks", "publishedAt": 1792139400000}, {"number": "29", "category": "画像・動画制作", "title": "Claude Code<br>画像生成スタートガイド", "plainTitle": "Claude Code 画像生成スタートガイド", "description": "Claude Codeの準備から、画像拡張の導入、日本語での依頼、PNGの保存まで。実画面と作例で追えるスタートガイド。", "sourceVideo": "待望の進化\nClaude Codeだけで\n画像まで完結", "sourceThumbnail": "assets/video-thumbs/no42.png", "tags": ["Claude Code", "Codex", "画像生成"], "url": "https://smitch-ai-works.github.io/no42-claude-code-image/", "image": "assets/preview-ai-v1/no42.jpg", "accent": "#4E6B57", "slug": "no42-claude-code-image", "publishedAt": 1792485000000}, {"number": "30", "category": "AI活用", "title": "Claude Code×Codex<br>連携スタートガイド", "plainTitle": "Claude Code×Codex 連携スタートガイド", "description": "公式プラグインの導入、ChatGPTアカウントでのログイン、役割分担の指示と最初の仕事まで。コピーできる9つの指示文と実演つき。", "sourceVideo": "ChatGPTとClaude\nまさか今も\n別々に使ってる？", "sourceThumbnail": "assets/video-thumbs/no43.png", "tags": ["Claude Code", "Codex", "AI連携"], "url": "https://smitch-ai-works.github.io/no43-claude-code-codex/", "image": "assets/preview-ai-v1/no43.jpg", "accent": "#4A3F68", "slug": "no43-claude-code-codex", "publishedAt": 1792657800000}, {"number": "31", "category": "AIグッズ制作", "title": "AIパズル制作キット", "plainTitle": "AIパズル制作キット", "description": "ChatGPTでテーマと絵を作り、Printifyでパズルの商品準備へ。実画面・4つの指示文・印刷と販売前のチェック。", "sourceVideo": "在庫なしでOK\nChatGPTで作る\nパズル販売", "sourceThumbnail": "assets/video-thumbs/no41.png", "tags": ["ChatGPT", "Printify", "パズル制作"], "url": "https://smitch-ai-works.github.io/no41-ai-puzzle/", "image": "assets/preview-ai-v1/no41.jpg", "accent": "#52644B", "slug": "no41-ai-puzzle", "publishedAt": 1792830600000}, {"number": "32", "category": "AIサイト制作", "title": "AIサイト制作<br>スタートキット", "plainTitle": "AIサイト制作 スタートキット", "description": "一発出しを狙う指示の設計、動く3D作例、店舗紹介LP、制作提案と納品の準備まで。", "sourceVideo": "ChatGPT-6\nたった1回指示で\nこれ作れます", "sourceThumbnail": "assets/video-thumbs/no39.png", "tags": ["Codex", "GPT-6.1 Sol", "サイト制作"], "url": "https://smitch-ai-works.github.io/no39-ai-web-production/", "image": "assets/preview-ai-v1/no39.jpg", "accent": "#536655", "slug": "no39-ai-web-production", "publishedAt": 1793005200000}, {"number": "33", "category": "AI活用", "title": "Codexで自分専用のAI会社を作る", "plainTitle": "Codexで自分専用のAI会社を作る", "description": "5問で設定し、25人分の担当で記事・サムネ・Threads紹介文を作るCodex用キット。", "sourceVideo": "自分は社長\nAI社員25人に\n仕事を任せる", "sourceThumbnail": "assets/video-thumbs/no173.png", "tags": ["Codex", "AI社員", "note"], "url": "https://smitch-ai-works.github.io/no44-codex-ai-company/", "image": "assets/preview-ai-v1/no44.jpg", "accent": "#205749", "slug": "no44-codex-ai-company", "publishedAt": 1793176200000}, {"number": "34", "category": "AI副業", "title": "旅の写真を、<br>海外向けの商品データに。", "plainTitle": "旅の写真を、 海外向けの商品データに。", "description": "写真選びから英語の商品情報、Canvaの調整、Etsy登録まで。図と実画面を見ながら進められる、コピー用指示文つきガイド。", "sourceVideo": "旅先の写真が\nChatGPTで\n商品になる!?", "sourceThumbnail": "assets/video-thumbs/no47.png", "tags": ["ChatGPT", "Canva", "Etsy", "写真販売"], "url": "https://smitch-ai-works.github.io/no47-travel-photo-etsy/", "image": "assets/preview-ai-v1/no47.jpg", "accent": "#2c654c", "slug": "no47-travel-photo-etsy", "publishedAt": 1793349000000}, {"number": "35", "category": "AI活用・文章作成", "title": "Codexでnoteづくり｜構成・本文・図解・下書きキット", "plainTitle": "Codexでnoteづくり｜構成・本文・図解・下書きキット", "description": "自分の読者と文体を設定し、テーマから記事・図解・note下書きへ進めるCodex版キット。導入手順と図解3枚入りの作例を収録。", "sourceVideo": "話題のnote\nChatGPT使うと\n記事ができる!?", "sourceThumbnail": "assets/video-thumbs/no178.png", "tags": ["note", "Codex", "スキル", "文章作成"], "url": "https://smitch-ai-works.github.io/no45-note-codex-workflow/", "image": "assets/preview-ai-v1/no45.jpg", "accent": "#31674f", "slug": "no45-note-codex-workflow", "publishedAt": 1793521800000}, {"number": "36", "category": "AI活用・動画編集", "title": "日本語で頼んで、リールを編集する｜AIリール編集スタートガイド", "plainTitle": "日本語で頼んで、リールを編集する｜AIリール編集スタートガイド", "description": "Codex・Claude Codeで動画を編集する準備、指示文、共通カットで比較する手順、検品まで。配布スターター付き。", "sourceVideo": "ChatGPTとClaude\n編集任せたら\nこうなった", "sourceThumbnail": "assets/video-thumbs/no174.png", "tags": ["Codex", "Claude Code", "動画編集", "指示文"], "url": "https://smitch-ai-works.github.io/no46-ai-reel-editing/", "image": "assets/preview-ai-v1/no46.jpg", "accent": "#245b96", "slug": "no46-ai-reel-editing", "publishedAt": 1793614194000}, {"number": "37", "category": "AI仕事術", "title": "ChatGPTに任せるSNS作業 図解スタートガイド", "plainTitle": "ChatGPTに任せるSNS作業 図解スタートガイド", "description": "開く場所から保存まで、実画面と図解で進める5つのSNS作業ガイド。指示文と練習用メモ付き。", "sourceVideo": "知らないと損!?\nChatGPTの\n神プラグイン5選", "sourceThumbnail": "assets/video-thumbs/no51.png", "tags": ["SNS", "ChatGPT", "プラグイン"], "url": "https://smitch-ai-works.github.io/no51-chatgpt-sns-plugins/", "image": "assets/preview-ai-v1/no51.jpg", "accent": "#23354C", "slug": "no51-chatgpt-sns-plugins", "publishedAt": 1793696126000}, {"number": "38", "category": "AI活用", "title": "ChatGPTを専属秘書にする dotsはじめ方ガイド", "plainTitle": "ChatGPTを専属秘書にする dotsはじめ方ガイド", "description": "dotsの作り方、アプリのつなぎ方、役割の頼み方、任せる範囲の決め方と注意点。コピーして使える指示文つき。", "sourceVideo": "寝てる間も\nChatGPTが\n勝手に働く!?", "sourceThumbnail": "assets/video-thumbs/no54.png", "tags": ["ChatGPT", "dots", "AI秘書"], "url": "https://smitch-ai-works.github.io/no54-chatgpt-dots-secretary/", "image": "assets/preview-ai-v1/no54.jpg", "accent": "#0F7A63", "slug": "no54-chatgpt-dots-secretary", "publishedAt": 1793784082000}, {"number": "39", "category": "AI活用", "title": "Claude Codeで作る インスタAI社員スタートガイド", "plainTitle": "Claude Codeで作る インスタAI社員スタートガイド", "description": "社長役と9担当の役割分担、5つの質問、依頼とチェックの指示文、設定用スターター。", "sourceVideo": "僕のインスタ\n実は10人の\nAI社員が運用", "sourceThumbnail": "assets/video-thumbs/no50.png", "tags": ["Claude Code", "AI社員", "インスタ運用"], "url": "https://smitch-ai-works.github.io/no50-instagram-ai-team/", "image": "assets/preview-ai-v1/no50.jpg", "accent": "#4A3F68", "slug": "no50-instagram-ai-team", "publishedAt": 1793920301000}, {"number": "40", "category": "AI副業", "title": "ChatGPTで作る塗り絵しおり｜プロンプトと制作を任せる手順", "plainTitle": "ChatGPTで作る塗り絵しおり｜プロンプトと制作を任せる手順", "description": "日本風景の線画、英語の商品説明、次の制作をまとめて頼む3本のプロンプト。作例と保存用ZIP、Etsyへ出す前の確認手順つき。", "sourceVideo": "海外に刺さる!?\nChatGPTで\n塗り絵しおり", "sourceThumbnail": "assets/video-thumbs/no56.png", "tags": ["ChatGPT", "塗り絵しおり", "Etsy"], "url": "https://smitch-ai-works.github.io/no56-chatgpt-bookmark-workflow/", "image": "assets/preview-ai-v1/no56.jpg", "accent": "#927036", "slug": "no56-chatgpt-bookmark-workflow", "publishedAt": 1793959901000}, {"number": "41", "category": "AI副業", "title": "愛用AI4選の使い分けノート", "plainTitle": "愛用AI4選の使い分けノート", "description": "台本・調査、動画・LP、企画・画像、表紙。4つのAIに任せる仕事と、試せる依頼文を図と手順でまとめました。", "sourceVideo": "副業で月100万円\n僕が愛用する\nAIツール4選", "sourceThumbnail": "assets/video-thumbs/no58.png", "tags": ["Claude Code", "Codex", "ChatGPT", "Canva"], "url": "https://smitch-ai-works.github.io/no58-ai-tools-workflow/", "image": "assets/preview-ai-v1/no58.jpg", "accent": "#796126", "slug": "no58-ai-tools-workflow", "publishedAt": 1794043569000}, {"number": "42", "category": "AI副業", "title": "すみっち式 自分の言葉で書くAI note実践ガイド", "plainTitle": "すみっち式 自分の言葉で書くAI note実践ガイド", "description": "調査から構成、本文、文体まで。自分の経験と言葉を残す5ステップを図解で確認し、そのまま使える指示文と実践ワークで記事を1本仕上げます。", "sourceVideo": "ただnote書くのはNG!\nChatGPTで運用する\n厳選コツ5選", "sourceThumbnail": "assets/video-thumbs/no60.png", "tags": ["ChatGPT", "Codex", "note"], "url": "https://smitch-ai-works.github.io/no60-ai-note-practice/", "image": "assets/preview-ai-v1/no60.jpg", "accent": "#19645c", "slug": "no60-ai-note-practice", "publishedAt": 1794130763000}, {"number": "43", "category": "ChatGPT活用", "title": "すみっち流 ChatGPT 10機能 使い分けマニュアル", "plainTitle": "すみっち流 ChatGPT 10機能 使い分けマニュアル", "description": "音声入力・ペット・スケジュール・Computer Use・画像生成・スマホ連携・スキル・プラグイン・Work・Codex。10機能の始め方と使い分け、コピーして試せる練習用の指示文つき。", "sourceVideo": "知らずに損してる!?\nChatGPTの\n神機能10選", "sourceThumbnail": "assets/video-thumbs/no59.png", "tags": ["ChatGPT", "Codex", "使い分け"], "url": "https://smitch-ai-works.github.io/no59-chatgpt-10-functions/", "image": "assets/preview-ai-v1/no59.jpg", "accent": "#3A6CF4", "slug": "no59-chatgpt-10-functions", "publishedAt": 1794217799000}, {"number": "44", "category": "AI活用", "title": "ChatGPTで作るAI絵本 3ステップと自動化ガイド", "plainTitle": "ChatGPTで作るAI絵本 3ステップと自動化ガイド", "description": "ChatGPTで構成案と絵を作り、Canvaで仕上げる3ステップと、ChatGPTのWorkに指示文を1回送って絵本PDFまで自動で作る手順。KDP出品の流れつき。", "sourceVideo": "再ブーム到来!?\nスキマ時間で\nAI絵本vlog", "sourceThumbnail": "assets/video-thumbs/no55.png", "tags": ["ChatGPT", "AI絵本", "自動化"], "url": "https://smitch-ai-works.github.io/no55-ai-ehon-work-auto/", "image": "assets/preview-ai-v1/no55.jpg", "accent": "#B45F1E", "slug": "no55-ai-ehon-work-auto", "publishedAt": 1794303006000}, {"number": "45", "category": "AI副業", "title": "商品写真から作る10秒CMガイド", "plainTitle": "商品写真から作る10秒CMガイド", "description": "商品写真からChatGPTで5カット絵コンテを作り、Geminiで10秒CMへ。実演の指示文全文と練習画像を使い、添付・生成・保存まで3工程で進められます。", "sourceVideo": "写真1枚が\nAIに頼んだら\n商品CMに!?", "sourceThumbnail": "assets/video-thumbs/no61.png", "tags": ["ChatGPT", "Gemini", "動画制作"], "url": "https://smitch-ai-works.github.io/no61-gemini-product-cm/", "image": "assets/preview-ai-v1/no61.jpg", "accent": "#244d2b", "slug": "no61-gemini-product-cm", "publishedAt": 1794561376000}, {"number": "46", "category": "AI副業", "title": "スマホ写真で作る街並みステッカー出品ガイド", "plainTitle": "スマホ写真で作る街並みステッカー出品ガイド", "description": "写真から透過PNGを作り、単品の保存、英語の商品説明、Etsyの出品準備まで。実作例とコピーできる指示文付き。", "sourceVideo": "AI画像はNG!?\n知っておきたい\n意外な落とし穴", "sourceThumbnail": "assets/video-thumbs/no49.png", "tags": ["ChatGPT", "Etsy", "ステッカー"], "url": "https://smitch-ai-works.github.io/no49-street-photo-stickers/", "image": "assets/preview-ai-v1/no49.jpg", "accent": "#9b7836", "slug": "no49-street-photo-stickers", "publishedAt": 1794649360000}, {"number": "47", "category": "AI副業", "title": "AIでつくる大人の塗り絵 販売スタートガイド", "plainTitle": "AIでつくる大人の塗り絵 販売スタートガイド", "description": "テーマ選びから画像生成、原稿の整理、KDP出品まで。3つの指示文と練習用作例つき。", "sourceVideo": "絵が苦手でも\nAIに任せて\n塗り絵販売", "sourceThumbnail": "assets/video-thumbs/no53.png", "tags": ["ChatGPT", "塗り絵", "Amazon KDP"], "url": "https://smitch-ai-works.github.io/no53-ai-coloring-book/", "image": "assets/preview-ai-v1/no53.jpg", "accent": "#355A45", "slug": "no53-ai-coloring-book", "publishedAt": 1794747759000}, {"number": "48", "category": "AI活用", "title": "日本語を生かす海外在宅ワークの探し方", "plainTitle": "日本語を生かす海外在宅ワークの探し方", "description": "LinkedInで日本語の仕事を探し、AIで募集文を読み、応募を準備する手順。", "sourceVideo": "日本語が武器に!?\n海外で見つかる\n在宅ワーク", "sourceThumbnail": "assets/video-thumbs/no187.png", "tags": ["在宅ワーク", "日本語", "LinkedIn"], "url": "https://smitch-ai-works.github.io/no48-japanese-remote-work/", "image": "assets/preview-ai-v1/no48.jpg", "accent": "#0a66c2", "slug": "no48-japanese-remote-work", "publishedAt": 1794828222000}, {"number": "49", "category": "AI活用", "title": "すみっち式 0円AI使い倒しマニュアル", "plainTitle": "すみっち式 0円AI使い倒しマニュアル", "description": "FreeLLMAPIの設定から、無料枠で見出しを作成・修正・保存するまで。全文指示文と練習キット付き。", "sourceVideo": "ほとんどの人が知らない\n有名AIが無料で使える\n神ツール見つけた", "sourceThumbnail": "assets/video-thumbs/no65-canva-v2.png", "tags": ["FreeLLMAPI", "無料枠", "SNS投稿"], "url": "https://smitch-ai-works.github.io/no65-free-ai-start/", "image": "assets/preview-ai-v1/no65.jpg", "accent": "#12387a", "slug": "no65-free-ai-start", "publishedAt": 1794910839000, "bonusCover": "assets/bonus-covers/no65.png"}, {"number": "50", "category": "ChatGPT活用", "title": "すみっち式 ChatGPT dots 任せ方スタートブック", "plainTitle": "すみっち式 ChatGPT dots 任せ方スタートブック", "description": "dotsの作成から、Instagramのリサーチと台本の依頼、見直し、保存まで。コピーして使える指示文付き。", "sourceVideo": "パソコンを閉じても\nChatGPTが\n仕事を進める!?", "sourceThumbnail": "assets/video-thumbs/no66.png", "tags": ["dots", "リサーチ", "台本作成"], "url": "https://smitch-ai-works.github.io/no66-chatgpt-dots-workflow/", "image": "assets/preview-ai-v1/no66.jpg", "accent": "#187cff", "slug": "no66-chatgpt-dots-workflow", "publishedAt": 1795079500000, "bonusCover": "assets/bonus-covers/no66.png"}, {"number": "51", "category": "AI動画制作", "title": "すみっち式 AI動画副業マニュアル", "plainTitle": "すみっち式 AI動画副業マニュアル", "description": "商品写真からPR動画を作り、確認・修正・MP4保存まで。全文プロンプト、練習用写真、2本の動画見本を収録。", "sourceVideo": "遊びながらでも\nChatGPTで\n稼げるって本当!?", "sourceThumbnail": "assets/video-thumbs/no64.png", "tags": ["ChatGPT", "PR動画", "動画編集"], "url": "https://smitch-ai-works.github.io/no64-chatgpt-pr-video/", "image": "assets/preview-ai-v1/no64.jpg", "accent": "#117e78", "slug": "no64-chatgpt-pr-video", "publishedAt": 1795164982000, "bonusCover": "assets/bonus-covers/no64.png"}, {"number": "52", "category": "Claude活用", "title": "すみっち式 Claudeで動画編集 完全マニュアル", "plainTitle": "すみっち式 Claudeで動画編集 完全マニュアル", "description": "自分の声と素材で、Claudeに縦型リールを1本作らせる6ステップ。実際の修正例と、編集・修正・ルール保存に使える指示文6本付き。", "sourceVideo": "", "sourceThumbnail": "", "tags": ["Claude", "動画編集", "リール"], "url": "https://smitch-ai-works.github.io/no67-claude-video-editing/", "image": "assets/preview-ai-v1/no67.jpg", "accent": "#963c27", "slug": "no67-claude-video-editing", "publishedAt": 1795258354000, "bonusCover": "assets/bonus-covers/no67.png"}, {"number": "53", "category": "AI副業", "title": "すみっち式 Claude×楽天 商品選び・投稿作成スタートブック", "plainTitle": "すみっち式 Claude×楽天 商品選び・投稿作成スタートブック", "description": "「売れそう」で選ぶ前に、誰がどこで使うかを決める。商品比較と投稿作成の指示文、実際のClaude下書き、保存用テンプレートをまとめました。", "sourceVideo": "楽天アフィを\nClaudeに\n任せた結果が!?", "sourceThumbnail": "assets/video-thumbs/no62.png", "tags": ["Claude", "楽天アフィリエイト", "商品選び", "投稿作成"], "url": "https://smitch-ai-works.github.io/no62-claude-rakuten-selection/", "image": "assets/preview-ai-v1/no62.jpg", "accent": "#b86642", "slug": "no62-claude-rakuten-selection", "publishedAt": 1795428446000, "bonusCover": "assets/bonus-covers/no62.png"}, {"number": "54", "category": "AI副業", "title": "すみっち式 AI副業 はじめの1商品実践ガイド", "plainTitle": "すみっち式 AI副業 はじめの1商品実践ガイド", "description": "一人の困りごとから商品を決め、試作を届け、反応から次を考える。note・LINEスタンプ・LPに使えるシートと作例つき。", "sourceVideo": "", "sourceThumbnail": "", "tags": ["ChatGPT", "note", "商品づくり", "SNS集客"], "url": "https://smitch-ai-works.github.io/no75-ai-first-product/", "image": "assets/preview-ai-v1/no75.jpg", "accent": "#236c5b", "slug": "no75-ai-first-product", "publishedAt": 1795596966000, "bonusCover": "assets/bonus-covers/no75.png"}]);
+
+  const purposeOverrides = {
+    "no6-ai-sticker": "副業・販売",
+    "no14-chatgpt-picture-japan": "副業・販売",
+    "no20-claude-code-ai-note-organization": "AI活用",
+    "no21-chatgpt-canva-slide": "作品づくり",
+    "no24-claude-code-luxury-site": "作品づくり",
+    "no25-chatgpt-sites-templates": "作品づくり",
+    "no33-cat-tshirt": "作品づくり",
+    "no45-note-codex-workflow": "作品づくり",
+    "no56-chatgpt-bookmark-workflow": "作品づくり",
+    "no58-ai-tools-workflow": "AI活用",
+    "no60-ai-note-practice": "作品づくり",
+    "no55-ai-ehon-work-auto": "作品づくり",
+    "no61-gemini-product-cm": "作品づくり",
+    "no48-japanese-remote-work": "副業・販売",
+    "no67-claude-video-editing": "作品づくり"
+  };
+
+  const contentsOverrides = {
+    "no67-claude-video-editing": "縦型リールの編集手順と指示文6本。",
+    "no62-claude-rakuten-selection": "商品比較の指示文と投稿テンプレート。",
+    "no75-ai-first-product": "商品を決めるワークシートと、note・LINEスタンプ・LPの作例。"
+  };
+
+  function purposeFor(item) {
+    if (Object.prototype.hasOwnProperty.call(purposeOverrides, item.slug)) return purposeOverrides[item.slug];
+    if (item.category === 'AI副業') return '副業・販売';
+    if (/制作|編集/.test(item.category)) return '作品づくり';
+    return 'AI活用';
+  }
+
+  const items = bonuses.map(item => ({
+    ...item,
+    purpose: purposeFor(item),
+    contents: contentsOverrides[item.slug] || item.description
+  }));
+  const sorted = [...items].sort((first, second) =>
+    (second.publishedAt ?? 0) - (first.publishedAt ?? 0) || Number(second.number) - Number(first.number)
+  );
+  const search = document.getElementById('searchInput');
+  const filterButtons = [...document.querySelectorAll('.filter')];
+  const results = document.getElementById('cards');
+  const empty = document.getElementById('empty');
+  const resultCount = document.getElementById('resultCount');
+  const allowMotion = matchMedia('(prefers-reduced-motion: no-preference)');
+  const newDuration = 7 * 24 * 60 * 60 * 1000;
+  const dateFormat = new Intl.DateTimeFormat('ja-JP', { timeZone: 'Asia/Tokyo', month: 'numeric', day: 'numeric' });
+  let activePurpose = '';
+
+  function escapeHtml(value) {
+    return String(value).replace(/[&<>"']/g, character => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    })[character]);
+  }
+
+  function newBadge(item, now) {
+    if (!item.publishedAt || item.publishedAt > now || now - item.publishedAt >= newDuration) return '';
+    return '<span class="new" aria-label="新着">NEW</span>';
+  }
+
+  function artwork(source, eager = false) {
+    if (!source) return '';
+    return '<img src="' + escapeHtml(source) + '" alt="" ' +
+      (eager ? 'fetchpriority="high"' : 'loading="lazy"') + ' decoding="async">';
+  }
+
+  function linkStart(item, style) {
+    return '<a class="' + style + '" href="' + escapeHtml(item.url) +
+      '" target="_blank" rel="noopener noreferrer" aria-label="' + escapeHtml(item.plainTitle) + 'を受け取る">';
+  }
+
+  function recentCard(item, index, now) {
+    const detail = index === 0 ? escapeHtml(item.purpose)
+      : item.publishedAt ? dateFormat.format(item.publishedAt) + '追加' : '';
+    const metadata = '<div class="meta">' + newBadge(item, now) +
+      (detail ? '<span>' + detail + '</span>' : '') + '</div>';
+    const contents = escapeHtml(item.contents);
+    const title = escapeHtml(item.plainTitle);
+    const arrow = '<span class="arrow" aria-hidden="true">→</span>';
+    if (index === 0) {
+      return linkStart(item, 'featured') +
+        '<span class="featured-image">' + artwork(item.image, true) + '</span>' +
+        '<div class="featured-copy">' + metadata + '<h2>' + title + '</h2><p>' + contents + '</p>' +
+        '<span class="featured-cta">特典を受け取る ' + arrow + '</span></div></a>';
     }
+    return linkStart(item, 'recent-small') + '<span class="cover">' + artwork(item.bonusCover || item.image) +
+      '</span><div>' + metadata + '<h2>' + title + '</h2><p>' + contents + '</p></div>' + arrow + '</a>';
+  }
 
-const bonuses = revealDue([{"number": "01", "category": "ChatGPT活用", "title": "ChatGPTを最強の相棒に<br>3分で完了する究極の最適化", "plainTitle": "ChatGPTを最強の相棒に 3分で完了する究極の最適化", "description": "データ設定・メモリ・カスタム指示を整え、ChatGPTを自分専用の相棒へ変える初期設定ガイド。", "sourceVideo": "ChatGPT、初期設定のまま使っていませんか？", "sourceThumbnail": "", "tags": ["初期設定", "3ステップ", "初心者向け"], "url": "https://smitch-ai-works.github.io/no2-chatgpt-first-setting-info/", "image": "assets/preview-ai-v1/no2.jpg", "accent": "#2E5D50"}, {"number": "02", "category": "ChatGPT活用", "title": "スマホ1枚＋5分で<br>プロ級の手相鑑定書が完成", "plainTitle": "スマホ1枚＋5分で プロ級の手相鑑定書が完成", "description": "手のひら写真をChatGPTで分析し、自己理解レポートとしてまとめる方法とコピペ用プロンプト。", "sourceVideo": "ChatGPTで手相鑑定ができるって知ってましたか？", "sourceThumbnail": "", "tags": ["画像解析", "手相", "プロンプト"], "url": "https://smitch-ai-works.github.io/no3-chatgpt-palm-reading/", "image": "assets/preview-ai-v1/no3.jpg", "accent": "#785C7D"}, {"number": "03", "category": "ChatGPT活用", "title": "AIプロンプト記号<br>完全ガイド30選", "plainTitle": "AIプロンプト記号 完全ガイド30選", "description": "AIへの指示を整理し、意図を正確に伝えるために使える30種類の記号をまとめた保存版。", "sourceVideo": "ChatGPT\n効率を爆上げする\n特殊な記号知ってる？", "sourceThumbnail": "assets/video-thumbs/no4.jpg", "tags": ["30種類", "指示改善", "保存版"], "url": "https://smitch-ai-works.github.io/no4-ai-keywords/", "image": "assets/preview-ai-v1/no4.jpg", "accent": "#45698E"}, {"number": "04", "category": "画像・動画制作", "title": "残業後でもできる<br>30分のAI絶景動画ルーティン", "plainTitle": "残業後でもできる 30分のAI絶景動画ルーティン", "description": "ChatGPT・ImageFX・Pikaを順番に使い、日本の絶景画像と動画を作る4ステップ。", "sourceVideo": "忙しくてもOK!？\n旅行気分でできる\n絶景動画の作り方", "sourceThumbnail": "assets/video-thumbs/no5.jpg", "tags": ["ChatGPT", "ImageFX", "Pika"], "url": "https://smitch-ai-works.github.io/no5-ai-movie-creater/", "image": "assets/preview-ai-v1/no5.jpg", "accent": "#347B86"}, {"number": "05", "category": "画像・動画制作", "title": "このステッカー、<br>海外でめっちゃ売れてます。", "plainTitle": "このステッカー、 海外でめっちゃ売れてます。", "description": "ぷっくり立体的なデジタルステッカーをAIで作るための、コピペ対応プロンプト。", "sourceVideo": "AI1つで完結！\n海外でバズってる\nステッカーの作り方", "sourceThumbnail": "assets/video-thumbs/no6.jpg", "tags": ["画像生成", "ステッカー", "海外販売"], "url": "https://smitch-ai-works.github.io/no6-ai-sticker/", "image": "assets/preview-ai-v1/no6.jpg", "accent": "#B66D82"}, {"number": "06", "category": "AI副業", "title": "ChatGPTで作る<br>Pinterest副業ルーティン", "plainTitle": "ChatGPTで作る Pinterest副業ルーティン", "description": "記事案・画像・投稿をChatGPTと組み合わせ、Pinterestのピンを継続して作る手順まとめ。", "sourceVideo": "残業後でもできる！\nChatGPTで仕込む\n30歳の限界夜活", "sourceThumbnail": "assets/video-thumbs/no8.jpg", "tags": ["Pinterest", "コンテンツ制作", "集客"], "url": "https://smitch-ai-works.github.io/no8-chatgpt-pintarest/", "image": "assets/preview-ai-v1/no8.jpg", "accent": "#A55460"}, {"number": "07", "category": "AI副業", "title": "クラウドワークス × ChatGPT<br>アイコン制作", "plainTitle": "クラウドワークス × ChatGPT アイコン制作", "description": "SNSアイコン案件を探し、要望をプロンプトへ落とし込んで制作・納品する一連の流れ。", "sourceVideo": "30分で出来ちゃう！？\n寝起き後でやる\n出勤前AIﾌｸ業", "sourceThumbnail": "assets/video-thumbs/no9.jpg", "tags": ["案件獲得", "SNSアイコン", "テンプレート"], "url": "https://smitch-ai-works.github.io/no9-chatgpt-icon-works/", "image": "assets/preview-ai-v1/no9.jpg", "accent": "#4F7479"}, {"number": "08", "category": "AI副業", "title": "AI × 日本語で作り出す<br>最強錬金術", "plainTitle": "AI × 日本語で作り出す 最強錬金術", "description": "Claudeを使って英文を自然な日本語へ整え、翻訳案件へ応用するシンプルな手順。", "sourceVideo": "案件急増中の\n日本語翻訳を\nAI使ってﾌｸ収入化", "sourceThumbnail": "assets/video-thumbs/no10.jpg", "tags": ["Claude", "翻訳", "Fiverr"], "url": "https://smitch-ai-works.github.io/no10-claude-translation/", "image": "assets/preview-ai-v1/no10.jpg", "accent": "#A2735D"}, {"number": "09", "category": "画像・動画制作", "title": "あなたのスマホ、<br>5万円を眠らせてます。", "plainTitle": "あなたのスマホ、 5万円を眠らせてます。", "description": "日本の風景写真をChatGPTで整え、ストックフォトへ出品するまでの3ステップ。", "sourceVideo": "知らないのは損\nあなたの撮った写真で\n月5ﾏｿ作れる！？", "sourceThumbnail": "assets/video-thumbs/no14-126.png", "tags": ["写真編集", "日本の風景", "ストックフォト"], "url": "https://smitch-ai-works.github.io/no14-chatgpt-picture-japan/", "image": "assets/preview-ai-v1/no14.jpg", "accent": "#71814F"}, {"number": "10", "category": "AI副業", "title": "文章が書けなくても、<br>1本3,000円のライターになれる", "plainTitle": "文章が書けなくても、 1本3,000円のライターになれる", "description": "クラウドワークスで案件を探し、ChatGPTで台本を作りClaudeで自然な文章に仕上げて納品するまでの3ステップ。", "sourceVideo": "スキマ時間でOK\nChatGPT×Claude\nAI台本作成ﾌｸ業", "sourceThumbnail": "assets/video-thumbs/no17.jpg", "tags": ["クラウドワークス", "ChatGPT", "Claude"], "url": "https://smitch-ai-works.github.io/no17-ai-script-crowdworks/", "image": "assets/preview-ai-v1/no17.jpg", "accent": "#4A3F68"}, {"number": "11", "category": "AI副業", "title": "あなたのPCの中に、<br>休まず働く5人のAIチームを作る。", "plainTitle": "あなたのPCの中に、 休まず働く5人のAIチームを作る。", "description": "Claude Codeに指示を1回出すだけで、リサーチ・記事作成・タイトル・校正・集客の5役が自動で動き出すnote自動化の仕組み。", "sourceVideo": "AIで社長になれる!?\nClaudeCodeで\n専門組織を作る裏技", "sourceThumbnail": "assets/video-thumbs/no20.jpg", "tags": ["Claude Code", "自動化", "サブエージェント"], "url": "https://smitch-ai-works.github.io/no20-claude-code-ai-note-organization/", "image": "assets/preview-ai-v1/no20.jpg", "accent": "#3F5347"}, {"number": "12", "category": "AI副業", "title": "寝る前の30分が、<br>Amazonに並ぶ絵本に変わる。", "plainTitle": "寝る前の30分が、 Amazonに並ぶ絵本に変わる。", "description": "ChatGPTで絵本のテキストと挿絵を作り、Canvaでまとめて仕上げ、Amazon KDPで販売するまでの手順。", "sourceVideo": "資産性抜群！？\n絵心なしでもイケる\nAI絵本作りがヤバイ", "sourceThumbnail": "assets/video-thumbs/no18.jpg", "tags": ["ChatGPT", "Canva", "Amazon KDP"], "url": "https://smitch-ai-works.github.io/no18-ai-ehon-kdp/", "image": "assets/preview-ai-v1/no18.jpg", "accent": "#4A3F68"}, {"number": "13", "category": "AI副業", "title": "提案資料も、<br>ポートフォリオも。指示ひとつでCanvaに届く。", "plainTitle": "提案資料も、 ポートフォリオも。指示ひとつでCanvaに届く。", "description": "ChatGPTとCanvaを連携させ、内容を伝えるだけでプレゼン資料の下書きを作る手順。本業の提案資料にも副業のポートフォリオにも使える。", "sourceVideo": "ChatGPTと\nCanvaを連携で\nスライドが作れるかも!?", "sourceThumbnail": "assets/video-thumbs/no21.jpg", "tags": ["ChatGPT", "Canva", "スライド作成"], "url": "https://smitch-ai-works.github.io/no21-chatgpt-canva-slide/", "image": "assets/preview-ai-v1/no21.jpg", "accent": "#5B4B9E"}, {"number": "14", "category": "AI副業", "title": "在庫も発送もなしで、<br>あなたのデザインがTシャツになる。", "plainTitle": "在庫も発送もなしで、 あなたのデザインがTシャツになる。", "description": "ChatGPTでデザインを作り、Canvaで整えて、SUZURIに登録するまでの手順。在庫を持たず、注文が入ってから作られるので初期費用がかからない。", "sourceVideo": "ChatGPTで\nTシャツ作って\nｶｾぐ日のVlog", "sourceThumbnail": "assets/video-thumbs/no26.jpg", "tags": ["ChatGPT", "Canva", "SUZURI"], "url": "https://smitch-ai-works.github.io/no26-chatgpt-tshirt-suzuri/", "image": "assets/preview-ai-v1/no26.jpg", "accent": "#E0592A"}, {"number": "15", "category": "AI副業", "title": "スクロールで動く高級サイトを、<br>Claude Codeで作る。", "plainTitle": "スクロールで動く高級サイトを、 Claude Codeで作る。", "description": "プロンプト1つでサイト全体を生成し、ChatGPTで作った商品ビジュアルを反映して仕上げる4ステップ。", "sourceVideo": "ClaudeCode\n簡単指示出しで\nプロ級サイト作れます", "sourceThumbnail": "assets/video-thumbs/no24.jpg", "tags": ["Claude Code", "Three.js", "サイト制作"], "url": "https://smitch-ai-works.github.io/no24-claude-code-luxury-site/", "image": "assets/preview-ai-v1/no24.jpg", "accent": "#2C3A4F"}, {"number": "16", "category": "AI副業", "title": "スマホの中の写真1枚が、<br>売り物のLINEスタンプになる。", "plainTitle": "スマホの中の写真1枚が、 売り物のLINEスタンプになる。", "description": "ChatGPTで10個入りのスタンプ画像を1枚作り、LINE公式アプリで切り抜いて販売申請まで出す手順。", "sourceVideo": "再ブーム到来\nLINEスタンプを\nChatGPTで作る方法", "sourceThumbnail": "assets/video-thumbs/no27.jpg", "tags": ["ChatGPT", "LINEスタンプ", "スマホ完結"], "url": "https://smitch-ai-works.github.io/no27-chatgpt-line-sticker/", "image": "assets/preview-ai-v1/no27.jpg", "accent": "#00B900"}, {"number": "17", "category": "AI活用", "title": "ChatGPTだけで、<br>自分のWebサイトが持てる時代。", "plainTitle": "ChatGPTだけで、 自分のWebサイトが持てる時代。", "description": "ChatGPTのWorkに切り替えて@Sitesを呼び出し、用途別プロンプトを貼るだけでサイトを作る3ステップ。", "sourceVideo": "ChatGPTだけで\nWebページ\n作れます", "sourceThumbnail": "assets/video-thumbs/no25.jpg", "tags": ["ChatGPT Sites", "テンプレ", "LP制作"], "url": "https://smitch-ai-works.github.io/no25-chatgpt-sites-templates/", "image": "assets/preview-ai-v1/no25.jpg", "accent": "#4F5BA6"}, {"number": "18", "category": "画像・動画制作", "title": "撮っただけの動画が、<br>投稿できる1本になって返ってくる。", "plainTitle": "撮っただけの動画が、 投稿できる1本になって返ってくる。", "description": "ChatGPT（Codex）とChatCutをつなぎ、カット・テロップ・AI映像・BGMまで文章で頼んで動画を仕上げる手順。", "sourceVideo": "これで完結!?\n動画編集できる\n話題のAIがヤバイ", "sourceThumbnail": "assets/video-thumbs/no29.jpg", "tags": ["ChatGPT", "Codex", "ChatCut"], "url": "https://smitch-ai-works.github.io/no29-chatgpt-codex-chatcut/", "image": "assets/preview-ai-v1/no29.jpg", "accent": "#4A3F68"}, {"number": "19", "category": "AI副業", "title": "プロンプトを2回貼るだけで、<br>LINE絵文字40個が完成する。", "plainTitle": "プロンプトを2回貼るだけで、 LINE絵文字40個が完成する。", "description": "Codexにプロンプトを2回貼るだけで、絵の生成から40枚への分割・背景透過・180px化・連番・検査・提出用ZIPまで終わらせる手順。", "sourceVideo": "センス不要\nLINE絵文字を\nAIでゼロから作る", "sourceThumbnail": "assets/video-thumbs/no28.jpg", "tags": ["Codex", "LINE絵文字", "スマホ完結"], "url": "https://smitch-ai-works.github.io/no28-chatgpt-codex-line-emoji/", "image": "assets/preview-ai-v1/no28.jpg", "accent": "#C08A3E"}, {"number": "20", "category": "AI副業", "title": "日本の日常を、<br>世界に飾る一枚へ。", "plainTitle": "日本の日常を、 世界に飾る一枚へ。", "description": "ChatGPTで和風ポスター10枚と英語の紹介文を作り、Etsyで海外に販売するまでの手順。", "sourceVideo": "日本人ならやるべき\nChatGPTで\n和風ポスター作る方法", "sourceThumbnail": "assets/video-thumbs/no31.jpg", "tags": ["ChatGPT", "和風ポスター", "Etsy"], "url": "https://smitch-ai-works.github.io/no31-japanese-posters/", "image": "assets/preview-ai-v1/no31.jpg", "accent": "#86672F"}, {"number": "21", "category": "AI副業", "title": "商品探しから投稿まで、<br>Claudeに任せる。", "plainTitle": "商品探しから投稿まで、 Claudeに任せる。", "description": "楽天のID設定からClaude Code・Typefullyの連携、Threadsの下書きと予約まで。画面付きの手順と、そのまま貼れる指示文をまとめました。", "sourceVideo": "勝手に積み上がる!?\n楽天アフィを\nClaudeにやらせると...", "sourceThumbnail": "assets/video-thumbs/no30.jpg", "tags": ["Claude", "楽天", "Threads"], "url": "https://smitch-ai-works.github.io/no30-claude-rakuten-threads/", "image": "assets/preview-ai-v1/no30.jpg", "accent": "#1F5FBF"}, {"number": "22", "category": "AI副業", "title": "仕事の口ぐせが、<br>売れるスタンプに。", "plainTitle": "仕事の口ぐせが、 売れるスタンプに。", "description": "仕事の言葉で作るLINEスタンプ。検索件数で穴場を探し、ChatGPTで作って申請するまで図解で。", "sourceVideo": "LINEスタンプ\n作っても売れない\n意外な理由", "sourceThumbnail": "assets/video-thumbs/no37.png", "tags": ["LINEスタンプ", "ChatGPT", "AI副業"], "url": "https://smitch-ai-works.github.io/no37-line-work-stickers/", "image": "assets/preview-ai-v1/no37.jpg", "accent": "#06A94D"}, {"number": "23", "category": "画像・動画制作", "title": "素材を渡して、<br>編集を任せる。", "plainTitle": "素材を渡して、 編集を任せる。", "description": "貼るだけの指示文4本で、準備からカット・字幕・修正まで。素材の置き方と確認ポイントもまとめました。", "sourceVideo": "編集者いらず!?\nChatGPTで\n動画編集できます", "sourceThumbnail": "assets/video-thumbs/no35.png", "tags": ["Codex", "動画編集", "SNS"], "url": "https://smitch-ai-works.github.io/no35-codex-video-editing/", "image": "assets/preview-ai-v1/no35.jpg", "accent": "#4A3F68"}, {"number": "24", "category": "AI副業", "title": "ChatGPT × Canva<br>オリジナルデザインキット", "plainTitle": "ChatGPT × Canva オリジナルデザインキット", "description": "好きなテーマでTシャツのデザインを作り、Amazon Merch on Demandへ出品するまで。プロンプトと制作手順、つまずき対策つき。", "sourceVideo": "在庫なしでOK\nChatGPT×Amazon\nTシャツ販売", "sourceThumbnail": "assets/video-thumbs/no33-511f61c6.jpg", "tags": ["Tシャツ", "ChatGPT", "Canva"], "url": "https://smitch-ai-works.github.io/no33-cat-tshirt/", "image": "assets/preview-ai-v1/no33.jpg", "accent": "#4A3F68"}, {"number": "25", "category": "AI活用", "title": "Codex<br>導入ガイド", "plainTitle": "Codex 導入ガイド", "description": "導入から初めてのツール制作まで。Web・動画・スタンプの指示文も収録。", "sourceVideo": "ClaudeCode\n今から始めるなら\nCodex一択です", "sourceThumbnail": "assets/video-thumbs/no34.png", "tags": ["Codex", "AI活用", "仕事効率化"], "url": "https://smitch-ai-works.github.io/no34-codex-starter/", "image": "assets/preview-ai-v1/no34.jpg", "accent": "#1F5FBF"}, {"number": "26", "category": "AI副業", "title": "Substack<br>スタートガイド", "plainTitle": "Substack スタートガイド", "description": "登録からAIで書く最初の1本、有料化、5つの落とし穴まで図解で。", "sourceVideo": "海外で話題!?\nSubstack×AI\nSNS収益化", "sourceThumbnail": "assets/video-thumbs/no36.png", "tags": ["Substack", "AI活用", "SNS運用"], "url": "https://smitch-ai-works.github.io/no36-substack-starter/", "image": "assets/preview-ai-v1/no36.jpg", "accent": "#D9480F"}, {"number": "27", "category": "AI音楽制作", "title": "AI CMソング制作キット", "plainTitle": "AI CMソング制作キット", "description": "お店の特徴から歌詞・作曲・試聴まで。実際のCMソング、ChatGPTとGeminiの指示文、提案前の確認をまとめた制作キット。", "sourceVideo": "AIで作った曲\n実は海外では\nバカ売れ!?", "sourceThumbnail": "assets/video-thumbs/no38.png", "tags": ["ChatGPT", "Gemini", "CMソング"], "url": "https://smitch-ai-works.github.io/no38-ai-cm-song/", "image": "assets/preview-ai-v1/no38.jpg", "accent": "#52644B"}, {"number": "28", "category": "AI副業", "title": "日本の風景を、<br>自分で彩るしおりに。", "plainTitle": "日本の風景を、 自分で彩るしおりに。", "description": "ChatGPTで日本風景の塗り絵しおりと英語の紹介文を作り、印刷データを整えてEtsyに出品するまでの手順。コピーして使えるプロンプト2本付き。", "sourceVideo": "海外で流行中!?\nChatGPTで\n塗り絵しおり作る方法", "sourceThumbnail": "assets/video-thumbs/no32.png", "tags": ["ChatGPT", "塗り絵しおり", "Etsy"], "url": "https://smitch-ai-works.github.io/no32-japanese-bookmarks/", "image": "assets/preview-ai-v1/no32.jpg", "accent": "#927036"}, {"number": "29", "category": "画像・動画制作", "title": "Claude Code<br>画像生成スタートガイド", "plainTitle": "Claude Code 画像生成スタートガイド", "description": "Claude Codeの準備から、画像拡張の導入、日本語での依頼、PNGの保存まで。実画面と作例で追えるスタートガイド。", "sourceVideo": "待望の進化\nClaude Codeだけで\n画像まで完結", "sourceThumbnail": "assets/video-thumbs/no42.png", "tags": ["Claude Code", "Codex", "画像生成"], "url": "https://smitch-ai-works.github.io/no42-claude-code-image/", "image": "assets/preview-ai-v1/no42.jpg", "accent": "#4E6B57"}, {"number": "30", "category": "AI活用", "title": "Claude Code×Codex<br>連携スタートガイド", "plainTitle": "Claude Code×Codex 連携スタートガイド", "description": "公式プラグインの導入、ChatGPTアカウントでのログイン、役割分担の指示と最初の仕事まで。コピーできる9つの指示文と実演つき。", "sourceVideo": "ChatGPTとClaude\nまさか今も\n別々に使ってる？", "sourceThumbnail": "assets/video-thumbs/no43.png", "tags": ["Claude Code", "Codex", "AI連携"], "url": "https://smitch-ai-works.github.io/no43-claude-code-codex/", "image": "assets/preview-ai-v1/no43.jpg", "accent": "#4A3F68"}, {"number": "31", "category": "AIグッズ制作", "title": "AIパズル制作キット", "plainTitle": "AIパズル制作キット", "description": "ChatGPTでテーマと絵を作り、Printifyでパズルの商品準備へ。実画面・4つの指示文・印刷と販売前のチェック。", "sourceVideo": "在庫なしでOK\nChatGPTで作る\nパズル販売", "sourceThumbnail": "assets/video-thumbs/no41.png", "tags": ["ChatGPT", "Printify", "パズル制作"], "url": "https://smitch-ai-works.github.io/no41-ai-puzzle/", "image": "assets/preview-ai-v1/no41.jpg", "accent": "#52644B"}, {"number": "32", "category": "AIサイト制作", "title": "AIサイト制作<br>スタートキット", "plainTitle": "AIサイト制作 スタートキット", "description": "一発出しを狙う指示の設計、動く3D作例、店舗紹介LP、制作提案と納品の準備まで。", "sourceVideo": "ChatGPT-6\nたった1回指示で\nこれ作れます", "sourceThumbnail": "assets/video-thumbs/no39.png", "tags": ["Codex", "GPT-6.1 Sol", "サイト制作"], "url": "https://smitch-ai-works.github.io/no39-ai-web-production/", "image": "assets/preview-ai-v1/no39.jpg", "accent": "#536655"}, {"number": "33", "category": "AI活用", "title": "Codexで自分専用のAI会社を作る", "plainTitle": "Codexで自分専用のAI会社を作る", "description": "5問で設定し、25人分の担当で記事・サムネ・Threads紹介文を作るCodex用キット。", "sourceVideo": "自分は社長\nAI社員25人に\n仕事を任せる", "sourceThumbnail": "assets/video-thumbs/no173.png", "tags": ["Codex", "AI社員", "note"], "url": "https://smitch-ai-works.github.io/no44-codex-ai-company/", "image": "assets/preview-ai-v1/no44.jpg", "accent": "#205749"}, {"number": "34", "category": "AI副業", "title": "旅の写真を、<br>海外向けの商品データに。", "plainTitle": "旅の写真を、 海外向けの商品データに。", "description": "写真選びから英語の商品情報、Canvaの調整、Etsy登録まで。図と実画面を見ながら進められる、コピー用指示文つきガイド。", "sourceVideo": "旅先の写真が\nChatGPTで\n商品になる!?", "sourceThumbnail": "assets/video-thumbs/no47.png", "tags": ["ChatGPT", "Canva", "Etsy", "写真販売"], "url": "https://smitch-ai-works.github.io/no47-travel-photo-etsy/", "image": "assets/preview-ai-v1/no47.jpg", "accent": "#2c654c"}, {"number": "35", "category": "AI活用・文章作成", "title": "Codexでnoteづくり｜構成・本文・図解・下書きキット", "plainTitle": "Codexでnoteづくり｜構成・本文・図解・下書きキット", "description": "自分の読者と文体を設定し、テーマから記事・図解・note下書きへ進めるCodex版キット。導入手順と図解3枚入りの作例を収録。", "sourceVideo": "話題のnote\nChatGPT使うと\n記事ができる!?", "sourceThumbnail": "assets/video-thumbs/no178.png", "tags": ["note", "Codex", "スキル", "文章作成"], "url": "https://smitch-ai-works.github.io/no45-note-codex-workflow/", "image": "assets/preview-ai-v1/no45.jpg", "accent": "#31674f"}, {"number": "36", "category": "AI活用・動画編集", "title": "日本語で頼んで、リールを編集する｜AIリール編集スタートガイド", "plainTitle": "日本語で頼んで、リールを編集する｜AIリール編集スタートガイド", "description": "Codex・Claude Codeで動画を編集する準備、指示文、共通カットで比較する手順、検品まで。配布スターター付き。", "sourceVideo": "ChatGPTとClaude\n編集任せたら\nこうなった", "sourceThumbnail": "assets/video-thumbs/no174.png", "tags": ["Codex", "Claude Code", "動画編集", "指示文"], "url": "https://smitch-ai-works.github.io/no46-ai-reel-editing/", "image": "assets/preview-ai-v1/no46.jpg", "accent": "#245b96"}, {"number": "37", "category": "AI仕事術", "title": "ChatGPTに任せるSNS作業 図解スタートガイド", "plainTitle": "ChatGPTに任せるSNS作業 図解スタートガイド", "description": "開く場所から保存まで、実画面と図解で進める5つのSNS作業ガイド。指示文と練習用メモ付き。", "sourceVideo": "知らないと損!?\nChatGPTの\n神プラグイン5選", "sourceThumbnail": "assets/video-thumbs/no51.png", "tags": ["SNS", "ChatGPT", "プラグイン"], "url": "https://smitch-ai-works.github.io/no51-chatgpt-sns-plugins/", "image": "assets/preview-ai-v1/no51.jpg", "accent": "#23354C"}, {"number": "38", "category": "AI活用", "title": "ChatGPTを専属秘書にする dotsはじめ方ガイド", "plainTitle": "ChatGPTを専属秘書にする dotsはじめ方ガイド", "description": "dotsの作り方、アプリのつなぎ方、役割の頼み方、任せる範囲の決め方と注意点。コピーして使える指示文つき。", "sourceVideo": "寝てる間も\nChatGPTが\n勝手に働く!?", "sourceThumbnail": "assets/video-thumbs/no54.png", "tags": ["ChatGPT", "dots", "AI秘書"], "url": "https://smitch-ai-works.github.io/no54-chatgpt-dots-secretary/", "image": "assets/preview-ai-v1/no54.jpg", "accent": "#0F7A63"}, {"number": "39", "category": "AI活用", "title": "Claude Codeで作る インスタAI社員スタートガイド", "plainTitle": "Claude Codeで作る インスタAI社員スタートガイド", "description": "社長役と9担当の役割分担、5つの質問、依頼とチェックの指示文、設定用スターター。", "sourceVideo": "僕のインスタ\n実は10人の\nAI社員が運用", "sourceThumbnail": "assets/video-thumbs/no50.png", "tags": ["Claude Code", "AI社員", "インスタ運用"], "url": "https://smitch-ai-works.github.io/no50-instagram-ai-team/", "image": "assets/preview-ai-v1/no50.jpg", "accent": "#4A3F68"}, {"number": "40", "category": "AI副業", "title": "ChatGPTで作る塗り絵しおり｜プロンプトと制作を任せる手順", "plainTitle": "ChatGPTで作る塗り絵しおり｜プロンプトと制作を任せる手順", "description": "日本風景の線画、英語の商品説明、次の制作をまとめて頼む3本のプロンプト。作例と保存用ZIP、Etsyへ出す前の確認手順つき。", "sourceVideo": "海外に刺さる!?\nChatGPTで\n塗り絵しおり", "sourceThumbnail": "assets/video-thumbs/no56.png", "tags": ["ChatGPT", "塗り絵しおり", "Etsy"], "url": "https://smitch-ai-works.github.io/no56-chatgpt-bookmark-workflow/", "image": "assets/preview-ai-v1/no56.jpg", "accent": "#927036"}, {"number": "41", "category": "AI副業", "title": "愛用AI4選の使い分けノート", "plainTitle": "愛用AI4選の使い分けノート", "description": "台本・調査、動画・LP、企画・画像、表紙。4つのAIに任せる仕事と、試せる依頼文を図と手順でまとめました。", "sourceVideo": "副業で月100万円\n僕が愛用する\nAIツール4選", "sourceThumbnail": "assets/video-thumbs/no58.png", "tags": ["Claude Code", "Codex", "ChatGPT", "Canva"], "url": "https://smitch-ai-works.github.io/no58-ai-tools-workflow/", "image": "assets/preview-ai-v1/no58.jpg", "accent": "#796126"}, {"number": "42", "category": "AI副業", "title": "すみっち式 自分の言葉で書くAI note実践ガイド", "plainTitle": "すみっち式 自分の言葉で書くAI note実践ガイド", "description": "調査から構成、本文、文体まで。自分の経験と言葉を残す5ステップを図解で確認し、そのまま使える指示文と実践ワークで記事を1本仕上げます。", "sourceVideo": "ただnote書くのはNG!\nChatGPTで運用する\n厳選コツ5選", "sourceThumbnail": "assets/video-thumbs/no60.png", "tags": ["ChatGPT", "Codex", "note"], "url": "https://smitch-ai-works.github.io/no60-ai-note-practice/", "image": "assets/preview-ai-v1/no60.jpg", "accent": "#19645c"}, {"number": "43", "category": "ChatGPT活用", "title": "すみっち流 ChatGPT 10機能 使い分けマニュアル", "plainTitle": "すみっち流 ChatGPT 10機能 使い分けマニュアル", "description": "音声入力・ペット・スケジュール・Computer Use・画像生成・スマホ連携・スキル・プラグイン・Work・Codex。10機能の始め方と使い分け、コピーして試せる練習用の指示文つき。", "sourceVideo": "知らずに損してる!?\nChatGPTの\n神機能10選", "sourceThumbnail": "assets/video-thumbs/no59.png", "tags": ["ChatGPT", "Codex", "使い分け"], "url": "https://smitch-ai-works.github.io/no59-chatgpt-10-functions/", "image": "assets/preview-ai-v1/no59.jpg", "accent": "#3A6CF4"}, {"number": "44", "category": "AI活用", "title": "ChatGPTで作るAI絵本 3ステップと自動化ガイド", "plainTitle": "ChatGPTで作るAI絵本 3ステップと自動化ガイド", "description": "ChatGPTで構成案と絵を作り、Canvaで仕上げる3ステップと、ChatGPTのWorkに指示文を1回送って絵本PDFまで自動で作る手順。KDP出品の流れつき。", "sourceVideo": "再ブーム到来!?\nスキマ時間で\nAI絵本vlog", "sourceThumbnail": "assets/video-thumbs/no55.png", "tags": ["ChatGPT", "AI絵本", "自動化"], "url": "https://smitch-ai-works.github.io/no55-ai-ehon-work-auto/", "image": "assets/preview-ai-v1/no55.jpg", "accent": "#B45F1E"}, {"number": "45", "category": "AI副業", "title": "商品写真から作る10秒CMガイド", "plainTitle": "商品写真から作る10秒CMガイド", "description": "商品写真からChatGPTで5カット絵コンテを作り、Geminiで10秒CMへ。実演の指示文全文と練習画像を使い、添付・生成・保存まで3工程で進められます。", "sourceVideo": "写真1枚が\nAIに頼んだら\n商品CMに!?", "sourceThumbnail": "assets/video-thumbs/no61.png", "tags": ["ChatGPT", "Gemini", "動画制作"], "url": "https://smitch-ai-works.github.io/no61-gemini-product-cm/", "image": "assets/preview-ai-v1/no61.jpg", "accent": "#244d2b"}, {"number": "46", "category": "AI副業", "title": "スマホ写真で作る街並みステッカー出品ガイド", "plainTitle": "スマホ写真で作る街並みステッカー出品ガイド", "description": "写真から透過PNGを作り、単品の保存、英語の商品説明、Etsyの出品準備まで。実作例とコピーできる指示文付き。", "sourceVideo": "AI画像はNG!?\n知っておきたい\n意外な落とし穴", "sourceThumbnail": "assets/video-thumbs/no49.png", "tags": ["ChatGPT", "Etsy", "ステッカー"], "url": "https://smitch-ai-works.github.io/no49-street-photo-stickers/", "image": "assets/preview-ai-v1/no49.jpg", "accent": "#9b7836"}, {"number": "47", "category": "AI副業", "title": "AIでつくる大人の塗り絵 販売スタートガイド", "plainTitle": "AIでつくる大人の塗り絵 販売スタートガイド", "description": "テーマ選びから画像生成、原稿の整理、KDP出品まで。3つの指示文と練習用作例つき。", "sourceVideo": "絵が苦手でも\nAIに任せて\n塗り絵販売", "sourceThumbnail": "assets/video-thumbs/no53.png", "tags": ["ChatGPT", "塗り絵", "Amazon KDP"], "url": "https://smitch-ai-works.github.io/no53-ai-coloring-book/", "image": "assets/preview-ai-v1/no53.jpg", "accent": "#355A45"}, {"number": "48", "category": "AI活用", "title": "日本語を生かす海外在宅ワークの探し方", "plainTitle": "日本語を生かす海外在宅ワークの探し方", "description": "LinkedInで日本語の仕事を探し、AIで募集文を読み、応募を準備する手順。", "sourceVideo": "日本語が武器に!?\n海外で見つかる\n在宅ワーク", "sourceThumbnail": "assets/video-thumbs/no187.png", "tags": ["在宅ワーク", "日本語", "LinkedIn"], "url": "https://smitch-ai-works.github.io/no48-japanese-remote-work/", "image": "assets/preview-ai-v1/no48.jpg", "accent": "#0a66c2"}, {"number": "49", "category": "AI活用", "title": "すみっち式 0円AI使い倒しマニュアル", "plainTitle": "すみっち式 0円AI使い倒しマニュアル", "description": "FreeLLMAPIの設定から、無料枠で見出しを作成・修正・保存するまで。全文指示文と練習キット付き。", "sourceVideo": "ほとんどの人が知らない\n有名AIが無料で使える\n神ツール見つけた", "sourceThumbnail": "assets/video-thumbs/no65-canva-v2.png", "tags": ["FreeLLMAPI", "無料枠", "SNS投稿"], "url": "https://smitch-ai-works.github.io/no65-free-ai-start/", "image": "assets/preview-ai-v1/no65.jpg", "accent": "#12387a"}, {"number": "50", "category": "ChatGPT活用", "title": "すみっち式 ChatGPT dots 任せ方スタートブック", "plainTitle": "すみっち式 ChatGPT dots 任せ方スタートブック", "description": "dotsの作成から、Instagramのリサーチと台本の依頼、見直し、保存まで。コピーして使える指示文付き。", "sourceVideo": "パソコンを閉じても\nChatGPTが\n仕事を進める!?", "sourceThumbnail": "assets/video-thumbs/no66.png", "tags": ["dots", "リサーチ", "台本作成"], "url": "https://smitch-ai-works.github.io/no66-chatgpt-dots-workflow/", "image": "assets/preview-ai-v1/no66.jpg", "accent": "#187cff"}, {"number": "51", "category": "AI動画制作", "title": "すみっち式 AI動画副業マニュアル", "plainTitle": "すみっち式 AI動画副業マニュアル", "description": "商品写真からPR動画を作り、確認・修正・MP4保存まで。全文プロンプト、練習用写真、2本の動画見本を収録。", "sourceVideo": "遊びながらでも\nChatGPTで\n稼げるって本当!?", "sourceThumbnail": "assets/video-thumbs/no64.png", "tags": ["ChatGPT", "PR動画", "動画編集"], "url": "https://smitch-ai-works.github.io/no64-chatgpt-pr-video/", "image": "assets/preview-ai-v1/no64.jpg", "accent": "#117e78"}, {"number": "52", "category": "Claude活用", "title": "すみっち式 Claudeで動画編集 完全マニュアル", "plainTitle": "すみっち式 Claudeで動画編集 完全マニュアル", "description": "自分の声と素材で、Claudeに縦型リールを1本作らせる6ステップ。実際の修正例と、編集・修正・ルール保存に使える指示文6本付き。", "sourceVideo": "", "sourceThumbnail": "", "tags": ["Claude", "動画編集", "リール"], "url": "https://smitch-ai-works.github.io/no67-claude-video-editing/", "image": "assets/preview-ai-v1/no67.jpg", "accent": "#963c27"}, {"number": "53", "category": "AI副業", "title": "すみっち式 Claude×楽天 商品選び・投稿作成スタートブック", "plainTitle": "すみっち式 Claude×楽天 商品選び・投稿作成スタートブック", "description": "「売れそう」で選ぶ前に、誰がどこで使うかを決める。商品比較と投稿作成の指示文、実際のClaude下書き、保存用テンプレートをまとめました。", "sourceVideo": "楽天アフィを\nClaudeに\n任せた結果が!?", "sourceThumbnail": "assets/video-thumbs/no62.png", "tags": ["Claude", "楽天アフィリエイト", "商品選び", "投稿作成"], "url": "https://smitch-ai-works.github.io/no62-claude-rakuten-selection/", "image": "assets/preview-ai-v1/no62.jpg", "accent": "#b86642"}, {"number": "54", "category": "AI副業", "title": "すみっち式 AI副業 はじめの1商品実践ガイド", "plainTitle": "すみっち式 AI副業 はじめの1商品実践ガイド", "description": "一人の困りごとから商品を決め、試作を届け、反応から次を考える。note・LINEスタンプ・LPに使えるシートと作例つき。", "sourceVideo": "", "sourceThumbnail": "", "tags": ["ChatGPT", "note", "商品づくり", "SNS集客"], "url": "https://smitch-ai-works.github.io/no75-ai-first-product/", "image": "assets/preview-ai-v1/no75.jpg", "accent": "#236c5b"}]);
+  function listCard(item, now) {
+    const number = item.number;
+    return linkStart(item, 'catalog-item') + '<span class="cover">' + artwork(item.image) +
+      '</span><div><div class="meta"><span>特典 ' + number + '</span><span aria-hidden="true">・</span>' +
+      '<span>' + escapeHtml(item.purpose) + '</span>' + newBadge(item, now) + '</div><h3>' +
+      escapeHtml(item.plainTitle) + '</h3><p>' + escapeHtml(item.contents) +
+      '</p></div><span class="arrow" aria-hidden="true">→</span></a>';
+  }
 
-    const cardsElement = document.getElementById("cards");
-    const filtersElement = document.getElementById("filters");
-    const resultCountElement = document.getElementById("resultCount");
-    const searchInput = document.getElementById("searchInput");
-    const emptyState = document.getElementById("emptyState");
-    const swipeHintElement = document.getElementById("swipeHint");
-    const swipePositionElement = document.getElementById("swipePosition");
+  function normalize(text) { return text.normalize('NFKC').toLowerCase().trim(); }
 
-    let activeCategory = "すべて";
-    let searchTerm = "";
+  function bonusNumberFromSearch(query) {
+    const match = query.replace(/\s+/g, '').match(/^(?:特典)?(?:no\.?|番号|#)?0*(\d+)$/);
+    if (!match) return null;
+    const number = Number(match[1]);
+    return /\D/.test(query.replace(/\s+/g, '')) || items.some(item => Number(item.number) === number) ? number : null;
+  }
 
-    function escapeAttribute(value) {
-      return String(value)
-        .replaceAll("&", "&amp;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;");
-    }
-
-    function renderFilters() {
-      const categories = ["すべて", ...new Set(bonuses.map(item => item.category))];
-
-      filtersElement.innerHTML = categories.map(category => `
-        <button
-          class="filter-button ${category === activeCategory ? "active" : ""}"
-          type="button"
-          data-category="${escapeAttribute(category)}"
-        >
-          ${category}
-        </button>
-      `).join("");
-
-      filtersElement.querySelectorAll(".filter-button").forEach(button => {
-        button.addEventListener("click", () => {
-          activeCategory = button.dataset.category;
-          renderFilters();
-          renderCards();
-        });
-      });
-    }
-
-    function bonusNumberFromSearch(value) {
-      const query = value.trim().normalize("NFKC").toLowerCase().replace(/\s+/g, "");
-      const match = query.match(/^(?:特典)?(?:no\.?|番号|#)?0*(\d+)$/);
-      if (!match) return null;
-      const number = Number(match[1]);
-      return /\D/.test(query) || (number >= 1 && number <= bonuses.length) ? number : null;
-    }
-
-    function getFilteredBonuses() {
-      const keyword = searchTerm.trim().toLowerCase();
-      const bonusNumber = bonusNumberFromSearch(searchTerm);
-
-      return bonuses.filter(item => {
-        const matchesCategory = activeCategory === "すべて" || item.category === activeCategory;
-        const searchableText = [
-          item.plainTitle,
-          item.sourceVideo,
-          item.sourceVideo.replace(/\s+/g, ""),
-          item.description,
-          item.category,
-          ...item.tags
-        ].join(" ").toLowerCase();
-
-        const matchesKeyword = !keyword || (bonusNumber !== null
-          ? Number(item.number) === bonusNumber
-          : searchableText.includes(keyword));
-        return matchesCategory && matchesKeyword;
-      });
-    }
-
-    function renderCards() {
-      const visibleBonuses = getFilteredBonuses();
-
-      cardsElement.innerHTML = visibleBonuses.map((item, index) => `
-        <article class="card" style="--accent:${escapeAttribute(item.accent)}; animation-delay:${Math.min(index * 0.045, .35)}s">
-          <a
-            class="card-link"
-            href="${escapeAttribute(item.url)}"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="${escapeAttribute(item.plainTitle)}を開く"
-          >
-            <div class="preview">
-              ${item.image ? `
-              <div class="preview-browser">
-                <img
-                  src="${escapeAttribute(item.image)}"
-                  alt="${escapeAttribute(item.plainTitle)}のプレビュー"
-                  loading="lazy"
-                >
-              </div>` : ""}
-              <div class="preview-top">
-                <span class="preview-number">特典 ${escapeAttribute(item.number)}</span>
-                <span class="preview-hint">特典を受け取る</span>
-              </div>
-            </div>
-
-            <div class="card-body">
-              <span class="category">${item.category}</span>
-              <h3>${item.title}</h3>
-              ${item.sourceThumbnail || item.sourceVideo ? `
-              <div class="source-video">
-                ${item.sourceThumbnail ? `<img class="source-video-thumb" src="${escapeAttribute(item.sourceThumbnail)}" alt="" loading="lazy">` : `<span class="source-video-icon" aria-hidden="true">▶</span>`}
-                <span class="source-video-copy">
-                  <span class="source-video-label">この特典動画</span>
-                  <span class="source-video-title">${escapeAttribute(item.sourceVideo)}</span>
-                </span>
-              </div>
-              ` : ""}
-              <p class="card-description">${item.description}</p>
-              <div class="tags">
-                ${item.tags.map(tag => `<span class="tag">${tag}</span>`).join("")}
-              </div>
-              <div class="open-row">
-                <span>この特典を見る</span>
-                <span class="open-icon">→</span>
-              </div>
-            </div>
-          </a>
-        </article>
-      `).join("");
-
-      resultCountElement.textContent = visibleBonuses.length;
-      emptyState.classList.toggle("show", visibleBonuses.length === 0);
-      swipeHintElement.hidden = visibleBonuses.length <= 1;
-      swipePositionElement.textContent = `1 / ${visibleBonuses.length}`;
-      cardsElement.scrollLeft = 0;
-    }
-
-    cardsElement.addEventListener("scroll", () => {
-      const items = cardsElement.children;
-      if (!items.length || window.innerWidth > 720) return;
-      const step = items.length > 1 ? items[1].offsetLeft - items[0].offsetLeft : 1;
-      const position = Math.min(items.length, Math.max(1, Math.round(cardsElement.scrollLeft / step) + 1));
-      swipePositionElement.textContent = `${position} / ${items.length}`;
-    }, { passive: true });
-
-    searchInput.addEventListener("input", event => {
-      searchTerm = event.target.value;
-      if (bonusNumberFromSearch(searchTerm) !== null && activeCategory !== "すべて") {
-        activeCategory = "すべて";
-        renderFilters();
-      }
-      renderCards();
+  function renderList() {
+    const query = normalize(search.value);
+    const number = bonusNumberFromSearch(query);
+    const words = query.split(/\s+/).filter(Boolean);
+    const matchingItems = sorted.filter(item => {
+      if (activePurpose && item.purpose !== activePurpose) return false;
+      if (number !== null) return Number(item.number) === number;
+      const text = normalize([item.plainTitle, item.description, item.category, item.purpose, item.contents,
+        item.sourceVideo, item.sourceVideo.replace(/\s+/g, ''), ...item.tags].join(' '));
+      return words.every(word => text.includes(word));
     });
+    const now = Date.now();
+    results.innerHTML = matchingItems.map(item => listCard(item, now)).join('');
+    resultCount.textContent = matchingItems.length + '件';
+    empty.hidden = matchingItems.length > 0;
+  }
 
-    renderFilters();
-    renderCards();
-  </script>
+  function setPurpose(purpose) {
+    activePurpose = purpose;
+    filterButtons.forEach(button => {
+      button.setAttribute('aria-pressed', String(button.dataset.purpose === purpose));
+    });
+  }
+
+  let filterAnimation;
+  filterButtons.forEach(button => button.addEventListener('click', () => {
+    if (activePurpose === button.dataset.purpose) return;
+    setPurpose(button.dataset.purpose);
+    renderList();
+    filterAnimation?.cancel();
+    if (allowMotion.matches && results.childElementCount) {
+      filterAnimation = results.animate(
+        [{ opacity: .38, transform: 'translateY(5px)' }, { opacity: 1, transform: 'translateY(0)' }],
+        { duration: 230, easing: 'cubic-bezier(.2,.65,.25,1)' }
+      );
+    }
+  }));
+  search.addEventListener('input', () => {
+    if (activePurpose && bonusNumberFromSearch(normalize(search.value)) !== null) {
+      setPurpose('');
+    }
+    renderList();
+  });
+
+  const now = Date.now();
+  const recentItems = sorted.slice(0, 3);
+  document.getElementById('recent').innerHTML = recentItems.map((item, index) => recentCard(item, index, now)).join('');
+  const lastPublication = recentItems[0]?.publishedAt;
+  if (lastPublication) {
+    const latestUpdate = document.getElementById('latest-update');
+    latestUpdate.dateTime = new Date(lastPublication).toISOString();
+    latestUpdate.textContent = dateFormat.format(lastPublication) + ' 更新';
+    latestUpdate.hidden = false;
+  }
+  renderList();
+</script>
 </body>
 </html>

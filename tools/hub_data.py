@@ -177,7 +177,13 @@ def page_cards(doc):
         if not shown(b):
             continue
         c = card(doc, b, len(cards) + 1)
+        c["slug"] = b["slug"]
+        if b.get("publish_at"):
+            c["publishedAt"] = int(parse_at(b["publish_at"]).timestamp() * 1000)
         if b["status"] == "scheduled":
-            c["publishAt"] = int(parse_at(b["publish_at"]).timestamp() * 1000)
+            c["publishAt"] = c["publishedAt"]
+        cover = b.get("bonus_cover")
+        if cover and os.path.isfile(os.path.join(ROOT, cover)):
+            c["bonusCover"] = cover
         cards.append(c)
     return cards
