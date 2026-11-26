@@ -1594,8 +1594,8 @@
       "source_thumbnail_required": false,
       "comment_prompt": "AIに言われて一番ムカついた答え",
       "category": "AI副業",
-      "lgram_flow_id": 474203,
-      "lgram_flow_name": "【準備】Fumiya5_AI講座",
+      "lgram_flow_id": 477173,
+      "lgram_flow_name": "【準備】Fumiya5_出品文",
       "accent": "#174cc1",
       "tags": [
         "ChatGPT",
@@ -1687,8 +1687,8 @@
       "source_thumbnail_required": false,
       "comment_prompt": "好きなAI",
       "category": "AI副業",
-      "lgram_flow_id": null,
-      "lgram_status": "not_configured",
+      "lgram_flow_id": 474653,
+      "lgram_status": "draft_saved",
       "accent": "#16584f",
       "tags": [
         "ChatGPT",
@@ -1704,7 +1704,8 @@
       "explanation_video_policy": "none_by_user_request",
       "published": true,
       "published_url": "https://smitch-ai-works.github.io/no71-ai-test-report/",
-      "hub_registered": true
+      "hub_registered": true,
+      "lgram_flow_name": "【準備】Fumiya1_AIテスト"
     },
     {
       "id": 72,
@@ -1718,8 +1719,8 @@
       "source_thumbnail_required": false,
       "comment_prompt": "好きな犬種",
       "category": "AI副業",
-      "lgram_flow_id": null,
-      "lgram_status": "not_configured",
+      "lgram_flow_id": 474656,
+      "lgram_status": "draft_saved",
       "accent": "#833c52",
       "tags": [
         "ChatGPT",
@@ -1735,7 +1736,8 @@
       "explanation_video_policy": "none_by_user_request",
       "published": true,
       "published_url": "https://smitch-ai-works.github.io/no72-dog-outfit-photos/",
-      "hub_registered": true
+      "hub_registered": true,
+      "lgram_flow_name": "【準備】Fumiya2_犬服着画"
     },
     {
       "id": 73,
@@ -1749,8 +1751,8 @@
       "source_thumbnail_required": false,
       "comment_prompt": "住みたい街",
       "category": "AI副業",
-      "lgram_flow_id": null,
-      "lgram_status": "not_configured",
+      "lgram_flow_id": 474657,
+      "lgram_status": "draft_saved",
       "accent": "#936742",
       "tags": [
         "ChatGPT",
@@ -1766,7 +1768,8 @@
       "explanation_video_policy": "none_by_user_request",
       "published": true,
       "published_url": "https://smitch-ai-works.github.io/no73-ai-virtual-staging/",
-      "hub_registered": true
+      "hub_registered": true,
+      "lgram_flow_name": "【準備】Fumiya3_空室家具"
     },
     {
       "id": 74,
@@ -1780,8 +1783,8 @@
       "source_thumbnail_required": false,
       "comment_prompt": "好きな早口言葉",
       "category": "AI副業",
-      "lgram_flow_id": null,
-      "lgram_status": "not_configured",
+      "lgram_flow_id": 474659,
+      "lgram_status": "draft_saved",
       "accent": "#194b80",
       "tags": [
         "AI音声",
@@ -1797,7 +1800,8 @@
       "explanation_video_policy": "none_by_user_request",
       "published": true,
       "published_url": "https://smitch-ai-works.github.io/no74-ai-narration/",
-      "hub_registered": true
+      "hub_registered": true,
+      "lgram_flow_name": "【準備】Fumiya10_AI音声"
     },
     {
       "id": 76,
