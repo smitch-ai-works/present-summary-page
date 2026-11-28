@@ -1931,6 +1931,39 @@
       "published": true,
       "published_url": "https://smitch-ai-works.github.io/no79-product-site-steps/",
       "hub_registered": true
+    },
+    {
+      "id": 80,
+      "slug": "no80-claude-5-extensions",
+      "status": "draft",
+      "source_account": "smitch_ai_works",
+      "source_video_no": 212,
+      "title": "すみっち式 Claudeが化ける拡張5選 導入マニュアル",
+      "description": "Superpowers・Claude Mem・Anthropic Skills・Playwright MCP・Remotion。Claude Codeに入れるコマンド、入ったかの確認、最初に試す一言をまとめました。",
+      "image": "assets/preview-ai-v1/no80.jpg",
+      "source_thumbnail_required": false,
+      "comment_prompt": "好きなコンビニ",
+      "category": "Claude活用",
+      "lgram_flow_id": 478526,
+      "lgram_flow_name": "【準備】No212_Claude拡張5選",
+      "lgram_status": "draft_saved",
+      "accent": "#c4623a",
+      "tags": [
+        "Claude Code",
+        "拡張機能",
+        "MCP",
+        "Remotion"
+      ],
+      "publish_at": null,
+      "source_video": "",
+      "url": "https://smitch-ai-works.github.io/no80-claude-5-extensions/",
+      "bonus_cover": "assets/bonus-covers/no80.png",
+      "bonus_cover_sha256": "58727b7b299311a06c09d4f8a5d6bdd5ce0d1bc2c904905bfc98c7e32344d10b",
+      "explanation_video_required": false,
+      "explanation_video_policy": "none",
+      "published": true,
+      "published_url": "https://smitch-ai-works.github.io/no80-claude-5-extensions/",
+      "hub_registered": true
     }
   ]
 }
